@@ -33,3 +33,69 @@ export async function GET() {
     );
   }
 }
+
+// Handle image uploads
+export async function POST(request: Request) {
+  const formData = await request.formData();
+  const file = formData.get('file') as File;
+
+  if (!file) {
+    return NextResponse.json({ message: 'No file provided' }, { status: 400 });
+  }
+
+  const imagesDirectory = path.join(process.cwd(), 'public', 'assets');
+
+  // Ensure directory exists
+  if (!fs.existsSync(imagesDirectory)) {
+    fs.mkdirSync(imagesDirectory, { recursive: true });
+  }
+
+  // Generate unique filename to avoid conflicts
+  const extension = file.name.split('.').pop() || '';
+  const uniqueName = `${crypto.randomUUID()}.${extension}`;
+  const filePath = path.join(imagesDirectory, uniqueName);
+
+  // Write the file
+  const buffer = Buffer.from(await file.arrayBuffer());
+  fs.writeFileSync(filePath, buffer);
+
+  // Create image object
+  const image = {
+    id: crypto.randomUUID(),
+    name: file.name.replace(/\.[^/.]+$/, ''),
+    url: `/assets/${uniqueName}`,
+    type: file.type,
+  };
+
+  return NextResponse.json(image);
+}
+
+// Handle image deletion
+export async function DELETE(request: Request) {
+  const { url } = await request.json();
+
+  if (!url) {
+    return NextResponse.json({ message: 'No URL provided' }, { status: 400 });
+  }
+
+  // Extract filename from URL
+  const filename = url.split('/').pop();
+  if (!filename) {
+    return NextResponse.json({ message: 'Invalid URL' }, { status: 400 });
+  }
+
+  const imagesDirectory = path.join(process.cwd(), 'public', 'assets');
+  const filePath = path.join(imagesDirectory, filename);
+
+  try {
+    if (fs.existsSync(filePath)) {
+      fs.unlinkSync(filePath);
+      return NextResponse.json({ message: 'Image deleted successfully' });
+    } else {
+      return NextResponse.json({ message: 'Image not found' }, { status: 404 });
+    }
+  } catch (error) {
+    console.error('Error deleting image:', error);
+    return NextResponse.json({ message: 'Error deleting image' }, { status: 500 });
+  }
+}

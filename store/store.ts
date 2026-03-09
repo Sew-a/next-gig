@@ -1,21 +1,28 @@
+import { UserType } from "@/types";
 import {create} from "zustand";
 
 type CounterStore = {
   count: number;
-  increment: () => void;
-  decrement: () => void;
   doSomethingAsync: () => Promise<void>;
+
+  // User states
+  isAuthenticated: boolean;
+  user: UserType | null;
+  setUser: (user: UserType | null) => void;
 }
 
 export const useCounterStore = create<CounterStore>((set) => {
   return {
     count: 0,
-    increment: () => set((state) => ({ count: state.count + 1 })),
-    decrement: () => set((state) => ({ count: state.count - 1 })),
     doSomethingAsync: () => new Promise((resolve) => {
       setTimeout(() => {
         resolve();
       }, 1000);
     }),
+
+    // User states
+    isAuthenticated: false,
+    user: null,
+    setUser: (user) => set({user}),
   };
 });

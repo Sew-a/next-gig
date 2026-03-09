@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -28,6 +29,7 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Advent Pro", sans-serif;
 }
 
 a {

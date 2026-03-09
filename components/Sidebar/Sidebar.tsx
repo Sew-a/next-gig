@@ -1,7 +1,6 @@
 "use client";
-
 import { useState } from "react";
-import { routeNames } from "app/routes";
+import { routeNames } from "@/utils/mainRoutes";
 import Link from "next/link";
 import "./styles.scss";
 

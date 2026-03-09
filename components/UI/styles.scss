@@ -1,0 +1,42 @@
+.heading-text{
+    padding: 1rem;
+    text-align: center;
+
+    h2{
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+}
+
+
+.action-button{
+    display: inline-block;
+    background-color: #2d4057;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #f1def1;
+    padding: 12px 16px;
+    font-weight: 500;
+    transition: all .2s;
+    transition: background-color 0.3s ease;
+    width: 200px;
+
+    &.action {
+    background-color: #ffffff02;
+    border: none;
+    transform: translateY(-2px);
+    font-size: 13px;
+    &:hover {
+    border-color: #e0b0ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px #da70d64d;
+    background-color: #1616160a;
+    }
+}
+
+    &:hover {
+        background-color: #282241;
+    }
+}

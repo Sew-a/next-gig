@@ -1,6 +1,5 @@
 "use client";
-
-import { AppContextType, ImageTypeProps, UserType } from "@/types/types";
+import { AppContextType, ImageItemProps } from "@/types";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -8,9 +7,7 @@ export const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [users, setUsers] = useState<UserType[]>([]);
-  const [imageFiles, setImageFiles] = useState<ImageTypeProps[]>([]);
-
+  const [imageFiles, setImageFiles] = useState<ImageItemProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Getting Images from the API when the component mounts
@@ -24,26 +21,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     loadInitialImages();
   }, []);
 
-  // const removeImage = (id: string) => {
-  //   // Traditional React state update: filter out the one you don't want
-  //   setImageFiles(prev => prev.filter(img => img.id !== id));
-  // };
-  // const addNewImage = (newImageData: ImageTypeProps) => {
-  //   setImageFiles(prev => [...prev, newImageData]);
-  // };
-
-  console.log(" imageFiles:", imageFiles);
   // Memoize the value to prevent unnecessary re-renders of consumers
   const value = useMemo(
     () => ({
-      users,
-      setUsers,
       imageFiles,
       setImageFiles,
       isLoading,
       setIsLoading,
     }),
-    [users, imageFiles, isLoading],
+    [imageFiles, isLoading],
   );
 
   return (
