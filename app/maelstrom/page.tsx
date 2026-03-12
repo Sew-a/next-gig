@@ -7,21 +7,17 @@ async function makePostRequest() {
     body: JSON.stringify({ name: "Maelstrom" }),
   });
   const data = await response.json();
-  
+
   return { data };
 }
 
-
 export default async function Maelstrom() {
-
   const { data } = await makePostRequest();
 
   return (
     <div>
-        <h1>Maelstrom</h1>
-        <p>{data?.message}</p>
+      <h1>Maelstrom</h1>
+      <p>{data?.message}</p>
     </div>
-  )
+  );
 }
-
- 

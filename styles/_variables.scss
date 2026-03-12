@@ -1,0 +1,23 @@
+// 1. Colors
+$bg-color: #1a1a1a;
+$text-color: #fff1f1;
+
+// active colors
+$border-color: #d494ff;
+$button-bg: #772da8;
+$active-box-shadow: 0 4px 12px #da70d64d;
+
+
+// 2. Fonts
+$font-main: 'Inter', sans-serif;
+$font-heading: 'Poppins', sans-serif;
+$base-font-size: 16px;
+
+// 3. Box Models & Spacing
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$spacing-unit: 24px; // Use multiples: $spacing-unit * 2
+
+// 4. Breakpoints (Media Queries)
+$tablet: 768px;
+$desktop: 1024px;

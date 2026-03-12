@@ -1,6 +1,6 @@
 "use client";
 import { AppContextType, ImageItemProps } from "@/types";
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 
@@ -9,17 +9,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [imageFiles, setImageFiles] = useState<ImageItemProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  // Getting Images from the API when the component mounts
-  useEffect(() => {
-    const loadInitialImages = async () => {
-      const res = await fetch("/api/images");
-      const data = await res.json();
-      setImageFiles(data);
-    };
-
-    loadInitialImages();
-  }, []);
 
   // Memoize the value to prevent unnecessary re-renders of consumers
   const value = useMemo(
