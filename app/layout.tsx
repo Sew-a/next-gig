@@ -34,8 +34,8 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <AppProvider>
           <div className="main">
-            <div className="main-content">{children}</div>
             <Sidebar />
+            <div className="main-content">{children}</div>
           </div>
         </AppProvider>
       </body>

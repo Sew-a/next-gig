@@ -1,23 +1,17 @@
 
 .main-sidebar {
   background-color: var(--sidebar-bg, #1c1c24);
-  border-left: 1px solid #ddd;
+  border-right: 1px solid #31365f;
   display: flex;
   flex-direction: column;
   transition: width 0.3s ease-in-out;
-  width: 240px;
+  width: 276px;
   position: relative;
+  padding: 10px;
 }
 
 .main-sidebar.closed {
   width: 100px;
-}
-
-@media (prefers-color-scheme: dark) {
-  .main-sidebar {
-    background-color: #1a1a1a;
-    border-left-color: #ff5faf;
-  }
 }
 
 /* Sidebar Toggle Button */

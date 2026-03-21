@@ -2,15 +2,18 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
-export async function GET() {
+export async function GET(request: Request) {
   // To be served publicly, images must be in the `public` folder.
   const imagesDirectory = path.join(process.cwd(), 'public', 'assets');
+
+  const { searchParams } = new URL(request.url);
+  const q = searchParams.get('q')?.toLowerCase() || '';
 
   try {
     // Read filenames from the folder
     const filenames = fs.readdirSync(imagesDirectory);
 
-    const images = filenames
+    let images = filenames
       // Filter out non-image files if any
       .filter((name) => /\.(jpg|jpeg|png|gif|svg|webp)$/i.test(name))
       .map((name) => {
@@ -22,6 +25,10 @@ export async function GET() {
           type: `image/${extension}`,
         };
       });
+
+    if (q) {
+      images = images.filter((img) => img.name.toLowerCase().includes(q));
+    }
 
     return NextResponse.json(images);
   } catch (error) {

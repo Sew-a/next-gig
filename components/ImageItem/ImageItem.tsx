@@ -3,6 +3,7 @@ import Image from "next/image";
 import "./styles.scss";
 import ActionButton from "../UI/ActionButton";
 import { ACTION_BUTTON_TYPE } from "../types";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 const imageActions = [
   ACTION_NAMES.OPEN,
@@ -18,10 +19,25 @@ export default function ImageItem({
   name,
   handleClick,
 }: ImageItemProps) {
+  const { elementRef, isVisible } = useIntersectionObserver<HTMLDivElement>({
+    rootMargin: "200px",
+    threshold: 0.1,
+  });
+
   return (
-    <div className="image-container">
+    <div ref={elementRef} className="image-container">
       <div className="image-holder">
-        <Image src={url} alt={name} fill style={{ objectFit: "cover" }} />
+        {isVisible ? (
+          <Image
+            src={url}
+            alt={name}
+            fill
+            style={{ objectFit: "cover" }}
+            loading="lazy"
+          />
+        ) : (
+          <div className="image-placeholder" aria-label="loading image" />
+        )}
       </div>
       <div className="info-holder">
         <p>{name}</p>

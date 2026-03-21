@@ -1,0 +1,40 @@
+.search-bar-section {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 16px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: 45px;
+
+  .search-bar {
+    .search-input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-bottom: 1px solid #7f53f8;
+      background-color: transparent;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .list-of-suggestions {
+    z-index: 10;
+    position: absolute;
+    top: 40px;
+    background: rgba(28, 41, 61, 0.329);
+    width: 70%;
+    
+      li {
+        padding: 10px;
+        cursor: pointer;
+        list-style-type: none;
+
+        &:hover {
+          color: #ff5cbb;
+        }
+      }
+    }
+  }
+}

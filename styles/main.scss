@@ -46,15 +46,14 @@ a {
 
 /* Main Layout Styles */
 .main {
-  display: flex;
-  flex-direction: row-reverse;
+  display: grid;
+  grid-template-columns: auto 1fr;
   min-height: 100vh;
   width: 100%;
 }
 
 .main-content {
   flex: 1;
-  padding: 20px;
   overflow-y: auto;
   height: 100vh;
 }

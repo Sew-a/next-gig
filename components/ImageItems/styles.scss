@@ -1,7 +1,8 @@
 .image-items{
   position: relative;
   max-width: 1280px;
-  margin: 0 auto;
+  padding-top: 60px;
+  margin: 20px auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 36px;
