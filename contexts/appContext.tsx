@@ -1,6 +1,7 @@
 "use client";
 import { AppContextType, ImageItemProps } from "@/types";
 import { createContext, useContext, useMemo, useState } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 
@@ -9,8 +10,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [imageFiles, setImageFiles] = useState<ImageItemProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [queryClient] = useState(() => new QueryClient());
 
-  // Memoize the value to prevent unnecessary re-renders of consumers
   const value = useMemo(
     () => ({
       imageFiles,
@@ -22,7 +23,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 
   return (
-    <AppContext.Provider value={{ ...value }}>{children}</AppContext.Provider>
+    <QueryClientProvider client={queryClient}>
+      <AppContext.Provider value={{ ...value }}>{children}</AppContext.Provider>
+    </QueryClientProvider>
   );
 };
 

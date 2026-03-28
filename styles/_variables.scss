@@ -1,23 +1,42 @@
-// 1. Colors
-$bg-color: #1a1a1a;
-$text-color: #fff1f1;
+// ─── 1. Colors ───────────────────────────────────
+$bg-primary:      #19181b;
+$bg-secondary:    #1c1c24;
+$bg-dark:         #111115;
+$bg-tag:          #2a2a3a;
 
-// active colors
-$border-color: #d494ff;
-$button-bg: #772da8;
-$active-box-shadow: 0 4px 12px #da70d64d;
+$text-primary:    #fff1f1;
+$text-secondary:  #ccc;
+$text-muted:      #aaa;
+$text-dim:        #888;
+$text-dimmer:     #666;
+$text-faint:      #444;
 
+$accent-main:     #d494ff;
+$accent-dark:     #772da8;
+$accent-hover:    #8e38c8;
+$accent-subtle:   rgba(212, 148, 255, 0.08);
+$accent-glow-sm:  0 4px 20px rgba(212, 148, 255, 0.25);
+$accent-glow-md:  0 6px 28px rgba(212, 148, 255, 0.4);
+$accent-glow-avatar: 0 0 24px rgba(212, 148, 255, 0.4);
 
-// 2. Fonts
-$font-main: 'Inter', sans-serif;
-$font-heading: 'Poppins', sans-serif;
-$base-font-size: 16px;
+$border-color:    #31365f;
+$border-accent:   rgba(212, 148, 255, 0.33); // #d494ff55
 
-// 3. Box Models & Spacing
-$border-radius-sm: 4px;
-$border-radius-md: 8px;
-$spacing-unit: 24px; // Use multiples: $spacing-unit * 2
+// ─── 2. Fonts ────────────────────────────────────
+$font-main:       'Advent Pro', sans-serif;
+$font-heading:    'Poppins', sans-serif;
+$base-font-size:  16px;
 
-// 4. Breakpoints (Media Queries)
-$tablet: 768px;
-$desktop: 1024px;
+// ─── 3. Box Models & Spacing ─────────────────────
+$border-radius-sm:  4px;
+$border-radius-md:  8px;
+$border-radius-lg:  12px;
+$border-radius-xl:  16px;
+$spacing-unit:      24px;
+
+// ─── 4. Breakpoints ──────────────────────────────
+$tablet:   768px;
+$desktop:  1024px;
+
+// ─── 5. Layout ───────────────────────────────────
+$max-width: 1200px;

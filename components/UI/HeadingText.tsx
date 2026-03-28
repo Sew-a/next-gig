@@ -1,13 +1,21 @@
 import React from "react";
-
 import "./styles.scss";
 
-export default function HeadingText({ title }: { title: string }) {
+interface HeadingProps {
+  title: string;
+  label?: string;
+  variant?: "maelstrom" | "portfolio";
+}
+
+export default function HeadingText({
+  title,
+  label,
+}: HeadingProps) {
+
   return (
-    <div className="heading-text">
-      <div className="border-top" />
-      <div className="border-right" />
-      <h2 className="shadow-dance-text">{title}</h2>
+    <div className="section-head">
+      {label && <span className="section-label">{label}</span>}
+      <h2 className="section-title">{title}</h2>
     </div>
   );
 }

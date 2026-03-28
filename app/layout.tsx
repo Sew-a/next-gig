@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Sidebar from "../components/Sidebar";
+import FollowSection from "@/components/FollowSection";
 import { AppProvider } from "@/contexts/appContext";
 import "../styles/main.scss";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +18,9 @@ const geistMono = Geist_Mono({
 
 // should not use client
 export const metadata: Metadata = {
-  title: "Punks",
-  description: "Punks Punky punk",
+  title: "Sevak Avetisyan — Software Engineer",
+  description:
+    "Portfolio of Sevak Avetisyan — Software Engineer specializing in React, Micro-frontends, and scalable component architectures.",
 };
 
 export default function RootLayout({
@@ -35,7 +38,11 @@ export default function RootLayout({
         <AppProvider>
           <div className="main">
             <Sidebar />
-            <div className="main-content">{children}</div>
+            <div className="main-content">
+              <div className="page-content">{children}</div>
+              <FollowSection />
+              <Footer />
+            </div>
           </div>
         </AppProvider>
       </body>

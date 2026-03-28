@@ -1,0 +1,93 @@
+@use 'variables' as *;
+
+// ─── Layout ──────────────────────────────────────
+@mixin content-wrapper {
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+@mixin section-padding {
+  padding: 5rem 4rem;
+  @media (max-width: $tablet) {
+    padding: 3rem 1.5rem;
+  }
+}
+
+// ─── Dark Card ───────────────────────────────────
+@mixin dark-card($radius: $border-radius-xl) {
+  background: $bg-secondary;
+  border: 1px solid $border-color;
+  border-radius: $radius;
+}
+
+// ─── Accent Text / Labels ────────────────────────
+@mixin section-label-style {
+  display: inline-block;
+  color: $accent-main;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+@mixin section-title-style {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: 2.5rem;
+}
+
+// ─── Buttons ─────────────────────────────────────
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 24px;
+  border-radius: $border-radius-md;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  font-family: $font-main;
+}
+
+@mixin btn-primary {
+  @include btn-base;
+  background: $accent-dark;
+  color: #fff;
+  box-shadow: $accent-glow-sm;
+  &:hover {
+    background: $accent-hover;
+    box-shadow: $accent-glow-md;
+    transform: translateY(-2px);
+  }
+}
+
+@mixin btn-ghost {
+  @include btn-base;
+  background: transparent;
+  color: $accent-main;
+  border: 1px solid $border-accent;
+  &:hover {
+    border-color: $accent-main;
+    background: rgba(212, 148, 255, 0.066);
+    transform: translateY(-2px);
+  }
+}
+
+// ─── Hover lift ──────────────────────────────────
+@mixin hover-lift($y: -2px) {
+  transition: transform 0.2s ease;
+  &:hover { transform: translateY($y); }
+}
+
+// ─── Accent border card hover ────────────────────
+@mixin card-hover-glow {
+  transition: border-color 0.2s, box-shadow 0.2s;
+  &:hover {
+    border-color: $border-accent;
+    box-shadow: 0 0 30px $accent-subtle;
+  }
+}

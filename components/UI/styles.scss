@@ -1,74 +1,52 @@
-.heading-text{
-    position: relative;
-    text-align: center;
-    padding: 1rem;
-    max-width: 400px;
-    margin: 40px auto;
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
 
-    .border-top{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 500px;
-        height: 2px;
-        background-color: #322a63;
-    }
-
-    .border-right {
-        position: absolute;
-        top: -48;
-        right: 0;
-        width: 2px;
-        height: 160px;
-        background-color: #322a63;
-    }
-
-.shadow-dance-text {
-    font-size: 4rem;
-    color: #fff;
-    text-shadow: 5px 5px 0 #ff005e, 10px 10px 0 #25265f;
-    animation: shadow-dance 2s infinite;
+.section-head {
+  margin-bottom: 2.5rem;
 }
 
-@keyframes shadow-dance {
- 100% {
-        text-shadow: 5px 5px 0 #ff005e, 10px 10px 0 #262b68;
-    }
-    50% {
-        text-shadow: -5px -5px 0 #272a50, -10px -10px 0 #ff005e;
-    }
-}
+.section-label {
+  @include section-label-style;
 }
 
+.section-title {
+  @include section-title-style;
+  margin-bottom: 0;
+}
 
-.action-button{
-    display: inline-block;
-    background-color: #322a63;
-    color: #fff;
-    cursor: pointer;
-    border: none;
-    border-radius: 14px;
-    padding: 12px 16px;
-    font-weight: 500;
-    transition: all .2s;
-    transition: background-color 0.3s ease;
-    width: 200px;
-    height: fit-content;
+.action-button {
+  @include btn-base;
+  text-decoration: none;
+  font-family: inherit;
 
-    &.action {
+  &--primary {
+    @include btn-primary;
+  }
+
+  &--ghost {
+    @include btn-ghost;
+  }
+
+  &--action {
     background-color: #ffffff02;
     border: none;
     transform: translateY(-2px);
     font-size: 13px;
-    &:hover {
-    border-color: #e0b0ff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px #da70d64d;
-    background-color: #1616160a;
-    }
-}
 
     &:hover {
-        background-color: #282241;
+      border-color: #e0b0ff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px #da70d64d;
+      background-color: #1616160a;
     }
+  }
+
+  &--standard {
+    background-color: #322a63;
+    color: #fff;
+
+    &:hover {
+      background-color: #282241;
+    }
+  }
 }

@@ -1,23 +1,14 @@
-async function makePostRequest() {
-  const response = await fetch(`${process.env.NEXT_URL}/api/cyber`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ name: "Maelstrom" }),
-  });
-  const data = await response.json();
+"use client";
+import { lazy } from "react";
 
-  return { data };
-}
+const LazyImageItems = lazy(() => import("@/components/ImageItems"));
+const LazyMusicPlayer = lazy(() => import("@/components/MusicPlayer"));
 
-export default async function Maelstrom() {
-  const { data } = await makePostRequest();
-
+export default function NextGigPage() {
   return (
-    <div>
-      <h1>Maelstrom</h1>
-      <p>{data?.message}</p>
-    </div>
+    <>
+      <LazyMusicPlayer />
+      <LazyImageItems />
+    </>
   );
 }

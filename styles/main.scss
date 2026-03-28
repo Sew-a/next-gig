@@ -57,3 +57,12 @@ a {
   overflow-y: auto;
   height: 100vh;
 }
+
+.page-content {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto 100px;
+  padding: 40px 48px 40px 12px;
+  position: relative;
+}

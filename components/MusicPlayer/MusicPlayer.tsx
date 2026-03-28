@@ -56,7 +56,7 @@ export default function MusicPlayer() {
   }, [currentSongIndex, musicData, isPlaying]);
 
   return (
-    <section className="music-list-section">
+    <>
       <div className="music-header">
         <button className="nav-btn" onClick={prevSong}>
           ◀
@@ -101,6 +101,6 @@ export default function MusicPlayer() {
           </div>
         </>
       )}
-    </section>
+    </>
   );
 }

@@ -1,9 +1,6 @@
-"use client";
-
+import Grid from "@/components/Grid";
 export default function Work() {
   return (
-    <div>
-        <h1>Work</h1>
-    </div>
-  )
+    <Grid />
+  );
 }

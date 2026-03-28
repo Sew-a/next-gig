@@ -1,0 +1,18 @@
+-- CreateTable
+CREATE TABLE "Question" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "question" TEXT NOT NULL,
+    "answer" TEXT NOT NULL,
+    "isActive" BOOLEAN NOT NULL DEFAULT true,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "ContactMessage" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "firstName" TEXT NOT NULL,
+    "lastName" TEXT NOT NULL,
+    "message" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

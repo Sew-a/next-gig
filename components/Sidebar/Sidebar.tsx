@@ -19,7 +19,10 @@ export default function Sidebar() {
         aria-label="Toggle sidebar"
       >
         {sidebarOpen ? (
-          <Image src="/open.png" alt="open" width={40} height={40} />
+          <div className="opened-icon">
+            -----------<br />
+            -------
+          </div>
         ) : (
           ">"
         )}
