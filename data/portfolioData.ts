@@ -4,8 +4,7 @@ export const HERO_DATA = {
   title: "a Software",
   accent: "Engineer",
   summary:
-    "5+ years crafting scalable React architectures & Micro-frontend ecosystems that power organization-wide platforms.",
-  initials: "SA",
+    "",
   aboutText:
     "Software Engineer specializing in React architecture and Micro-frontend orchestration. Builder of scalable component libraries and federated modules.",
   email: "sevavetisyan97@gmail.com",

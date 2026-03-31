@@ -38,9 +38,6 @@ export default function Homepage() {
           </div>
           <div className="hero__right">
             <div className="hero__card">
-              <div className="hero__avatar">
-                <span className="hero__initials">{HERO_DATA.initials}</span>
-              </div>
             </div>
             <div className="hero__about">
               <HeadingText title="ABOUT ME" label="// RECOGNITION" />

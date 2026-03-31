@@ -5,7 +5,7 @@
   gap: 16px;
   width: 100%;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 150px auto 0;
   height: 45px;
 
   .search-bar {
@@ -20,12 +20,12 @@
     }
 
     .list-of-suggestions {
-    z-index: 10;
-    position: absolute;
-    top: 40px;
-    background: rgba(28, 41, 61, 0.329);
-    width: 70%;
-    
+      z-index: 10;
+      position: absolute;
+      top: 44px;
+      background: rgba(149, 69, 255, 0.767);
+      width: 100%;
+
       li {
         padding: 10px;
         cursor: pointer;

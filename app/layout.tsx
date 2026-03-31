@@ -16,7 +16,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// should not use client
 export const metadata: Metadata = {
   title: "Sevak Avetisyan — Software Engineer",
   description:

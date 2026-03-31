@@ -47,7 +47,7 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
       <div className="search-bar">
         <input
           type="text"
-          placeholder="Type your search..."
+          placeholder="Start Typing"
           className="search-input"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -61,7 +61,7 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
         </ul>
       </div>
       <ActionButton
-        buttonType={ACTION_BUTTON_TYPE.SPECIAL}
+        buttonType={ACTION_BUTTON_TYPE.PRIMARY}
         title="Search..."
         onClick={handleSearch}
       />

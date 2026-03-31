@@ -35,7 +35,6 @@ export default function Grid() {
 
   const columnsCount = useMemo(() => {
     if (width === 0) return 4;
-    if (width >= 1600) return 5;
     if (width >= 1200) return 4;
     if (width >= 764) return 3;
     return 2;
@@ -91,8 +90,7 @@ export default function Grid() {
                   />
                   <div className="masonry-overlay">
                     <div className="overlay-info">
-                      <span className="category">{item.category}</span>
-                      <h4>{item.title}</h4>
+                      <h3>{item.title}</h3>
                     </div>
                   </div>
                 </div>
@@ -103,4 +101,4 @@ export default function Grid() {
       </motion.div>
     </>
   );
-}
+}
