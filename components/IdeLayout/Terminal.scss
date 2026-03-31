@@ -1,0 +1,82 @@
+@use "../../styles/variables" as *;
+
+.terminal {
+  background-color: rgba($bg-dark, 0.4);
+  border-top: 1px solid rgba($border-color, 0.8);
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 14px;
+  transition: height 0.3s ease;
+
+  .terminal-header {
+    background-color: rgba($bg-secondary, 0.6);
+    border-bottom: 1px solid rgba($border-color, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: $text-secondary;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+  }
+
+  .terminal-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: $text-primary;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba($accent-main, 0.2);
+      border-radius: 4px;
+    }
+
+    .output-line {
+      line-height: 1.6;
+      word-break: break-word;
+      opacity: 0.9;
+    }
+
+    .command-input-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 4px;
+
+      .prompt {
+        color: $accent-main;
+        font-weight: 700;
+      }
+
+      .command-input {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: $text-primary;
+        flex: 1;
+        font-family: inherit;
+        font-size: inherit;
+        caret-color: $accent-main;
+      }
+    }
+  }
+}

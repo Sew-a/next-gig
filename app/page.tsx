@@ -37,8 +37,6 @@ export default function Homepage() {
             </div>
           </div>
           <div className="hero__right">
-            <div className="hero__card">
-            </div>
             <div className="hero__about">
               <HeadingText title="ABOUT ME" label="// RECOGNITION" />
               <p>{HERO_DATA.aboutText}</p>
@@ -54,7 +52,7 @@ export default function Homepage() {
       </FadeIn>
 
       {/* ─── EXPERIENCE ─── */}
-      <FadeIn delay={0.2}>
+      <FadeIn delay={0.1}>
         <section className="experience" id="experience">
           <HeadingText
             title="Companies I've worked with"

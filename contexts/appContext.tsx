@@ -13,8 +13,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [imageFiles, setImageFiles] = useState<ImageItemProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isIdeMode, setIsIdeMode] = useState<boolean>(false);
+  const [currentFile, setCurrentFile] = useState<string>("AboutMe.tsx");
   const [queryClient] = useState(() => new QueryClient());
-
 
   const client = new ApolloClient({
     link: new HttpLink({
@@ -29,8 +30,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       setImageFiles,
       isLoading,
       setIsLoading,
+      isIdeMode,
+      setIsIdeMode,
+      currentFile,
+      setCurrentFile,
     }),
-    [imageFiles, isLoading],
+    [imageFiles, isLoading, isIdeMode, currentFile],
   );
 
   return (

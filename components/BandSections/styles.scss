@@ -1,0 +1,232 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.band-sections {
+  width: 100%;
+  overflow: hidden;
+  background-color: #000;
+  color: #fff;
+  font-family: inherit;
+
+  // Diagonal clip path values
+  $slant-width: 10vw;
+
+  .band-section {
+    position: relative;
+    display: flex;
+    min-height: 80vh;
+    width: 100%;
+
+    @media (max-width: $tablet) {
+      flex-direction: column;
+      min-height: auto;
+    }
+
+    &--news {
+      .section-image {
+        flex: 1.2;
+        background-color: #1a1a1a; // Placeholder for image
+        position: relative;
+        z-index: 1;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: -$slant-width;
+          bottom: 0;
+          width: $slant-width * 2;
+          background: inherit;
+          z-index: -1;
+          clip-path: polygon(0 0, 50% 0, 0% 100%, 0% 100%);
+          @media (max-width: $tablet) {
+            display: none;
+          }
+        }
+      }
+
+      .section-content {
+        flex: 1;
+        background-color: #e31e24;
+        padding: 5rem 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 2;
+
+        @media (max-width: $tablet) {
+          padding: 3rem 5%;
+        }
+      }
+    }
+
+    &--events {
+      .section-content {
+        flex: 1;
+        background-color: #e31e24;
+        padding: 5rem 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 2;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: -$slant-width;
+          bottom: 0;
+          width: $slant-width * 2;
+          background: inherit;
+          z-index: -1;
+          clip-path: polygon(0 0, 50% 0, 0% 100%, 0% 100%);
+          @media (max-width: $tablet) {
+            display: none;
+          }
+        }
+
+        @media (max-width: $tablet) {
+          padding: 3rem 5%;
+          order: 2;
+        }
+      }
+
+      .section-image {
+        flex: 1.2;
+        background-color: #1a1a1a; // Placeholder for image
+        z-index: 1;
+
+        @media (max-width: $tablet) {
+          order: 1;
+          min-height: 40vh;
+        }
+      }
+    }
+
+    &--about {
+      min-height: 100vh;
+      background-size: cover;
+      background-position: center;
+      background-color: #111; // Fallback
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 10%;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3));
+      }
+
+      .about-container {
+        position: relative;
+        z-index: 5;
+        max-width: 800px;
+        text-align: left;
+      }
+    }
+  }
+
+  // Common inner elements
+  .headline {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+  }
+
+  .sub-headline {
+    font-size: 1.2rem;
+    font-weight: 500;
+    opacity: 0.7;
+    margin-bottom: 2rem;
+  }
+
+  .section-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+  }
+
+  .btn-action {
+    align-self: flex-start;
+    padding: 1rem 2.5rem;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+
+    &:hover {
+      background: #fff;
+      color: #000;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+  }
+
+  .events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .event-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+
+      .date {
+        font-size: 0.9rem;
+        font-weight: 300;
+        opacity: 0.8;
+      }
+      .location {
+        font-size: 1.3rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  // Social bar
+  .social-bar {
+    background-color: #e31e24;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    @media (max-width: $tablet) {
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1.5rem;
+      
+      svg {
+        cursor: pointer;
+        transition: transform 0.2s;
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+}

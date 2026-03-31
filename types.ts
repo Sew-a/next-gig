@@ -19,6 +19,10 @@ export type ImageItemProps = {
 export interface AppContextType {
   imageFiles: ImageItemProps[];
   setImageFiles: React.Dispatch<React.SetStateAction<ImageItemProps[]>>;
+  isIdeMode: boolean;
+  setIsIdeMode: React.Dispatch<React.SetStateAction<boolean>>;
+  currentFile: string;
+  setCurrentFile: React.Dispatch<React.SetStateAction<string>>;
 }
 
 //  Actions list types

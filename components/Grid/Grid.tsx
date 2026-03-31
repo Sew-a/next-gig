@@ -7,6 +7,7 @@ import { useWindowSize } from '@/hooks/useWindowSize';
 import type { GalleryImage } from '@/utils/gallery';
 import './styles.scss';
 import { useQuery } from '@tanstack/react-query';
+import { useImagePopup } from '@/hooks/useImagePopup';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -32,6 +33,7 @@ const itemVariants = {
 
 export default function Grid() {
   const { width } = useWindowSize();
+  const { openPopup, PopupPreview } = useImagePopup();
 
   const columnsCount = useMemo(() => {
     if (width === 0) return 4;
@@ -40,16 +42,16 @@ export default function Grid() {
     return 2;
   }, [width]);
 
-    const { data: galleryData, isLoading } = useQuery<GalleryImage[]>({
-      queryKey: ["gallery"],
-      queryFn: async () => {
-        const response = await fetch("/api/gallery");
-        if (!response.ok) {
-          throw new Error("Failed to fetch gallery");
-        }
-        return response.json();
-      },
-    });
+  const { data: galleryData, isLoading } = useQuery<GalleryImage[]>({
+    queryKey: ["gallery"],
+    queryFn: async () => {
+      const response = await fetch("/api/gallery");
+      if (!response.ok) {
+        throw new Error("Failed to fetch gallery");
+      }
+      return response.json();
+    },
+  });
 
   if (isLoading) {
     return (
@@ -78,7 +80,12 @@ export default function Grid() {
         {columns.map((col, i) => (
           <div key={i} className="masonry-column">
             {col.map((item) => (
-              <motion.div key={item.id} className="masonry-item" variants={itemVariants}>
+              <motion.div 
+                key={item.id} 
+                className="masonry-item" 
+                variants={itemVariants}
+                onClick={() => openPopup(item.src, item.title)}
+              >
                 <div className="masonry-content">
                   <Image 
                     src={item.src} 
@@ -99,6 +106,7 @@ export default function Grid() {
           </div>
         ))}
       </motion.div>
+      <PopupPreview />
     </>
   );
 }

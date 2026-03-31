@@ -50,3 +50,27 @@
     }
   }
 }
+
+.mode-switcher {
+  position: fixed;
+  top: 26px;
+  right: 46px;
+  z-index: 100;
+
+  cursor: pointer;
+  color: #d494ff;
+  background: none;
+  border: 3px solid hsla(276, 100%, 67%, 0.993);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all .2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px #da70d64d;
+    background-color: #1616160a;
+  }
+}

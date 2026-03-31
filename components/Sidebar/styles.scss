@@ -60,8 +60,16 @@
   cursor: pointer;
   text-decoration: none;
 
+  &.active {
+    color: $accent-main;
+    border-bottom: 2px solid $accent-main;
+    background: rgba($accent-main, 0.05);
+    font-weight: 700;
+  }
+
   &:hover {
     border-color: $accent-main;
+    background: rgba($accent-main, 0.03);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba($accent-main, 0.15);
   }

@@ -1,0 +1,17 @@
+@use "../../styles/variables" as *;
+
+.ide-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: transparent;
+
+  .editor-terminal-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+}
