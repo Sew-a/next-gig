@@ -2,6 +2,7 @@ import {
   HERO_DATA,
   EXPERIENCE,
   SKILL_CATEGORIES,
+  PORTFOLIO,
 } from "@/data/portfolioData";
 import { HeadingText, ActionButton, FadeIn } from "@/components/UI";
 import { ACTION_BUTTON_TYPE } from "@/components/types";
@@ -51,29 +52,65 @@ export default function Homepage() {
         </section>
       </FadeIn>
 
-      {/* ─── EXPERIENCE ─── */}
+      {/* ─── PORTFOLIO ─── */}
       <FadeIn delay={0.1}>
-        <section className="experience" id="experience">
-          <HeadingText
-            title="Companies I've worked with"
-            label="// WORK EXPERIENCE"
-          />
-
-          <div className="timeline">
-            {EXPERIENCE.map((exp, index) => (
-              <div key={index} className="timeline__item">
-                <div className="timeline__header">
-                  <div>
-                    <h3 className="timeline__company">{exp.company}</h3>
-                    <span className="timeline__role">{exp.role}</span>
+        <section className="portfolio" id="portfolio">
+          <div className="portfolio__content">
+            <div className="portfolio__grid">
+              {PORTFOLIO.map((project, index) => (
+                <div key={index} className="portfolio__item">
+                  <img src={project.image} alt={project.title} />
+                  <div className="portfolio__overlay">
+                    <span>{project.title}</span>
                   </div>
-                  <span className="timeline__period">{exp.period}</span>
                 </div>
-                <ul className="timeline__achievements">
-                  {exp.achievements.map((achievement, aIndex) => (
-                    <li key={aIndex}>{achievement}</li>
-                  ))}
-                </ul>
+              ))}
+            </div>
+            <div className="portfolio__header">
+              <span className="portfolio__label">// COLLECTIONS</span>
+              <h2 className="portfolio__title">PROJECTS</h2>
+              <p className="portfolio__desc">
+                Brief History of what, where and how I worked, All that I can recollect is in my gallery.
+              </p>
+              <ActionButton
+                title="View Gallery →"
+                link="/work"
+                buttonType={ACTION_BUTTON_TYPE.GHOST}
+                className="portfolio__cta"
+              />
+            </div>
+          </div>
+        </section>
+      </FadeIn>
+
+      {/* ─── EXPERIENCE ─── */}
+      <FadeIn delay={0.2}>
+        <section className="experience" id="experience">
+          <div className="experience__header">
+            <h2 className="experience__title">WORK EXPERIENCE</h2>
+            <div className="experience__line-top"></div>
+          </div>
+
+          <div className="experience__timeline">
+            <div className="experience__center-line"></div>
+            {EXPERIENCE.map((exp, index) => (
+              <div key={index} className={`experience__item ${index % 2 === 0 ? "left" : "right"}`}>
+                <div className="experience__number">
+                  {String(index + 1).padStart(2, "0")}.
+                </div>
+                <div className="experience__connector"></div>
+                <div className="experience__card">
+                  <div className="experience__card-header">
+                    <h3 className="experience__company">{exp.company}</h3>
+                    <span className="experience__role">{exp.role}</span>
+                    <span className="experience__period">{exp.period}</span>
+                  </div>
+                  <ul className="experience__achievements">
+                    {exp.achievements.slice(0, 3).map((achievement, aIndex) => (
+                      <li key={aIndex}>{achievement}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>

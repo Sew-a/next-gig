@@ -8,10 +8,10 @@ import VersionSwitcher from "@/components/UI/VersionSwitcher";
 import { useAppContext } from "@/contexts/appContext";
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
-  const { isIdeMode } = useAppContext();
+  const { isIdeMode, theme } = useAppContext();
 
   return (
-    <>
+    <div className={`main-theme-wrapper theme-${theme}`}>
       <div className="main">
         <Sidebar />
         <div className="main-content">
@@ -23,6 +23,6 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
         </div>
       </div>
       <VersionSwitcher />
-    </>
+    </div>
   );
 }

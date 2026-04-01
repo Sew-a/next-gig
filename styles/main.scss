@@ -72,3 +72,48 @@ a {
     margin: 0;
   }
 }
+/* ---------------------------------
+   GLOBAL THEME OVERRIDES (Orchid-Red)
+--------------------------------- */
+.main-theme-wrapper.theme-orchid-red {
+  --theme-accent: #ff4757; // Red
+  --theme-secondary: #da70d6; // Orchid
+  --theme-border: rgba(218, 112, 214, 0.3);
+
+  // Global Button Overrides
+  .mode-switcher {
+    border-color: var(--theme-secondary) !important;
+    color: var(--theme-secondary) !important;
+    &:hover { box-shadow: 0 4px 15px rgba(218, 112, 214, 0.4); }
+  }
+
+  .action-button, .btn-action, .hack-close-btn {
+    border-color: var(--theme-accent) !important;
+    color: var(--theme-accent) !important;
+    &--primary {
+      background: var(--theme-accent) !important;
+      color: white !important;
+    }
+    &:hover { box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4); }
+  }
+
+  // Headings & Text
+  h1, h2, h3, .section-title, .hero__accent, .portfolio__title, .timeline__role, .opened-icon {
+    color: var(--theme-secondary) !important;
+  }
+
+  .section-label, .portfolio__label, .hero__tag, .sidebar-toggle, .prompt {
+    color: var(--theme-accent) !important;
+  }
+
+  .active {
+    color: var(--theme-accent) !important;
+    &::after { background: var(--theme-accent) !important; }
+  }
+
+  // Timeline & Lines
+  .experience__line-top, .experience__center-line, .experience__connector, .hero__heading::after {
+    background: var(--theme-secondary) !important;
+    opacity: 0.6;
+  }
+}

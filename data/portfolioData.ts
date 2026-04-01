@@ -12,6 +12,19 @@ export const HERO_DATA = {
   linkedin: "https://www.linkedin.com/in/sevak-avetisyan-6122411b2/",
 };
 
+export const PORTFOLIO = [
+  {
+    title: "Editor Files",
+    description: "A professional design tool for creating and editing complex graphics with high-performance rendering.",
+    image: "/gallery/new.png",
+  },
+  {
+    title: "Brandkit Dashboard",
+    description: "An environmental monitoring platform providing real-time data visualization and analytics.",
+    image: "/gallery/noa.png",
+  },
+];
+
 export const EXPERIENCE = [
   {
     company: "Picsart",

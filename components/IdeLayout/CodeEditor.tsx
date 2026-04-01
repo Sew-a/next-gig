@@ -37,7 +37,24 @@ export default jobs;`,
 
 - Email: developer@example.com
 - GitHub: [github.com/developer](https://github.com/developer)
-- LinkedIn: [linkedin.com/in/developer](https://linkedin.com/in/developer)`
+- LinkedIn: [linkedin.com/in/developer](https://linkedin.com/in/developer)`,
+  'Documentation.md': `# Portfolio Project Documentation
+
+## Project Overview
+This project is a high-end personal portfolio website built with **Next.js**, 
+**TypeScript**, and **SCSS**. It features a unique dual-mode experience, allowing users
+ to switch between a sleek modern landing page ("Primary Mode") and a developer-centric
+  interface mirroring an Integrated Development Environment ("IDE Mode").
+
+---
+
+## Future Roadmap
+- Integration of a live contact form with server actions.
+- Enhanced terminal interactivity for a truly immersive developer experience.
+- More project case studies with detailed technical breakdowns.
+
+---
+*Created by [Sevak Avetisyan](https://www.linkedin.com/in/sevak-avetisyan-6122411b2/)*`
 };
 
 const CodeEditor = () => {

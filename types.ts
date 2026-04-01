@@ -23,6 +23,10 @@ export interface AppContextType {
   setIsIdeMode: React.Dispatch<React.SetStateAction<boolean>>;
   currentFile: string;
   setCurrentFile: React.Dispatch<React.SetStateAction<string>>;
+  isHacked: boolean;
+  setIsHacked: React.Dispatch<React.SetStateAction<boolean>>;
+  theme: 'orchid-red' | 'default';
+  setTheme: React.Dispatch<React.SetStateAction<'orchid-red' | 'default'>>;
 }
 
 //  Actions list types

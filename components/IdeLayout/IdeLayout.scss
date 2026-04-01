@@ -1,12 +1,32 @@
-@use "../../styles/variables" as *;
-
 .ide-layout {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; // Changed to row to better support FileExplorer
   height: 100vh;
   width: 100%;
   overflow: hidden;
-  background-color: transparent;
+  background-color: #0d1117; // Standard VS Code sidebar BG
+
+  &.theme-orchid-red {
+    // Overrides for the theme
+    --accent-color: #ff4757; // Red
+    --border-color: rgba(218, 112, 214, 0.4); // Orchid with opacity
+    --text-accent: #ff4757; // Red
+    --active-bg: rgba(218, 112, 214, 0.1); 
+
+    .code-editor, .terminal, .file-explorer {
+      border-color: var(--border-color) !important;
+    }
+    
+    .prompt, .file-name, .header-left, .active {
+      color: var(--text-accent) !important;
+    }
+
+    // Target the active file explorer item
+    .file-item.active {
+      background-color: var(--active-bg);
+      border-left: 3px solid #da70d6; // Orchid
+    }
+  }
 
   .editor-terminal-column {
     flex: 1;
@@ -14,4 +34,67 @@
     flex-direction: column;
     overflow: hidden;
   }
+}
+
+.hack-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hack-modal {
+  background: #1a0000;
+  border: 2px solid #ff0000;
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(255, 0, 0, 0.5);
+  animation: shake 0.2s infinite;
+
+  .hack-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    color: #ff0000;
+    
+    h2 { margin: 0; font-family: 'Courier New', Courier, monospace; }
+    button { background: transparent; border: none; color: #ff0000; cursor: pointer; }
+  }
+
+  .hack-body {
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 2rem;
+    
+    .hack-warning {
+      background: #ff0000;
+      color: #fff;
+      padding: 0.5rem;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  }
+
+  .hack-close-btn {
+    background: #ff0000;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    &:hover { background: #cc0000; }
+  }
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  100% { transform: translate(1px, 1px) rotate(0deg); }
 }

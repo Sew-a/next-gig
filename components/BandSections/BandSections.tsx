@@ -1,86 +1,127 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { Music, Users, Info, Play, ChevronRight } from 'lucide-react';
+import { BAND_MEMBERS, BAND_TRACKS } from '@/data/bandData';
 import "./styles.scss";
 
 const BandSections = () => {
-  const fadeIn = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.8 }
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1 }
   };
 
   return (
     <div className="band-sections">
-      
-      {/* SECTION 1: NEWS */}
-      <section className="band-section band-section--news">
-        <div className="section-image" />
-        <motion.div 
-          className="section-content"
-          {...fadeIn}
-        >
-          <div className="headline">NEWS <span className="sub-headline">19.03.2026</span></div>
-          <p className="section-text">
-            Hey guys! Great news for all our fans! We have 3 new events scheduled and going on tour! 
-            Check out our "Events" section for more information. We're super excited to start moving again and looking forward to meet y'all really soon.
-            Check our Instagram for our travel photos and new crazy hats guys have brought.
-          </p>
-          <button className="btn-action">VIEW ALL</button>
-        </motion.div>
-      </section>
 
-      {/* SECTION 2: EVENTS */}
-      <section className="band-section band-section--events">
-        <motion.div 
-          className="section-content"
-          {...fadeIn}
-        >
-          <div className="headline">UPCOMING EVENTS</div>
-          <div className="events-list">
-            <div className="event-item">
-              <span className="date">MAR 20, 2026</span>
-              <span className="location">BUENOS AIRES, ARGENTINA <ArrowRight size={14} style={{ display: 'inline', marginLeft: 8 }} /></span>
-            </div>
-            <div className="event-item">
-              <span className="date">MAR 23, 2026</span>
-              <span className="location">SANTIAGO, CHILE <ArrowRight size={14} style={{ display: 'inline', marginLeft: 8 }} /></span>
-            </div>
-            <div className="event-item">
-              <span className="date">JUL 23, 2026</span>
-              <span className="location">SAN BERNARDINO, CA <ArrowRight size={14} style={{ display: 'inline', marginLeft: 8 }} /></span>
-            </div>
-          </div>
-        </motion.div>
-        <div className="section-image" />
-      </section>
+      {/* ─── HERO SECTION (UI DESIGN INSPIRED) ─── */}
+      <section className="band-hero">
+        <div className="band-hero__overlay" />
+        <nav className="band-hero__nav">
+          <div className="logo">The Band</div>
+        </nav>
 
-      {/* SECTION 3: ABOUT */}
-      <section className="band-section band-section--about">
-        <motion.div 
-          className="about-container"
-          {...fadeIn}
-        >
-          <div className="headline">ABOUT THE BAND</div>
-          <p className="section-text">
-            The band was formed in 1998, originally called The Elements. After discovering that another band had the same name, the members changed the name to Black Rebel Motorcycle Club, after Marlon Brando’s motorcycle gang in the 1953 film The Wild One. Bassist Robert Levon Been and guitarist Peter Hayes met...
-          </p>
-          <button className="btn-action">CONTINUE READING</button>
-        </motion.div>
-      </section>
-
-      {/* SOCIAL BAR */}
-      <div className="social-bar">
-        <span>SOCIAL MEDIA:</span>
-        <div className="social-icons">
-          <span>INSTAGRAM</span>
-          <span>YOUTUBE</span>
-          <span>FACEBOOK</span>
+        <div className="band-hero__center">
+          <motion.h1
+            className="brush-text"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            Afterparty
+          </motion.h1>
+          <motion.div
+            className="sub-text"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            Is Coming
+          </motion.div>
         </div>
-      </div>
+        <div className="scroll-indicator">
+          <div className="scroll-line" />
+          <div className="scroll-dot" />
+        </div>
+      </section>
 
+      <div className="band-content-wrapper">
+
+        {/* ─── ABOUT & INFO GRID (Beautiful Blocks) ─── */}
+        <section className="band-grid-section">
+          <motion.div
+            className="grid-container"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {/* Block 1: The Bio */}
+            <motion.div className="grid-block grid-block--large info-block" variants={itemVariants}>
+              <div className="block-icon"><Info size={24} /></div>
+              <h2>THE LEGACY</h2>
+              <p>
+                Founded in the underground scenes of 1998, we've carved a path through alternative rock history.
+                Our sound is a raw blend of post-punk energy and cinematic soundscapes that tell the stories of the night.
+              </p>
+              <div className="block-footer">EST. 1998 / NYC</div>
+            </motion.div>
+
+            {/* Block 2: The Vision */}
+            <motion.div className="grid-block vision-block" variants={itemVariants}>
+              <h3>THE VISION</h3>
+              <p>Creating music that feels like a shared secret between us and the listener.</p>
+            </motion.div>
+
+            {/* Block 3: Members List (One-line) */}
+            <motion.div className="grid-block grid-block--wide members-block" variants={itemVariants}>
+              <div className="block-header">
+                <Users size={20} />
+                <span>MEET THE LINEUP</span>
+              </div>
+              <div className="members-row">
+                {BAND_MEMBERS.map((member, i) => (
+                  <div key={i} className="member-item">
+                    <span className="name">{member.name}</span>
+                    <span className="separator">/</span>
+                    <span className="role">{member.role}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Block 4: Songs & Tracks */}
+            <motion.div className="grid-block grid-block--tall tracks-block" variants={itemVariants}>
+              <div className="block-header">
+                <Music size={20} />
+                <span>ALBUM TRACKS</span>
+              </div>
+              <div className="song-track-list">
+                {BAND_TRACKS.map((track, i) => (
+                  <div key={i} className="song-item">
+                    <div className="song-play"><Play size={12} fill="currentColor" /></div>
+                    <span className="song-name">{track.name}</span>
+                    <span className="song-duration">{track.duration}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Block 5: Quote/Stat */}
+            <motion.div className="grid-block quote-block" variants={itemVariants}>
+              <div className="quote-mark">"</div>
+              <p>We don't just play music, we curate an atmosphere where time stands still.</p>
+            </motion.div>
+
+          </motion.div>
+        </section>
+
+      </div>
     </div>
   );
 };

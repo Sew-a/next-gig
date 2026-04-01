@@ -2,35 +2,43 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { Terminal as TerminalIcon } from 'lucide-react';
 import { FadeIn } from '../UI';
+import { useRouter } from 'next/navigation';
 import { TerminalCommand, TERMINAL_RESPONSES } from './constants';
+import { useAppContext } from '@/contexts/appContext';
 import "./Terminal.scss";
 
 const Terminal = () => {
-  const [history, setHistory] = useState<string[]>([TERMINAL_RESPONSES.INITIAL]);
+  const { setIsHacked, setTheme, theme, setIsIdeMode, isIdeMode } = useAppContext(); 
+  const [localHistory, setLocalHistory] = useState<string[]>([TERMINAL_RESPONSES.INITIAL]);
   const [input, setInput] = useState('');
   const terminalRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
-  }, [history]);
+  }, [localHistory]);
 
   const handleCommand = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
 
-    const cmd = input.trim().toLowerCase();
-    const newHistory = [...history, `> ${input}`];
+    const trimmedInput = input.trim();
+    const cmdParts = trimmedInput.toLowerCase().split(' ');
+    const mainCmd = cmdParts[0];
+    const newHistory = [...localHistory, `${TERMINAL_RESPONSES.PROMPT} ${trimmedInput}`];
 
-    switch (cmd) {
+    const validRoutes = ['home', 'contact', 'work', 'maelstrom'];
+
+    switch (mainCmd) {
       case TerminalCommand.COMMANDS:
       case TerminalCommand.HELP:
         newHistory.push(...TERMINAL_RESPONSES.COMMANDS);
         break;
 
       case TerminalCommand.CLEAR:
-        setHistory([]);
+        setLocalHistory([]);
         setInput('');
         return;
 
@@ -38,14 +46,48 @@ const Terminal = () => {
         newHistory.push(TERMINAL_RESPONSES.ABOUT);
         break;
 
+      case TerminalCommand.ROUTE: {
+        const page = cmdParts[1];
+        if (!page) {
+          newHistory.push('Usage: route <pageName>');
+        } else if (!validRoutes.includes(page)) {
+          newHistory.push(`Error: Page "${page}" not found. Try one of: ${validRoutes.join(', ')}`);
+        } else {
+          newHistory.push(`Redirecting to /${page === 'home' ? '' : page}...`);
+          // Set IDE Mode to false to allow the renderer to show the navigated page
+          setIsIdeMode(false);
+          router.push(page === 'home' ? '/' : `/${page}`);
+        }
+        break;
+      }
+
+      case TerminalCommand.HACK:
+        newHistory.push('CRITICAL ERROR: ACCESS DENIED. SYSTEM BREACH DETECTED.');
+        setIsHacked(true);
+        break;
+
+      case TerminalCommand.SWITCH_THEME: {
+        const next = theme === 'default' ? 'orchid-red' : 'default';
+        setTheme(next);
+        newHistory.push(`Success: Theme switched to ${next === 'default' ? 'Default' : 'Orchid-Red'}.`);
+        break;
+      }
+
+      case TerminalCommand.SWITCH_MODE: {
+        const nextMode = !isIdeMode;
+        setIsIdeMode(nextMode);
+        newHistory.push(`Success: Switching to ${nextMode ? 'IDE Mode' : 'Site Mode'}.`);
+        break;
+      }
+
       default:
-        newHistory.push(TERMINAL_RESPONSES.NOT_FOUND(cmd));
+        newHistory.push(TERMINAL_RESPONSES.NOT_FOUND(mainCmd));
         break;
     }
 
-    setHistory(newHistory);
+    setLocalHistory(newHistory);
     setInput('');
-  }, [input, history]);
+  }, [input, localHistory, router, setIsHacked, setTheme, theme]);
 
   return (
     <FadeIn delay={0.1}>
@@ -60,7 +102,7 @@ const Terminal = () => {
           className="terminal-container custom-scrollbar"
           ref={terminalRef}
         >
-          {history.map((line, i) => (
+          {localHistory.map((line, i) => (
             <div key={i} className="output-line">
               {line}
             </div>

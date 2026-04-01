@@ -4,7 +4,11 @@ export enum TerminalCommand {
   COMMANDS = 'commands',
   CLEAR = 'clear',
   ABOUT = 'about',
-  HELP = 'help'
+  HELP = 'help',
+  ROUTE = 'route',
+  HACK = 'hack',
+  SWITCH_THEME = 'switch-theme',
+  SWITCH_MODE = 'switch-mode'
 }
 
 export const TERMINAL_RESPONSES = {
@@ -13,7 +17,11 @@ export const TERMINAL_RESPONSES = {
     'Available commands:',
     '- help: Show this message',
     '- clear: Clear terminal',
-    '- about: Learn about this site'
+    '- about: Learn about this site',
+    '- route <page>: Navigate to a page',
+    '- hack: Try it if you dare',
+    '- switch-theme: Toggle orchid-red theme',
+    '- switch-mode: Toggle IDE/Site mode'
   ],
   ABOUT: 'This is an IDE-based portfolio mode built with React and Next.js.',
   NOT_FOUND: (cmd: string) => `Command not found: ${cmd}. Type "help" for assistance.`,

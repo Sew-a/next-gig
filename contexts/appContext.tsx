@@ -15,6 +15,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isIdeMode, setIsIdeMode] = useState<boolean>(false);
   const [currentFile, setCurrentFile] = useState<string>("AboutMe.tsx");
+  const [isHacked, setIsHacked] = useState<boolean>(false);
+  const [theme, setTheme] = useState<'orchid-red' | 'default'>('default');
   const [queryClient] = useState(() => new QueryClient());
 
   const client = new ApolloClient({
@@ -34,8 +36,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       setIsIdeMode,
       currentFile,
       setCurrentFile,
+      isHacked,
+      setIsHacked,
+      theme,
+      setTheme,
     }),
-    [imageFiles, isLoading, isIdeMode, currentFile],
+    [imageFiles, isLoading, isIdeMode, currentFile, isHacked, theme],
   );
 
   return (
