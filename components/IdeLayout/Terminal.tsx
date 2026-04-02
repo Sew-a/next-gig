@@ -67,9 +67,9 @@ const Terminal = () => {
         break;
 
       case TerminalCommand.SWITCH_THEME: {
-        const next = theme === 'default' ? 'orchid-red' : 'default';
+        const next = theme === 'default' ? 'secondary-theme' : 'default';
         setTheme(next);
-        newHistory.push(`Success: Theme switched to ${next === 'default' ? 'Default' : 'Orchid-Red'}.`);
+        newHistory.push(`Success: Theme switched to ${next === 'default' ? 'Default' : 'Secondary-Theme'}.`);
         break;
       }
 

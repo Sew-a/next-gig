@@ -1,5 +1,4 @@
 "use client";
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Music, Users, Info, Play, ChevronRight } from 'lucide-react';
 import { BAND_MEMBERS, BAND_TRACKS } from '@/data/bandData';
@@ -63,7 +62,6 @@ const BandSections = () => {
           >
             {/* Block 1: The Bio */}
             <motion.div className="grid-block grid-block--large info-block" variants={itemVariants}>
-              <div className="block-icon"><Info size={24} /></div>
               <h2>THE LEGACY</h2>
               <p>
                 Founded in the underground scenes of 1998, we've carved a path through alternative rock history.
@@ -114,10 +112,8 @@ const BandSections = () => {
 
             {/* Block 5: Quote/Stat */}
             <motion.div className="grid-block quote-block" variants={itemVariants}>
-              <div className="quote-mark">"</div>
               <p>We don't just play music, we curate an atmosphere where time stands still.</p>
             </motion.div>
-
           </motion.div>
         </section>
 

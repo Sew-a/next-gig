@@ -20,7 +20,7 @@ export const TERMINAL_RESPONSES = {
     '- about: Learn about this site',
     '- route <page>: Navigate to a page',
     '- hack: Try it if you dare',
-    '- switch-theme: Toggle orchid-red theme',
+    '- switch-theme: Toggle secondary-theme',
     '- switch-mode: Toggle IDE/Site mode'
   ],
   ABOUT: 'This is an IDE-based portfolio mode built with React and Next.js.',

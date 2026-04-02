@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Project Documentation
 
-## Getting Started
+## Project Overview
+This project is a high-end personal portfolio website built with **Next.js**, **TypeScript**, and **SCSS**. It features a unique dual-mode experience, allowing users to switch between a sleek modern landing page ("Primary Mode") and a developer-centric interface mirroring an Integrated Development Environment ("IDE Mode").
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Core Features & Implementation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 1. Dual-Mode Interface Architecture
+- **Primary Mode**: A high-fidelity, visually stunning landing page with sections for Projects, Experience, and Skills.
+- **IDE Mode**: A fully functional VS Code-like interface featuring:
+  - **Sidebar Navigation**: A file explorer with active tab highlighting.
+  - **Code Editor**: A high-performance syntax-highlighted code viewer.
+  - **Integrated Terminal**: A terminal-style status/logging system with state management via custom hooks.
+  - **Seamless Transitions**: Powered by `framer-motion` for fluid OS-like animations.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. Design System & Aesthetics
+- **Premium UI**: Uses a sophisticated dark-themed palette with vibrant purple (`#d494ff`) accents.
+- **Glassmorphism**: Integrated across various components for a state-of-the-art look.
+- **Micro-animations**: Hover effects, scroll-triggered fade-ins (`FadeIn` component), and interactive project cards.
+- **Custom Typography**: Leverages 'Advent Pro' and 'Poppins' for a modern, distinct architectural feel.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Key Components
+- **Portfolio/Projects Section**: A modern grid displaying projects with high-quality images sourced directly from the `public/gallery`.
+- **Work Experience Section**: A custom-designed vertical timeline with numerical checkpoints (01, 02, 03) and connecting line logic.
+- **BandSections Component**: A specialized "About" section refined to highlight core personal and professional identity.
+- **Reusable UI Library**: Specialized components like `HeadingText` and `ActionButton` ensure design consistency across the site.
 
-## Learn More
+### 4. Technical Stack
+- **Framework**: Next.js 15+ with App Router.
+- **Language**: TypeScript for robust type safety and improved developer experience.
+- **Styling**: Vanilla SCSS with a comprehensive design system utilizing variables and mixins for scaleable styling.
+- **Animations**: Framer Motion for complex transition orchestration.
+- **Icons**: Lucide-React for crisp, consistent iconography.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Recent Work & Refactoring
+- **Gallery Integration**: Successfully mapped the `public/gallery` folder to the portfolio grid, optimizing asset delivery.
+- **Layout Optimization**: Refactored the `IdeLayout` to ensure full-height sidebars and consistent state management across different views.
+- **SCSS Modernization**: Migrated inline styles to dedicated SCSS modules to adhere to best practices and improve maintainability.
+- **Content Centralization**: Moved all portfolio-related content into structured data files (`data/portfolioData.ts`) for easy updates.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Future Roadmap
+- Integration of a live contact form with server actions.
+- Enhanced terminal interactivity for a truly immersive developer experience.
+- More project case studies with detailed technical breakdowns.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Created by [Sevak Avetisyan](https://www.linkedin.com/in/sevak-avetisyan-6122411b2/)*

@@ -6,7 +6,7 @@ html {
 }
 
 .portfolio-home {
-  background: $bg-primary;
+  background-color: $bg-primary;
   color: $text-primary;
   min-height: 100vh;
   font-family: $font-main;
@@ -347,7 +347,7 @@ html {
 ───────────────────────────────── */
 .experience {
   @include section-padding;
-  background: $bg-primary;
+  background-color: $bg-primary;
   position: relative;
 
   &__header {
@@ -370,7 +370,7 @@ html {
   &__line-top {
     width: 60px;
     height: 4px;
-    background: $accent-main;
+    background-color: $accent-main;
     margin-top: 1.5rem;
     border-radius: 2px;
   }
@@ -390,7 +390,7 @@ html {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: rgba($border-color, 0.5);
+    background-color: rgba($border-color, 0.5);
     transform: translateX(-50%);
 
     @media (max-width: $tablet) {
@@ -413,11 +413,6 @@ html {
         margin-right: 60px;
       }
 
-      .experience__number {
-        right: -25px;
-        left: auto;
-      }
-
       .experience__connector {
         right: 0;
         left: auto;
@@ -432,12 +427,6 @@ html {
       .experience__card {
         margin-left: 60px;
       }
-
-      .experience__number {
-        left: -25px;
-        right: auto;
-      }
-
       .experience__connector {
         left: 0;
         right: auto;
@@ -452,11 +441,6 @@ html {
 
       .experience__card {
         margin-left: 0 !important;
-      }
-
-      .experience__number {
-        left: -65px !important;
-        right: auto !important;
       }
 
       .experience__connector {
@@ -474,7 +458,7 @@ html {
     font-weight: 800;
     color: #fff;
     z-index: 2;
-    background: $bg-primary;
+    background-color: $bg-primary;
     padding: 10px 0;
     font-family: $font-heading;
   }
@@ -483,12 +467,12 @@ html {
     position: absolute;
     top: 50%;
     height: 1.5px;
-    background: rgba($border-color, 0.8);
+    background-color: rgba($border-color, 0.8);
     z-index: 1;
   }
 
   &__card {
-    background: transparent;
+    background-color: transparent;
     padding: 0;
     max-width: 450px;
     width: 100%;
@@ -523,7 +507,7 @@ html {
       top: 50%;
       width: 12px;
       height: 2px;
-      background: $accent-main;
+      background-color: $accent-main;
       transform: translateY(-50%);
     }
   }
@@ -562,7 +546,7 @@ html {
 }
 
 .skill-card {
-  background: $bg-primary;
+  background-color: $bg-primary;
   border: 1px solid $border-color;
   border-radius: $border-radius-lg;
   padding: 1.25rem 1.5rem;
@@ -590,7 +574,7 @@ html {
 }
 
 .tag {
-  background: $bg-tag;
+  background-color: $bg-tag;
   color: #ccc;
   font-size: 0.78rem;
   padding: 4px 10px;

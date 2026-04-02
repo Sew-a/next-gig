@@ -1,11 +1,3 @@
-export type UserType = {
-  id: string;
-  name: string;
-  username: string;
-  email: string;
-  access: string;
-};
-
 export type ActionType = typeof ACTION_NAMES[keyof typeof ACTION_NAMES];
 
 export type ImageItemProps = {
@@ -18,15 +10,16 @@ export type ImageItemProps = {
 
 export interface AppContextType {
   imageFiles: ImageItemProps[];
-  setImageFiles: React.Dispatch<React.SetStateAction<ImageItemProps[]>>;
   isIdeMode: boolean;
-  setIsIdeMode: React.Dispatch<React.SetStateAction<boolean>>;
   currentFile: string;
-  setCurrentFile: React.Dispatch<React.SetStateAction<string>>;
   isHacked: boolean;
+  theme: 'secondary-theme' | 'default';
+
+  setImageFiles: React.Dispatch<React.SetStateAction<ImageItemProps[]>>;
+  setIsIdeMode: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentFile: React.Dispatch<React.SetStateAction<string>>;
   setIsHacked: React.Dispatch<React.SetStateAction<boolean>>;
-  theme: 'orchid-red' | 'default';
-  setTheme: React.Dispatch<React.SetStateAction<'orchid-red' | 'default'>>;
+  setTheme: React.Dispatch<React.SetStateAction<'secondary-theme' | 'default'>>;
 }
 
 //  Actions list types
@@ -38,9 +31,9 @@ export const ACTION_NAMES = {
   UPLOAD: "UPLOAD",
 }
 
-export type ActionTypes  = {
-Open: 'OPEN';
-Rename: 'RENAME';
-Delete: 'DELETE';
-Download: 'DOWNLOAD';
+export type ActionTypes = {
+  Open: 'OPEN';
+  Rename: 'RENAME';
+  Delete: 'DELETE';
+  Download: 'DOWNLOAD';
 }

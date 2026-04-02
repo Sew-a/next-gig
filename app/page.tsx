@@ -41,12 +41,6 @@ export default function Homepage() {
             <div className="hero__about">
               <HeadingText title="ABOUT ME" label="// RECOGNITION" />
               <p>{HERO_DATA.aboutText}</p>
-              <ActionButton
-                title="LEARN MORE →"
-                link="#experience"
-                buttonType={ACTION_BUTTON_TYPE.GHOST}
-                className="learn-more-btn"
-              />
             </div>
           </div>
         </section>
@@ -95,9 +89,6 @@ export default function Homepage() {
             <div className="experience__center-line"></div>
             {EXPERIENCE.map((exp, index) => (
               <div key={index} className={`experience__item ${index % 2 === 0 ? "left" : "right"}`}>
-                <div className="experience__number">
-                  {String(index + 1).padStart(2, "0")}.
-                </div>
                 <div className="experience__connector"></div>
                 <div className="experience__card">
                   <div className="experience__card-header">
@@ -106,7 +97,7 @@ export default function Homepage() {
                     <span className="experience__period">{exp.period}</span>
                   </div>
                   <ul className="experience__achievements">
-                    {exp.achievements.slice(0, 3).map((achievement, aIndex) => (
+                    {exp.achievements.slice(0, 6).map((achievement, aIndex) => (
                       <li key={aIndex}>{achievement}</li>
                     ))}
                   </ul>

@@ -1,4 +1,4 @@
-import { ACTION_NAMES, type ImageItemProps } from "@/types";
+import { ACTION_NAMES, type ImageItemProps } from "@/contexts/types";
 import Image from "next/image";
 import "./styles.scss";
 import ActionButton from "../UI/ActionButton";

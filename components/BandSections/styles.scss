@@ -152,11 +152,6 @@ $grid-gap: 1.5rem;
         grid-row: span 2;
       }
 
-      .block-icon {
-        color: $accent-dark;
-        margin-bottom: 2rem;
-      }
-
       .block-footer {
         margin-top: auto;
         font-size: 0.75rem;
@@ -195,11 +190,6 @@ $grid-gap: 1.5rem;
         align-items: center;
         gap: 1rem;
         transition: transform 0.3s;
-
-        &:hover {
-          transform: translateX(5px);
-          .name { color: $accent-dark; }
-        }
 
         .name {
           font-weight: 900;
@@ -282,15 +272,6 @@ $grid-gap: 1.5rem;
     .quote-block {
       justify-content: center;
       text-align: center;
-      border-color: $accent-dark;
-
-      .quote-mark {
-        font-size: 4rem;
-        font-family: serif;
-        color: $accent-dark;
-        line-height: 0.5;
-        margin-bottom: 1rem;
-      }
 
       p {
         font-style: italic;

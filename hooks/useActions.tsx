@@ -1,5 +1,5 @@
 import { useAppContext } from "@/contexts/appContext";
-import { ACTION_NAMES, ActionType } from "@/types";
+import { ACTION_NAMES, ActionType } from "@/contexts/types";
 import { useCallback } from "react";
 
 type ActionData = {

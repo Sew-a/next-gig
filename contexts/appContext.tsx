@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
 import { ApolloProvider } from '@apollo/client/react';
-import { AppContextType, ImageItemProps } from "@/types";
+import { AppContextType, ImageItemProps } from "@/contexts/types";
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 
@@ -16,7 +16,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isIdeMode, setIsIdeMode] = useState<boolean>(false);
   const [currentFile, setCurrentFile] = useState<string>("AboutMe.tsx");
   const [isHacked, setIsHacked] = useState<boolean>(false);
-  const [theme, setTheme] = useState<'orchid-red' | 'default'>('default');
+  const [theme, setTheme] = useState<'secondary-theme' | 'default'>('default');
   const [queryClient] = useState(() => new QueryClient());
 
   const client = new ApolloClient({
@@ -25,7 +25,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     }),
     cache: new InMemoryCache(),
   });
-  
+
   const value = useMemo(
     () => ({
       imageFiles,

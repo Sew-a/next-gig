@@ -6,7 +6,7 @@ import ImageItem from "../ImageItem";
 
 import "./styles.scss";
 import useActions from "@/hooks/useActions";
-import { ACTION_NAMES, ActionType } from "@/types";
+import { ACTION_NAMES, ActionType } from "@/contexts/types";
 import SearchBar from "../SearchBar";
 
 export default function ImageItems() {

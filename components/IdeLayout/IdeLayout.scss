@@ -6,11 +6,11 @@
   overflow: hidden;
   background-color: #0d1117; // Standard VS Code sidebar BG
 
-  &.theme-orchid-red {
+  &.theme-secondary-theme {
     // Overrides for the theme
-    --accent-color: #ff4757; // Red
-    --border-color: rgba(218, 112, 214, 0.4); // Orchid with opacity
-    --text-accent: #ff4757; // Red
+    --accent-color: #354785; // Red
+    --border-color: rgba(112, 128, 218, 0.4); // Orchid with opacity
+    --text-accent: #354785; // Red
     --active-bg: rgba(218, 112, 214, 0.1); 
 
     .code-editor, .terminal, .file-explorer {

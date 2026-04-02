@@ -72,48 +72,118 @@ a {
     margin: 0;
   }
 }
-/* ---------------------------------
-   GLOBAL THEME OVERRIDES (Orchid-Red)
---------------------------------- */
-.main-theme-wrapper.theme-orchid-red {
-  --theme-accent: #ff4757; // Red
-  --theme-secondary: #da70d6; // Orchid
-  --theme-border: rgba(218, 112, 214, 0.3);
+
+.main-theme-wrapper.theme-secondary-theme {
+  --theme-accent: #354785;
+  --theme-secondary: #70bcda; 
+  --theme-border: #354785;
 
   // Global Button Overrides
   .mode-switcher {
     border-color: var(--theme-secondary) !important;
     color: var(--theme-secondary) !important;
-    &:hover { box-shadow: 0 4px 15px rgba(218, 112, 214, 0.4); }
+
+    &:hover {
+      box-shadow: 0 4px 15px rgba(218, 112, 214, 0.4);
+    }
   }
 
-  .action-button, .btn-action, .hack-close-btn {
+  .action-button,
+  .btn-action,
+  .hack-close-btn {
     border-color: var(--theme-accent) !important;
     color: var(--theme-accent) !important;
+
     &--primary {
-      background: var(--theme-accent) !important;
+      background-color: var(--theme-accent) !important;
       color: white !important;
     }
-    &:hover { box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4); }
+
+    &:hover {
+      box-shadow: 0 4px 15px rgba(71, 120, 255, 0.4);
+    }
   }
 
   // Headings & Text
-  h1, h2, h3, .section-title, .hero__accent, .portfolio__title, .timeline__role, .opened-icon {
+  h1,
+  h2,
+  h3,
+  .section-title,
+  .hero__accent,
+  .portfolio__title,
+  .timeline__role,
+  .opened-icon {
     color: var(--theme-secondary) !important;
   }
 
-  .section-label, .portfolio__label, .hero__tag, .sidebar-toggle, .prompt {
+  .section-label,
+  .portfolio__label,
+  .hero__tag,
+  .sidebar-toggle,
+  .prompt {
     color: var(--theme-accent) !important;
   }
 
   .active {
     color: var(--theme-accent) !important;
-    &::after { background: var(--theme-accent) !important; }
+
+    &::after {
+      background-color: var(--theme-accent) !important;
+    }
+  }
+
+  // Portfolio & Experience Overrides
+  .portfolio {
+    border-top-color: var(--theme-accent) !important;
+  }
+
+  .experience__role {
+    color: var(--theme-accent) !important;
+
+    &::before {
+      background-color: var(--theme-accent) !important;
+    }
+  }
+
+  // Skills & Components
+  .skill-card__cat,
+  .footer__logo,
+  .follow-section__title,
+  .testimonial-relation {
+    color: var(--theme-accent) !important;
+  }
+
+  .follow-section__line {
+    background: linear-gradient(180deg, var(--theme-accent), transparent) !important;
+  }
+
+  .portfolio__title::after {
+    background-color: var(--theme-accent) !important;
+  }
+
+  .quote-icon {
+    color: var(--theme-accent) !important;
+  }
+
+  // Sidebar & IDE Overrides
+  .sidebar-nav {
+    .nav-link {
+      border-color: currentColor !important;
+    }
+  }
+
+  .ide-explorer .file-item.active {
+    background-color: rgba(53, 71, 133, 0.1) !important; 
+    color: var(--theme-accent) !important;
+    border-left-color: var(--theme-accent) !important;
   }
 
   // Timeline & Lines
-  .experience__line-top, .experience__center-line, .experience__connector, .hero__heading::after {
-    background: var(--theme-secondary) !important;
+  .experience__line-top,
+  .experience__center-line,
+  .experience__connector,
+  .hero__heading::after {
+    background-color: var(--theme-secondary) !important;
     opacity: 0.6;
   }
 }
