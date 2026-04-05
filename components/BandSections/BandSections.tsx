@@ -64,16 +64,18 @@ const BandSections = () => {
             <motion.div className="grid-block grid-block--large info-block" variants={itemVariants}>
               <h2>THE LEGACY</h2>
               <p>
-                Founded in the underground scenes of 1998, we've carved a path through alternative rock history.
-                Our sound is a raw blend of post-punk energy and cinematic soundscapes that tell the stories of the night.
+                Founded by 2 Vi and Sev, firstly formed as a cover band, then we started writing our own songs.
+                Our sound is a raw blend of post-punk energy and cinematic soundscapes that tell the stories of our lives.
+                <br />
+                We are Afterparty, and we are here to stay.
               </p>
-              <div className="block-footer">EST. 1998 / NYC</div>
+              <div className="block-footer">EST. 2025 / YEREVAN</div>
             </motion.div>
 
             {/* Block 2: The Vision */}
             <motion.div className="grid-block vision-block" variants={itemVariants}>
               <h3>THE VISION</h3>
-              <p>Creating music that feels like a shared secret between us and the listener.</p>
+              <p>Creating music that feels like old good rock, we doing this only for love to music</p>
             </motion.div>
 
             {/* Block 3: Members List (One-line) */}
@@ -112,7 +114,7 @@ const BandSections = () => {
 
             {/* Block 5: Quote/Stat */}
             <motion.div className="grid-block quote-block" variants={itemVariants}>
-              <p>We don't just play music, we curate an atmosphere where time stands still.</p>
+              <p>We just play music, and we remove all that we don't like</p>
             </motion.div>
           </motion.div>
         </section>

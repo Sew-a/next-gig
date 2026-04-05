@@ -18,9 +18,10 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 8px;
+    text-wrap: nowrap;
 
     .folder-icon {
-      color: #3b82f6; 
+      color: #3b82f6;
     }
   }
 
@@ -55,10 +56,19 @@
 
     .file-icon {
       flex-shrink: 0;
-      
-      &.tsx, &.ts { color: #3b82f6; }
-      &.json { color: #eab308; }
-      &.md { color: #9ca3af; }
+
+      &.tsx,
+      &.ts {
+        color: #3b82f6;
+      }
+
+      &.json {
+        color: #eab308;
+      }
+
+      &.md {
+        color: #9ca3af;
+      }
     }
 
     .file-name {

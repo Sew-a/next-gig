@@ -7,12 +7,29 @@ import { TerminalCommand, TERMINAL_RESPONSES } from './constants';
 import { useAppContext } from '@/contexts/appContext';
 import "./Terminal.scss";
 
+const TERMINAL_STORAGE_KEY = 'terminal_log';
+
 const Terminal = () => {
   const { setIsHacked, setTheme, theme, setIsIdeMode, isIdeMode } = useAppContext(); 
-  const [localHistory, setLocalHistory] = useState<string[]>([TERMINAL_RESPONSES.INITIAL]);
+  const [localHistory, setLocalHistory] = useState<string[]>([]);
   const [input, setInput] = useState('');
   const terminalRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+
+  useEffect(() => {
+    const savedHistory = sessionStorage.getItem(TERMINAL_STORAGE_KEY);
+    if (savedHistory) {
+      setLocalHistory(JSON.parse(savedHistory));
+    } else {
+      setLocalHistory([TERMINAL_RESPONSES.INITIAL]);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (localHistory.length > 0) {
+      sessionStorage.setItem(TERMINAL_STORAGE_KEY, JSON.stringify(localHistory));
+    }
+  }, [localHistory]);
 
   useEffect(() => {
     if (terminalRef.current) {
@@ -39,6 +56,7 @@ const Terminal = () => {
 
       case TerminalCommand.CLEAR:
         setLocalHistory([]);
+        sessionStorage.removeItem(TERMINAL_STORAGE_KEY);
         setInput('');
         return;
 
@@ -54,7 +72,6 @@ const Terminal = () => {
           newHistory.push(`Error: Page "${page}" not found. Try one of: ${validRoutes.join(', ')}`);
         } else {
           newHistory.push(`Redirecting to /${page === 'home' ? '' : page}...`);
-          // Set IDE Mode to false to allow the renderer to show the navigated page
           setIsIdeMode(false);
           router.push(page === 'home' ? '/' : `/${page}`);
         }
@@ -65,6 +82,19 @@ const Terminal = () => {
         newHistory.push('CRITICAL ERROR: ACCESS DENIED. SYSTEM BREACH DETECTED.');
         setIsHacked(true);
         break;
+
+      case TerminalCommand.HISTORY: {
+        const commands = localHistory
+          .filter(line => line.startsWith(TERMINAL_RESPONSES.PROMPT))
+          .map(line => line.replace(TERMINAL_RESPONSES.PROMPT, '').trim());
+        
+        if (commands.length === 0) {
+          newHistory.push('No command history found.');
+        } else {
+          newHistory.push('Previous commands:', ...commands.map((cmd, idx) => `${idx + 1}. ${cmd}`));
+        }
+        break;
+      }
 
       case TerminalCommand.SWITCH_THEME: {
         const next = theme === 'default' ? 'secondary-theme' : 'default';
@@ -87,7 +117,7 @@ const Terminal = () => {
 
     setLocalHistory(newHistory);
     setInput('');
-  }, [input, localHistory, router, setIsHacked, setTheme, theme]);
+  }, [input, localHistory, router, setIsHacked, setTheme, theme, setIsIdeMode, isIdeMode]);
 
   return (
     <FadeIn delay={0.1}>

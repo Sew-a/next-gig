@@ -38,14 +38,13 @@ const ImagePopup: React.FC<ImagePopupProps> = ({ src, alt, onClose }) => {
         onClick={onClose}
       >
         <div className="popup-blur-bg" />
-        
         <motion.div 
           className="image-popup-container"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.8, opacity: 0 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image
+          onClick={(e) => e.stopPropagation()}
         >
           <button className="popup-close-btn" onClick={onClose} aria-label="Close popup">
             <X size={24} />

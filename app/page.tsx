@@ -39,7 +39,7 @@ export default function Homepage() {
           </div>
           <div className="hero__right">
             <div className="hero__about">
-              <HeadingText title="ABOUT ME" label="// RECOGNITION" />
+              <HeadingText title="Summary" label="// RECOGNITION" />
               <p>{HERO_DATA.aboutText}</p>
             </div>
           </div>
@@ -64,7 +64,7 @@ export default function Homepage() {
               <span className="portfolio__label">// COLLECTIONS</span>
               <h2 className="portfolio__title">PROJECTS</h2>
               <p className="portfolio__desc">
-                Brief History of what, where and how I worked, All that I can recollect is in my gallery.
+                Brief History of what, where and how I worked, All that I have recollected is in my gallery.
               </p>
               <ActionButton
                 title="View Gallery →"

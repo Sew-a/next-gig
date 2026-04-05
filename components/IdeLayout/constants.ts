@@ -1,4 +1,4 @@
-export const ideFiles = ['AboutMe.tsx', 'Experience.ts', 'Skills.json', 'Contact.md', 'Documentation.md', 'Coding.tsx'];
+export const ideFiles = ['AboutMe.tsx', 'Experience.ts', 'Skills.json', 'Contact.md', 'Documentation.md'];
 
 export enum TerminalCommand {
   COMMANDS = 'commands',
@@ -7,6 +7,7 @@ export enum TerminalCommand {
   HELP = 'help',
   ROUTE = 'route',
   HACK = 'hack',
+  HISTORY = 'history',
   SWITCH_THEME = 'switch-theme',
   SWITCH_MODE = 'switch-mode'
 }
@@ -19,11 +20,12 @@ export const TERMINAL_RESPONSES = {
     '- clear: Clear terminal',
     '- about: Learn about this site',
     '- route <page>: Navigate to a page',
+    '- history: Show command history',
     '- hack: Try it if you dare',
     '- switch-theme: Toggle secondary-theme',
     '- switch-mode: Toggle IDE/Site mode'
   ],
-  ABOUT: 'This is an IDE-based portfolio mode built with React and Next.js.',
+  ABOUT: 'This is an IDE-based portfolio. Project where I will build as much interesting ideas as I can',
   NOT_FOUND: (cmd: string) => `Command not found: ${cmd}. Type "help" for assistance.`,
   HEADER: 'Terminal',
   PROMPT: '➜',

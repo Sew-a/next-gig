@@ -1,12 +1,12 @@
 export const HERO_DATA = {
   tag: "// SOFTWARE ENGINEER",
-  name: "I'm Sevak,",
-  title: "a Software",
+  name: "I'm Sev,",
+  title: "Software",
   accent: "Engineer",
   summary:
     "",
   aboutText:
-    "Software Engineer specializing in React architecture and Micro-frontend orchestration. Builder of scalable component libraries and federated modules.",
+    "Specialized in architecting federated module systems and enterprise-scale component libraries 5+ years of experience leveraging React, Next.js, and GraphQL to build robust, accessible web ecosystems. Proven ability to reduce production overhead, mentor teams on modular architecture, and deliver high-performance internal tools that serve organization-wide needs.",
   email: "sevavetisyan97@gmail.com",
   phone: "+37441080497",
   linkedin: "https://www.linkedin.com/in/sevak-avetisyan-6122411b2/",
