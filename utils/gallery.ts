@@ -1,5 +1,3 @@
-
-
 export interface GalleryImage {
   id: string;
   src: string;
@@ -8,15 +6,14 @@ export interface GalleryImage {
 }
 
 export function getGalleryImages(): GalleryImage[] {
-  // Edge runtime doesn't have access to the filesystem
-  if (process.env.NEXT_RUNTIME === 'edge') {
-    return [
-      { id: '1', src: '/gallery/ComixZone_01.png', title: 'Comix Zone 1', category: 'Work' },
-      { id: '2', src: '/gallery/ComixZone_03.png', title: 'Comix Zone 2', category: 'Work' },
-      { id: '3', src: '/gallery/ComixZone_05.png', title: 'Comix Zone 3', category: 'Work' },
-    ];
-  }
+  return [
+    { id: '1', src: '/gallery/ComixZone_01.png', title: 'Comix Zone 1', category: 'Work' },
+    { id: '2', src: '/gallery/ComixZone_03.png', title: 'Comix Zone 2', category: 'Work' },
+    { id: '3', src: '/gallery/ComixZone_05.png', title: 'Comix Zone 3', category: 'Work' },
+  ];
+}
 
+export function getGalleryImagesNode(): GalleryImage[] {
   const galleryDir = require('path').join(process.cwd(), 'public/gallery');
   
   try {
@@ -24,12 +21,12 @@ export function getGalleryImages(): GalleryImage[] {
     const files = fs.readdirSync(galleryDir);
     
     return files
-      .filter(file => /\.(jpg|jpeg|png|webp|gif|svg)$/i.test(file))
-      .map((file, index) => ({
+      .filter((file: string) => /\.(jpg|jpeg|png|webp|gif|svg)$/i.test(file))
+      .map((file: string, index: number) => ({
         id: (index + 1).toString(),
         src: `/gallery/${file}`,
         title: file.split('.')[0].replace(/[-_]/g, ' '),
-        category: 'Work' // Default category
+        category: 'Work'
       }));
   } catch (error) {
     console.error('Error reading gallery directory:', error);
