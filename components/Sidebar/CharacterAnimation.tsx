@@ -62,7 +62,6 @@ function Character({ isRunning, currentAction, onActionComplete }: CharacterProp
 
   useFrame((state, delta) => {
     if (!loaded) return;
-    console.log("Animation tick", delta, currentAction);
 
     // Determine target action
     let targetAction: Action = currentAction;

@@ -1,5 +1,6 @@
-
 import { NextResponse } from 'next/server';
+
+export const runtime = 'edge';
 
 // stubbed search data; in a real app this might query a database
 const SEARCH_DATA = [
