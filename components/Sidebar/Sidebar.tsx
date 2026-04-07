@@ -6,6 +6,7 @@ import Link from "next/link";
 import "./styles.scss";
 import FileExplorer from "../IdeLayout/FileExplorer";
 import { useAppContext } from "@/contexts/appContext";
+import CharacterAnimation from "./CharacterAnimation";
 
 export default function Sidebar() {
   const { isIdeMode } = useAppContext();
@@ -29,7 +30,7 @@ export default function Sidebar() {
         )}
       </button>
       {sidebarOpen && (
-        <>
+        <div className="sidebar-content">
           {isIdeMode ?
             <FileExplorer />
             :
@@ -45,7 +46,10 @@ export default function Sidebar() {
               ))}
             </nav>
           }
-        </>
+          <div className="sidebar-bottom">
+            <CharacterAnimation />
+          </div>
+        </div>
       )}
     </div>
   );
