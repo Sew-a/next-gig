@@ -50,8 +50,6 @@ const BandSections = () => {
       </section>
 
       <div className="band-content-wrapper">
-
-        {/* ─── ABOUT & INFO GRID (Beautiful Blocks) ─── */}
         <section className="band-grid-section">
           <motion.div
             className="grid-container"
@@ -60,7 +58,6 @@ const BandSections = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {/* Block 1: The Bio */}
             <motion.div className="grid-block grid-block--large info-block" variants={itemVariants}>
               <h2>THE LEGACY</h2>
               <p>
@@ -71,14 +68,6 @@ const BandSections = () => {
               </p>
               <div className="block-footer">EST. 2025 / YEREVAN</div>
             </motion.div>
-
-            {/* Block 2: The Vision */}
-            <motion.div className="grid-block vision-block" variants={itemVariants}>
-              <h3>THE VISION</h3>
-              <p>Creating music that feels like old good rock, we doing this only for love to music</p>
-            </motion.div>
-
-            {/* Block 3: Members List (One-line) */}
             <motion.div className="grid-block grid-block--wide members-block" variants={itemVariants}>
               <div className="block-header">
                 <Users size={20} />
@@ -94,8 +83,6 @@ const BandSections = () => {
                 ))}
               </div>
             </motion.div>
-
-            {/* Block 4: Songs & Tracks */}
             <motion.div className="grid-block grid-block--tall tracks-block" variants={itemVariants}>
               <div className="block-header">
                 <Music size={20} />
@@ -111,14 +98,11 @@ const BandSections = () => {
                 ))}
               </div>
             </motion.div>
-
-            {/* Block 5: Quote/Stat */}
             <motion.div className="grid-block quote-block" variants={itemVariants}>
               <p>We just play music, and we remove all that we don't like</p>
             </motion.div>
           </motion.div>
         </section>
-
       </div>
     </div>
   );

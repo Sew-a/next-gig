@@ -1,33 +1,34 @@
-export type Action = "idle" | "run" | "kick" | "jump";
+export type Action = "idle" | "run" | "kick" | "secKick" | "action1" | "dead" | "jump";
 
 export interface ActionConfig {
   frames: string[];
   fps: number;
   isOneShot: boolean;
+  freezeOnEnd?: boolean;
 }
 
 export const CHARACTER_CONFIG: Record<Action, ActionConfig> = {
   idle: {
     frames: [
-      "/game/idle/ComixZone_10.png", "/game/idle/ComixZone_12.png",
-      "/game/idle/ComixZone_14.png", "/game/idle/ComixZone_14.png", "/game/idle/ComixZone_12.png",
-      "/game/idle/ComixZone_10.png"
-    ],
+      "ComixZone_10.png", "ComixZone_12.png",
+      "ComixZone_14.png", "ComixZone_14.png", "ComixZone_12.png",
+      "ComixZone_10.png"
+    ].map(f => `/game/idle/${f}`),
     fps: 4,
     isOneShot: false,
   },
   run: {
     frames: [
-      "/game/run/ComixZone_02.png", "/game/run/ComixZone_04.png", "/game/run/ComixZone_06.png",
-      "/game/run/ComixZone_08.png", "/game/run/ComixZone_10.png", "/game/run/ComixZone_12.png",
-      "/game/run/ComixZone_14.png", "/game/run/ComixZone_16.png", "/game/run/ComixZone_18.png",
-      "/game/run/ComixZone_20.png"
-    ],
+      "ComixZone_02.png", "ComixZone_04.png", "ComixZone_06.png",
+      "ComixZone_08.png", "ComixZone_10.png", "ComixZone_12.png",
+      "ComixZone_14.png", "ComixZone_16.png", "ComixZone_18.png",
+      "ComixZone_20.png"
+    ].map(f => `/game/run/${f}`),
     fps: 12,
     isOneShot: false,
   },
   kick: {
-    frames: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png"].map(f => `/game/kick/${f}`),
+    frames: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", "20.png", "20.png", "21.png", "22.png", "22.png"].map(f => `/game/footKick/${f}`),
     fps: 10,
     isOneShot: true,
   },
@@ -35,5 +36,21 @@ export const CHARACTER_CONFIG: Record<Action, ActionConfig> = {
     frames: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", "11.png", "12.png"].map(f => `/game/jump/${f}`),
     fps: 12,
     isOneShot: true,
+  },
+  secKick: {
+    frames: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png"].map(f => `/game/secKick/${f}`),
+    fps: 10,
+    isOneShot: true,
+  },
+  action1: {
+    frames: ["1.png", "2.png", "1.png", "3.png", "4.png", "5.png", "5.png", "6.png", "7.png", "8.png", "9.png", "9.png", "10.png", "10.png", "4.png", "3.png", "2.png", "1.png"].map(f => `/game/action1/${f}`),
+    fps: 6,
+    isOneShot: true,
+  },
+  dead: {
+    frames: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", "11.png", "12.png"].map(f => `/game/dead/${f}`),
+    fps: 6,
+    isOneShot: false,
+    freezeOnEnd: true,
   },
 };

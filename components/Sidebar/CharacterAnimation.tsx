@@ -1,17 +1,19 @@
 "use client";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import * as THREE from "three";
 import { Action, CHARACTER_CONFIG } from "./characterConstants";
 import { useCharacterLogic } from "./useCharacterLogic";
+import { Keyboard, MousePointer2, MoveVertical } from "lucide-react";
 
 interface CharacterProps {
   isRunning: boolean;
   currentAction: Action;
   onActionComplete: () => void;
+  onLoad: () => void;
 }
 
-function Character({ isRunning, currentAction, onActionComplete }: CharacterProps) {
+function Character({ isRunning, currentAction, onActionComplete, onLoad }: CharacterProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const textureLoader = useMemo(() => new THREE.TextureLoader(), []);
 
@@ -26,12 +28,20 @@ function Character({ isRunning, currentAction, onActionComplete }: CharacterProp
   useEffect(() => {
     const loadTextures = async () => {
       const loadTex = (path: string) =>
-        new Promise<THREE.Texture>((resolve) => {
-          textureLoader.load(path, (tex) => {
-            tex.magFilter = THREE.NearestFilter;
-            tex.minFilter = THREE.NearestFilter;
-            resolve(tex);
-          });
+        new Promise<THREE.Texture | null>((resolve) => {
+          textureLoader.load(
+            path, 
+            (tex) => {
+              tex.magFilter = THREE.NearestFilter;
+              tex.minFilter = THREE.NearestFilter;
+              resolve(tex);
+            },
+            undefined,
+            () => {
+              console.warn(`Failed to load texture: ${path}`);
+              resolve(null);
+            }
+          );
         });
 
       const loadedTextures: Partial<Record<Action, THREE.Texture[]>> = {};
@@ -39,7 +49,7 @@ function Character({ isRunning, currentAction, onActionComplete }: CharacterProp
       const loadPromises = Object.entries(CHARACTER_CONFIG).map(
         async ([action, config]) => {
           const texs = await Promise.all(config.frames.map(loadTex));
-          loadedTextures[action as Action] = texs;
+          loadedTextures[action as Action] = texs.filter((t): t is THREE.Texture => t !== null);
         }
       );
 
@@ -55,10 +65,11 @@ function Character({ isRunning, currentAction, onActionComplete }: CharacterProp
 
       setTextures(loadedTextures);
       setLoaded(true);
+      onLoad();
     };
 
     loadTextures();
-  }, [textureLoader]);
+  }, [textureLoader, onLoad]);
 
   useFrame((state, delta) => {
     if (!loaded) return;
@@ -91,6 +102,8 @@ function Character({ isRunning, currentAction, onActionComplete }: CharacterProp
 
         if (config.isOneShot && nextFrame >= currentFrames.length) {
           onActionComplete();
+        } else if (config.freezeOnEnd && nextFrame >= currentFrames.length) {
+          frameRef.current = currentFrames.length - 1;
         } else {
           frameRef.current = nextFrame % currentFrames.length;
         }
@@ -122,22 +135,42 @@ function Character({ isRunning, currentAction, onActionComplete }: CharacterProp
 }
 
 export default function CharacterAnimation() {
-  const { isRunning, currentAction, handleActionComplete, triggerKick } =
-    useCharacterLogic();
+  const { isRunning, currentAction, handleActionComplete } = useCharacterLogic();
+  const [isReady, setIsReady] = useState(false);
+
+  const handleLoaded = useCallback(() => {
+    setTimeout(() => {
+      setIsReady(true);
+    }, 1500);
+  }, []);
 
   return (
-    <div
-      className="character-animation-container"
-      style={{ width: "100%", height: "150px" }}
-      /* onClick={triggerKick} */ // Kick is disabled for now
-    >
-      <Canvas camera={{ position: [0, 0, 5], fov: 40 }}>
-        <Character
-          isRunning={isRunning}
-          currentAction={currentAction}
-          onActionComplete={handleActionComplete}
-        />
-      </Canvas>
+    <div className="character-section-wrapper">
+      <div className={`character-icons ${isReady ? 'ready' : ''}`}>
+        <div className="icon-item">
+          <Keyboard size={14} />
+          <span>Esc/Space</span>
+        </div>
+        <div className="icon-item">
+          <MoveVertical size={14} />
+          <span>Scroll</span>
+        </div>
+        <div className="icon-item">
+          <MousePointer2 size={14} />
+          <span>L/R Click</span>
+        </div>
+      </div>
+
+      <div className={`character-animation-container ${isReady ? 'ready' : ''}`}>
+        <Canvas camera={{ position: [0, 0, 5], fov: 40 }}>
+          <Character
+            isRunning={isRunning}
+            currentAction={currentAction}
+            onActionComplete={handleActionComplete}
+            onLoad={handleLoaded}
+          />
+        </Canvas>
+      </div>
     </div>
   );
 }

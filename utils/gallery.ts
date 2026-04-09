@@ -6,7 +6,7 @@ export interface GalleryImage {
 }
 
 export function getGalleryImages(): GalleryImage[] {
-  return [
+  const staticImages: GalleryImage[] = [
     { id: '1', src: '/gallery/MyProject1.png', title: 'Interactive Portfolio', category: 'Work' },
     { id: '2', src: '/gallery/MyProject2.png', title: 'E-commerce Dashboard', category: 'Work' },
     { id: '3', src: '/gallery/MyProject3.png', title: 'Social Media App', category: 'Work' },
@@ -14,31 +14,41 @@ export function getGalleryImages(): GalleryImage[] {
     { id: '5', src: '/gallery/IMG20250320211553.jpg', title: 'Live Performance', category: 'Work' },
     { id: '6', src: '/gallery/noa.png', title: 'Digital Art', category: 'Work' },
   ];
-}
 
-export function getGalleryImagesNode(): GalleryImage[] {
-  // Use a dynamic check to prevent static analysis from failing in Edge runtime
-  if (typeof process !== 'undefined' && process.env.NEXT_RUNTIME !== 'edge') {
-    try {
-      const path = require('path');
-      const fs = require('fs');
-      const galleryDir = path.join(process.cwd(), 'public/gallery');
-      
-      if (fs.existsSync(galleryDir)) {
-        const files = fs.readdirSync(galleryDir);
-        return files
-          .filter((file: string) => /\.(jpg|jpeg|png|webp|gif|svg)$/i.test(file))
-          .map((file: string, index: number) => ({
-            id: (index + 100).toString(),
-            src: `/gallery/${file}`,
-            title: file.split('.')[0].replace(/[-_]/g, ' '),
-            category: 'Work'
-          }));
-      }
-    } catch (error) {
-      console.error('Error reading gallery directory:', error);
-    }
+  // If we are in Edge/Browser environment, return static images immediately
+  if (typeof process === 'undefined' || process.env.NEXT_RUNTIME === 'edge' || typeof window !== 'undefined') {
+    return staticImages;
   }
-  return [];
+
+  // Only try FS operations in Node.js environment
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const workingDir = typeof process.cwd === 'function' ? process.cwd() : '';
+    const galleryDir = path.join(workingDir, 'public/gallery');
+    
+    if (fs.existsSync(galleryDir)) {
+      const files = fs.readdirSync(galleryDir);
+      const dynamicImages = files
+        .filter((file: string) => /\.(jpg|jpeg|png|webp|gif|svg)$/i.test(file))
+        .map((file: string, index: number) => ({
+          id: (index + 100).toString(),
+          src: `/gallery/${file}`,
+          title: file.split('.')[0].replace(/[-_]/g, ' '),
+          category: 'Work'
+        }));
+      
+      // Merge unique images from FS into static list
+      const staticSrcs = new Set(staticImages.map(img => img.src));
+      const filteredDynamic = dynamicImages.filter((img: GalleryImage) => !staticSrcs.has(img.src));
+      
+      return [...staticImages, ...filteredDynamic];
+    }
+  } catch (error) {
+    // Silently fail FS check in non-node envs
+    console.debug('FS not available, using static gallery');
+  }
+
+  return staticImages;
 }
 

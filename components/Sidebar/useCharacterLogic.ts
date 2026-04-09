@@ -20,6 +20,12 @@ export function useCharacterLogic() {
 
     const handleKeyDown = (e: KeyboardEvent) => {
       const key = e.key.toLowerCase();
+      
+      if (key === "escape") {
+        setCurrentAction("dead");
+        return;
+      }
+
       // Movement keys
       if (["a", "d", "arrowleft", "arrowright"].includes(key)) {
         keysPressed.current.add(key);
@@ -30,12 +36,6 @@ export function useCharacterLogic() {
         e.preventDefault();
         setCurrentAction("jump");
       }
-      // Kick is currently disabled as per request
-      /* 
-      if (key === "f") {
-        setCurrentAction("kick");
-      }
-      */
     };
 
     const handleKeyUp = (e: KeyboardEvent) => {
@@ -48,14 +48,29 @@ export function useCharacterLogic() {
       }
     };
 
+    const handleClick = (e: MouseEvent) => {
+      if (e.button === 0) {
+        setCurrentAction(Math.random() > 0.5 ? "kick" : "secKick");
+      }
+    };
+
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+      setCurrentAction("action1");
+    };
+
     window.addEventListener("scroll", handleScroll, true);
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
+    window.addEventListener("click", handleClick);
+    window.addEventListener("contextmenu", handleContextMenu);
 
     return () => {
       window.removeEventListener("scroll", handleScroll, true);
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
+      window.removeEventListener("click", handleClick);
+      window.removeEventListener("contextmenu", handleContextMenu);
       if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
     };
   }, []);
@@ -65,8 +80,7 @@ export function useCharacterLogic() {
   };
 
   const triggerKick = () => {
-    // Commented out as per request
-    // setCurrentAction("kick");
+    setCurrentAction("kick");
   };
 
   return {
