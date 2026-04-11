@@ -11,7 +11,6 @@ import "./styles.scss";
 export default function Homepage() {
   return (
     <main className="portfolio-home">
-      {/* ─── HERO ─── */}
       <FadeIn>
         <section className="hero">
           <div className="hero__left">
@@ -26,7 +25,7 @@ export default function Homepage() {
             <p className="hero__sub">{HERO_DATA.summary}</p>
             <div className="hero__cta">
               <ActionButton
-                title="Get in touch →"
+                title="Get in touch"
                 link="/contact"
                 buttonType={ACTION_BUTTON_TYPE.PRIMARY}
               />
@@ -38,15 +37,14 @@ export default function Homepage() {
             </div>
           </div>
           <div className="hero__right">
-            <div className="hero__about">
-              <HeadingText title="Summary" label="// RECOGNITION" />
-              <p>{HERO_DATA.aboutText}</p>
-            </div>
+            <img
+              src="/portfoliopic.webp"
+              alt="Sew"
+              className="hero__portfolio-pic"
+            />
           </div>
         </section>
       </FadeIn>
-
-      {/* ─── PORTFOLIO ─── */}
       <FadeIn delay={0.1}>
         <section className="portfolio" id="portfolio">
           <div className="portfolio__content">

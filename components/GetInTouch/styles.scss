@@ -8,7 +8,7 @@
 
   @media (max-width: $tablet) {
     margin: 100px auto 0;
-    padding: 0 1.5rem;
+    padding: 0;
   }
 }
 
@@ -119,14 +119,4 @@
   letter-spacing: 0.5px;
 }
 
-.interactive-btn {
-  @include btn-primary;
-  min-width: 180px;
-  padding: 1rem 2.5rem !important;
-  font-size: 1.1rem !important;
-  box-shadow: 0 10px 30px rgba($accent-main, 0.2);
-  
-  &:hover {
-    box-shadow: 0 15px 40px rgba($accent-main, 0.3);
-  }
-}
+

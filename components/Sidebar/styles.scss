@@ -2,7 +2,7 @@
 @use "../../styles/mixins" as *;
 
 .main-sidebar {
-  background-color: $bg-secondary;
+  background-color: $bg-primary;
   border-right: 1px solid $border-color;
   display: flex;
   flex-direction: column;
@@ -15,6 +15,25 @@
 
   &.closed {
     width: 60px;
+  }
+
+  @media (max-width: 1099px) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 216px;
+    padding: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+
+    &.open {
+      transform: translateX(0);
+    }
+
+    &.closed {
+      transform: translateX(calc(-276px + 30px));
+      width: 276px;
+    }
   }
 }
 
@@ -72,7 +91,7 @@
 
 /* Sidebar Navigation */
 .sidebar-nav {
-  margin-top: 40px;
+  margin-top: 56px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -91,6 +110,7 @@
   cursor: pointer;
   text-decoration: none;
   text-wrap: nowrap;
+  font-size: 18px;
 
   &.active {
     color: $accent-main;
@@ -111,31 +131,8 @@
   }
 }
 
-.character-section-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
 .character-icons {
   display: flex;
-  gap: 12px;
-  margin-bottom: 8px;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  font-size: 10px;
-  color: var(--text-color, #fff);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-
-  &.ready {
-    opacity: 0.7;
-  }
-
-  .icon-item {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
+  justify-content: center;
+  gap: 16px;  
 }

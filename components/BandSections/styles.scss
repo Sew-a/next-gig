@@ -19,13 +19,12 @@ $grid-gap: 1.5rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #020202c7;
+    background-color: #573a8525;
     padding: 2rem 4rem;
 
     &__overlay {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(240, 147, 43, 0.05) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -97,7 +96,7 @@ $grid-gap: 1.5rem;
 
   // ─── GRID CONTENT ───
   .band-content-wrapper {
-    padding: 8rem 4rem;
+    padding: 10px 0;
     max-width: 1400px;
     margin: 0 auto;
   }
@@ -160,7 +159,6 @@ $grid-gap: 1.5rem;
       }
     }
 
-    // Specific Block Styles
     .info-block {
       background: linear-gradient(135deg, rgba(35, 46, 77, 0.452) 0%, transparent 100%);
     }
@@ -291,20 +289,8 @@ $grid-gap: 1.5rem;
 @media (max-width: 768px) {
   .band-sections {
     .band-hero {
-      padding: 2rem;
-
-      &__nav {
-        left: 2rem;
-        right: 2rem;
-
-        .nav-links {
-          display: none;
-        }
-      }
-
-      &__footer {
-        left: 2rem;
-      }
+      padding: 0;
+      height: 80vh;
 
       .scroll-indicator {
         display: none;
@@ -312,7 +298,7 @@ $grid-gap: 1.5rem;
     }
 
     .band-content-wrapper {
-      padding: 4rem 2rem;
+      padding: 30px 0;
     }
 
     .band-grid-section .grid-container {
@@ -324,8 +310,6 @@ $grid-gap: 1.5rem;
       grid-row: span 1 !important;
     }
 
-    .members-block .members-list {
-      grid-template-columns: 1fr;
-    }
+
   }
 }

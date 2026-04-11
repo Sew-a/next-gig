@@ -14,7 +14,8 @@
     align-items: center;
 
     @media (max-width: $tablet) {
-        display: none;
+        width: 28px;
+        right: 0px;
     }
 
     &__inner {

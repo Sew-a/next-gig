@@ -16,7 +16,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isIdeMode, setIsIdeMode] = useState<boolean>(false);
   const [currentFile, setCurrentFile] = useState<string>("AboutMe.tsx");
   const [isHacked, setIsHacked] = useState<boolean>(false);
-  const [theme, setTheme] = useState<'secondary-theme' | 'default'>('default');
+  const [theme, setTheme] = useState<'secondary-theme' | 'default'>('secondary-theme');
   const [queryClient] = useState(() => new QueryClient());
 
   const client = new ApolloClient({

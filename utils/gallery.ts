@@ -6,49 +6,16 @@ export interface GalleryImage {
 }
 
 export function getGalleryImages(): GalleryImage[] {
-  const staticImages: GalleryImage[] = [
-    { id: '1', src: '/gallery/MyProject1.png', title: 'Interactive Portfolio', category: 'Work' },
-    { id: '2', src: '/gallery/MyProject2.png', title: 'E-commerce Dashboard', category: 'Work' },
-    { id: '3', src: '/gallery/MyProject3.png', title: 'Social Media App', category: 'Work' },
-    { id: '4', src: '/gallery/IMG_6829.jpg', title: 'Studio Session', category: 'Work' },
-    { id: '5', src: '/gallery/IMG20250320211553.jpg', title: 'Live Performance', category: 'Work' },
-    { id: '6', src: '/gallery/noa.png', title: 'Digital Art', category: 'Work' },
+  return [
+    { id: '1', src: '/gallery/MyProject1.png', title: 'Editor Project', category: 'Work' },
+    { id: '2', src: '/gallery/MyProject2.png', title: 'Google Picker', category: 'Work' },
+    { id: '3', src: '/gallery/MyProject3.png', title: 'Files System', category: 'Cloud Project' },
+    { id: '4', src: '/gallery/MyProject4.jpg', title: 'Gegham birthday', category: 'Work' },
+    { id: '5', src: '/gallery/MyProject5.png', title: 'File Action', category: 'Work' },
+    { id: '6', src: '/gallery/MyProject6.png', title: 'Brandkit', category: 'Work' },
+    { id: '7', src: '/gallery/MyProject7.jpg', title: 'My Artwork', category: 'Drawing a book' },
+    { id: '8', src: '/gallery/MyProject8.jpg', title: 'Team Building', category: 'Work' },
+    { id: '9', src: '/gallery/MyPorject9.jpg', title: 'Band Repetition', category: 'Music Project' },
   ];
-
-  // If we are in Edge/Browser environment, return static images immediately
-  if (typeof process === 'undefined' || process.env.NEXT_RUNTIME === 'edge' || typeof window !== 'undefined') {
-    return staticImages;
-  }
-
-  // Only try FS operations in Node.js environment
-  try {
-    const fs = require('fs');
-    const path = require('path');
-    const workingDir = typeof process.cwd === 'function' ? process.cwd() : '';
-    const galleryDir = path.join(workingDir, 'public/gallery');
-    
-    if (fs.existsSync(galleryDir)) {
-      const files = fs.readdirSync(galleryDir);
-      const dynamicImages = files
-        .filter((file: string) => /\.(jpg|jpeg|png|webp|gif|svg)$/i.test(file))
-        .map((file: string, index: number) => ({
-          id: (index + 100).toString(),
-          src: `/gallery/${file}`,
-          title: file.split('.')[0].replace(/[-_]/g, ' '),
-          category: 'Work'
-        }));
-      
-      // Merge unique images from FS into static list
-      const staticSrcs = new Set(staticImages.map(img => img.src));
-      const filteredDynamic = dynamicImages.filter((img: GalleryImage) => !staticSrcs.has(img.src));
-      
-      return [...staticImages, ...filteredDynamic];
-    }
-  } catch (error) {
-    // Silently fail FS check in non-node envs
-    console.debug('FS not available, using static gallery');
-  }
-
-  return staticImages;
 }
 

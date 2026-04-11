@@ -34,7 +34,6 @@ export default function GetInTouch() {
                 title="Get in touch"
                 onClick={handleNext}
                 buttonType={ACTION_BUTTON_TYPE.PRIMARY}
-                className="interactive-btn"
               />
             </motion.div>
           )}
@@ -62,7 +61,6 @@ export default function GetInTouch() {
                 title="Still get in touch"
                 onClick={handleNext}
                 buttonType={ACTION_BUTTON_TYPE.PRIMARY}
-                className="interactive-btn"
               />
             </motion.div>
           )}
@@ -81,7 +79,7 @@ export default function GetInTouch() {
                 <a href="mailto:sevavetisyan97@gmail.com" className="email-link">
                   sevavetisyan97@gmail.com
                 </a>
-                <p className="boring-text">Sorry, I was too lazy to make other contact form</p>
+                <p className="boring-text">Sorry, I was too bored to make another contact-me form</p>
               </div>
             </motion.div>
           )}

@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from 'next/link'
 import { FOOTER_NAV, FOOTER_CONTACT, FOOTER_BRAND } from '@/data/footerData'
 import './styles.scss'
@@ -9,7 +8,6 @@ function Footer() {
       <div className="footer__inner">
         <div className="footer__brand">
           <span className="footer__logo">{FOOTER_BRAND.logo}</span>
-          <p className="footer__tagline">{FOOTER_BRAND.tagline}</p>
         </div>
 
         <div className="footer__cols">

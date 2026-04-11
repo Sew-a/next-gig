@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  margin-top: 20px;
+  margin-top: 36px;
 
   .explorer-root {
     display: flex;
@@ -14,7 +14,7 @@
     padding: 0 10px;
     color: $text-secondary;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 17px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 8px;
@@ -41,7 +41,7 @@
     cursor: pointer;
     transition: all 0.2s ease;
     color: $text-muted;
-    font-size: 14px;
+    font-size: 16px;
 
     &:hover {
       background-color: rgba($accent-main, 0.05);

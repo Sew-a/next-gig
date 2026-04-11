@@ -15,15 +15,14 @@ $accent-main:     #d494ff;
 $accent-dark:     #772da8;
 $accent-hover:    #8e38c8;
 $accent-subtle:   rgba(212, 148, 255, 0.08);
-$accent-glow-sm:  0 4px 20px rgba(212, 148, 255, 0.25);
-$accent-glow-md:  0 6px 28px rgba(212, 148, 255, 0.4);
-$accent-glow-avatar: 0 0 24px rgba(212, 148, 255, 0.4);
+$accent-glow-sm:  0 4px 20px rgba(32, 34, 36, 0.25);
+$accent-glow-md:  0 6px 28px rgba(32, 34, 36, 0.25);
+$accent-glow-avatar: 0 0 24px rgba(32, 34, 36, 0.25);
 
 $border-color:    #31365f;
 $border-accent:   rgba(212, 148, 255, 0.33); // #d494ff55
 
 // ─── 2. Fonts ────────────────────────────────────
-$font-main:       'Advent Pro', sans-serif;
 $font-heading:    'Poppins', sans-serif;
 $base-font-size:  16px;
 

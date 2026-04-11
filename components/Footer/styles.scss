@@ -20,7 +20,7 @@
   @media (max-width: $tablet) {
     grid-template-columns: 1fr;
     gap: 2rem;
-    padding: 2rem 1.5rem;
+    padding: 2rem 2.4rem;
   }
 }
 
@@ -36,11 +36,7 @@
   color: $accent-main;
 }
 
-.footer__tagline {
-  font-size: 0.85rem;
-  color: $text-dimmer;
-  line-height: 1.5;
-}
+
 
 .footer__cols {
   display: grid;
@@ -84,4 +80,4 @@
   padding: 1.25rem 2rem;
   font-size: 0.8rem;
   color: $text-faint;
-}
+}

@@ -27,8 +27,8 @@
 
 .image-popup-container {
     position: relative;
-    max-width: 90vw;
-    max-height: 90vh;
+    max-width: 70vw;
+    max-height: 75vh;
     width: auto;
     height: auto;
     display: flex;
@@ -60,15 +60,15 @@
 .popup-image-wrapper {
     position: relative;
     aspect-ratio: auto;
-    width: 80vw;
-    height: 90vh;
+    width: 60vw;
+    height: 65vh;
     border-radius: 8px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     
     @media (max-width: 768px) {
         width: 85vw;
-        height: 70vh;
+        height: 60vh;
     }
 }
 

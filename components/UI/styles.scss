@@ -47,6 +47,16 @@
   }
 }
 
+.version-switcher-container {
+  position: fixed;
+  top: 20px;
+  right: 36px;
+  display: flex;
+  gap: 12px;
+  z-index: 1000;
+  flex-direction: row;
+}
+
 .mode-switcher {
   position: fixed;
   top: 26px;
@@ -59,8 +69,8 @@
   border: 3px solid hsla(276, 100%, 67%, 0.993);
   border-radius: 8px;
   padding: 12px 14px;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
   text-decoration: none;
   transition: all .2s;
 
@@ -70,3 +80,4 @@
     background-color: #1616160a;
   }
 }
+
