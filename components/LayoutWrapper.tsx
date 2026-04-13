@@ -12,6 +12,7 @@ import MobileHeader from './Sidebar/MobileHeader';
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const { isIdeMode, theme } = useAppContext();
   const size = useWindowSize();
+
   const isMobile = size.width < 1099;
 
   return (

@@ -15,11 +15,9 @@ export default function Homepage() {
       <FadeIn>
         <section className="hero">
           <div className="hero__content">
-            <Image
+            <img
               src="/portfoliopic.jpg"
               alt="Sew"
-              width={150}
-              height={150}
               className="hero__portfolio-pic"
             />
             <h1 className="hero__heading">
@@ -37,7 +35,7 @@ export default function Homepage() {
                 buttonType={ACTION_BUTTON_TYPE.PRIMARY}
               />
               <ActionButton
-                title="See my work"
+                title="My work"
                 link="/work"
                 buttonType={ACTION_BUTTON_TYPE.GHOST}
               />
