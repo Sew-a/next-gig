@@ -60,7 +60,7 @@ export default function Homepage() {
               <span className="portfolio__label">// COLLECTIONS</span>
               <h2 className="portfolio__title">PROJECTS</h2>
               <p className="portfolio__desc">
-                Brief History of what, where and how I worked, All that I have recollected is in my gallery.
+                A curated exhibition of my professional journey, key projects, and the creative milestones I’ve achieved along the way.
               </p>
               <ActionButton
                 title="View Gallery →"

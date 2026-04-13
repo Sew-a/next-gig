@@ -19,8 +19,7 @@ const fileContents: Record<string, string> = {
     </div>
   );
 };`,
-  'Experience.ts': `const Works = [
-  {
+  'Experience.ts': `const Works = [{
     company: 'Picsart',
     role: 'Frontend Engineer',
     work: "Worked on a lot of stuff, landings, editor, file systems, microfrontends, libs, design systems, etc..." 
@@ -40,7 +39,7 @@ const OtherProjects = [
   I also had a small team which included game designer and graphic designer.
   worked on game for 6 months",
   whyStopped: "My Graphic Designer got divorced from me"
-};]
+}]
 
 `,
   'Skills.json': `{

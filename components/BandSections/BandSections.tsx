@@ -33,7 +33,7 @@ const BandSections = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-          Afterparty
+          AFTERPARTY
           </motion.h1>
           <motion.div
             className="sub-text"
@@ -84,6 +84,8 @@ const BandSections = () => {
                 Founded by 2 Vi and Sev, firstly formed as a cover band, then we started writing our own songs.
                 Our sound is a raw blend of post-punk energy and cinematic soundscapes that tell the stories of our lives.
                 <br />
+                Later We found two more members, They were from other band so we kind of stole them. 
+                <br />
                 We are Afterparty, and we are here to stay.
               </p>
               <div className="block-footer">EST. 2025 / YEREVAN</div>
@@ -119,7 +121,7 @@ const BandSections = () => {
               </div>
             </motion.div>
             <motion.div className="grid-block quote-block" variants={itemVariants}>
-              <p>We just play music, and we remove all that we don't like</p>
+              <p>We play music that feels right to us, and we're not sure about our band name yet</p>
             </motion.div>
           </motion.div>
         </section>

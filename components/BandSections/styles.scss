@@ -4,11 +4,6 @@
 $grid-gap: 1.5rem;
 
 .band-sections {
-  width: 100%;
-  color: #fff;
-  overflow-x: hidden;
-
-  // ─── HERO SECTION ───
   .band-hero {
     position: relative;
     height: 98vh;
@@ -17,6 +12,11 @@ $grid-gap: 1.5rem;
     justify-content: center;
     align-items: center;
     background-color: #573a8525;
+    background-image: url("/gallery/pixelart.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    z-index: 0;
 
     &::after {
       content: "";
@@ -61,10 +61,9 @@ $grid-gap: 1.5rem;
 
       .brush-text {
         font-size: clamp(4rem, 13vw, 10rem);
-        color: $accent-dark;
         margin: 0;
         line-height: 0.9;
-        text-shadow: 0 10px 30px rgba(138, 96, 236, 0.2);
+        text-shadow: 0 10px 30px rgb(26, 29, 46);
       }
 
       .sub-text {
