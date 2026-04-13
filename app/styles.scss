@@ -37,17 +37,58 @@ html {
    HERO
 ───────────────────────────────── */
 .hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  @include section-padding;
-  @include content-wrapper;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 90vh;
+  position: relative;
+  overflow: hidden;
+  background-color: $bg-primary;
 
-  &__left {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/gallery/parralax1.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.4;
+    z-index: 0;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba($bg-primary, 0.4) 0%,
+      rgba($bg-primary, 0.2) 50%,
+      $bg-primary 100%
+    );
+    z-index: 1;
+  }
+
+  &__content {
+    @include content-wrapper;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 1.5rem;
+    z-index: 2;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 6rem 1rem;
   }
 
   &__tag {
@@ -55,6 +96,7 @@ html {
     font-size: 0.8rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
+    margin-top: 1rem;
   }
 
   &__heading {
@@ -63,14 +105,13 @@ html {
     line-height: 1.1;
     color: #fff;
 
-    /* underline accent */
     &::after {
       content: "";
       display: block;
       width: 60px;
       height: 3px;
       background: $accent-dark;
-      margin-top: 1rem;
+      margin: 1.5rem auto 0 auto;
     }
   }
 
@@ -82,97 +123,33 @@ html {
     font-size: 1.05rem;
     color: $text-secondary;
     line-height: 1.7;
-    max-width: 440px;
+    max-width: 500px;
+    margin: 0 auto;
   }
 
   &__cta {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-  }
-
-  &__socials {
-    display: flex;
-    gap: 1.25rem;
-
-    a {
-      color: $text-dim;
-      transition: color 0.2s ease, transform 0.2s ease;
-
-      &:hover {
-        color: $accent-main;
-        transform: translateY(-3px);
-      }
-    }
-  }
-
-  &__right {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1.5rem;
   }
 
   &__portfolio-pic {
-    width: 250px;
-    height: 250px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    margin: auto;
-    border: 3px solid $accent-dark;
-    box-shadow: $accent-glow-avatar;
+    margin: 0 auto;
+    border: 1px solid $accent-dark;
+    filter: sepia(80%) saturate(40%) hue-rotate(190deg) brightness(0.95);
 
     @media (max-width: $tablet) {
       width: 150px;
       height: 150px;
     }
   }
-
-  &__card {
-    @include dark-card;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  &__avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, $accent-dark, $accent-main);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    box-shadow: $accent-glow-avatar;
-  }
-
-  &__initials {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #fff;
-  }
-
-  &__stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-
-  &__about {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-
-    p {
-      color: $text-muted;
-      font-size: 16px;
-      line-height: 1.6;
-    }
-  }
 }
-
 
 
 /* ─────────────────────────────────
@@ -180,7 +157,6 @@ html {
 ───────────────────────────────── */
 .portfolio {
   @include section-padding;
-  border-top: 1px solid $accent-dark;
   position: relative;
   overflow: hidden;
 
@@ -323,7 +299,7 @@ html {
   }
 
   &__title {
-    font-size: 1.8rem;
+    font-size: 36px;
     font-weight: 700;
     color: #fff;
     letter-spacing: 0.25em;
@@ -428,7 +404,6 @@ html {
     z-index: 2;
     background-color: $bg-primary;
     padding: 10px 0;
-    font-family: $font-heading;
   }
 
   &__connector {
@@ -451,11 +426,10 @@ html {
   }
 
   &__company {
-    font-size: 1.8rem;
+    font-size: 36px;
     font-weight: 400;
     color: #fff;
     margin-bottom: 0.5rem;
-    font-family: $font-heading;
   }
 
   &__role {
@@ -528,7 +502,7 @@ html {
   }
 
   &__cat {
-    font-size: 0.8rem;
+    font-size: 16px;
     color: $accent-main;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -544,7 +518,7 @@ html {
 .tag {
   background-color: $bg-tag;
   color: #ccc;
-  font-size: 0.78rem;
+  font-size: 16px;
   padding: 4px 10px;
   border-radius: 20px;
   border: 1px solid $border-color;
@@ -559,4 +533,10 @@ html {
   display: block;
   @include content-wrapper;
   margin-bottom: 0.5rem;
+}
+
+.pages-spacing {
+  @media (max-width: $tablet) {
+    padding: 24px 16px 0 16px;
+  }
 }

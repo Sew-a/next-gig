@@ -33,7 +33,7 @@ export default function GetInTouch() {
               <ActionButton
                 title="Get in touch"
                 onClick={handleNext}
-                buttonType={ACTION_BUTTON_TYPE.PRIMARY}
+                buttonType={ACTION_BUTTON_TYPE.GHOST}
               />
             </motion.div>
           )}
@@ -60,7 +60,7 @@ export default function GetInTouch() {
               <ActionButton
                 title="Still get in touch"
                 onClick={handleNext}
-                buttonType={ACTION_BUTTON_TYPE.PRIMARY}
+                buttonType={ACTION_BUTTON_TYPE.GHOST}
               />
             </motion.div>
           )}

@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Music, Users, Info, Play, ChevronRight } from 'lucide-react';
 import { BAND_MEMBERS, BAND_TRACKS } from '@/data/bandData';
@@ -32,7 +33,7 @@ const BandSections = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            Afterparty
+          Afterparty
           </motion.h1>
           <motion.div
             className="sub-text"
@@ -43,10 +44,29 @@ const BandSections = () => {
             Is Coming
           </motion.div>
         </div>
-        <div className="scroll-indicator">
-          <div className="scroll-line" />
-          <div className="scroll-dot" />
-        </div>
+      </section>
+
+      <section className="band-gallery">
+        <motion.div
+          className="gallery-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {[
+            { src: "/gallery/band1.jpg", label: "LIVE PERFORMANCE" },
+            { src: "/gallery/badn2.jpg", label: "STUDIO SESSION" },
+            { src: "/gallery/band3.jpg", label: "BACKSTAGE" }
+          ].map((item, index) => (
+            <motion.div key={index} className="gallery-item" variants={itemVariants}>
+              <Image src={item.src} alt={item.label} fill />
+              <div className="gallery-overlay">
+                <span>{item.label}</span>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </section>
 
       <div className="band-content-wrapper">
@@ -59,7 +79,7 @@ const BandSections = () => {
             viewport={{ once: true }}
           >
             <motion.div className="grid-block grid-block--large info-block" variants={itemVariants}>
-              <h2>THE LEGACY</h2>
+              <h2>THE BAND</h2>
               <p>
                 Founded by 2 Vi and Sev, firstly formed as a cover band, then we started writing our own songs.
                 Our sound is a raw blend of post-punk energy and cinematic soundscapes that tell the stories of our lives.

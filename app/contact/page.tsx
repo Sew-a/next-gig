@@ -3,10 +3,10 @@ import GetInTouch from "@/components/GetInTouch/GetInTouch";
 
 const page = () => {
   return (
-    <>
+    <div className="pages-spacing">
       <GetInTouch />
       {/* <Contact /> */}
-    </>
+    </div>
   )
 }
 

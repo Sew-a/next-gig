@@ -1,26 +1,36 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;600;900&display=swap');
-
 $grid-gap: 1.5rem;
 
 .band-sections {
   width: 100%;
   color: #fff;
-  font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
 
   // ─── HERO SECTION ───
   .band-hero {
     position: relative;
-    height: 100vh;
+    height: 98vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #573a8525;
-    padding: 2rem 4rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg,
+          rgba($bg-primary, 0.4) 0%,
+          rgba($bg-primary, 0.2) 50%,
+          $bg-primary 100%);
+      z-index: 1;
+    }
 
     &__overlay {
       position: absolute;
@@ -50,7 +60,6 @@ $grid-gap: 1.5rem;
       z-index: 5;
 
       .brush-text {
-        font-family: 'Permanent Marker', cursive;
         font-size: clamp(4rem, 13vw, 10rem);
         color: $accent-dark;
         margin: 0;
@@ -65,31 +74,6 @@ $grid-gap: 1.5rem;
         opacity: 0.6;
         margin-top: 2rem;
         text-transform: uppercase;
-      }
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      right: 4rem;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-
-      .scroll-line {
-        width: 1px;
-        height: 100px;
-        background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.2), transparent);
-      }
-
-      .scroll-dot {
-        width: 8px;
-        height: 8px;
-        background: $accent-dark;
-        border-radius: 50%;
-        box-shadow: 0 0 10px $accent-dark;
       }
     }
   }
@@ -277,12 +261,74 @@ $grid-gap: 1.5rem;
       }
     }
   }
+
+  // ─── GALLERY SECTION ───
+  .band-gallery {
+    padding: 4rem 4rem;
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: $grid-gap;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.03);
+
+      img {
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 50%, rgba($bg-primary, 0.9) 100%);
+        display: flex;
+        align-items: flex-end;
+        padding: 1.5rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+
+        span {
+          font-size: 0.75rem;
+          font-weight: 600;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          opacity: 0.8;
+        }
+      }
+
+      &:hover {
+        img {
+          transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
 
 // Mobile Adjustments
 @media (max-width: 1024px) {
-  .band-sections .band-grid-section .grid-container {
-    grid-template-columns: repeat(2, 1fr);
+  .band-sections {
+    .band-grid-section .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .band-gallery .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
 
@@ -291,10 +337,6 @@ $grid-gap: 1.5rem;
     .band-hero {
       padding: 0;
       height: 80vh;
-
-      .scroll-indicator {
-        display: none;
-      }
     }
 
     .band-content-wrapper {
@@ -310,6 +352,13 @@ $grid-gap: 1.5rem;
       grid-row: span 1 !important;
     }
 
+    .band-gallery {
+      padding: 2rem;
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
   }
 }

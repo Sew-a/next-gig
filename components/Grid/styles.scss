@@ -121,3 +121,70 @@
         }
     }
 }
+
+
+.expertise-section {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.expertise-card {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 0;
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+
+    .expertise-icon {
+        color: #a855f7;
+        margin-bottom: 20px;
+        transition: color 0.3s ease;
+    }
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border-color: #a855f7; // accent color
+
+        .expertise-icon {
+            color: #d8b4fe; // light accent on hover
+        }
+    }
+
+    h3 {
+        font-size: 1.8rem;
+        color: white;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 15px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background-color: #a855f7; // accent color
+        }
+    }
+
+    .expertise-desc {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #9cb3c9;
+    }
+}

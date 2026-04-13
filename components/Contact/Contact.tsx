@@ -131,7 +131,7 @@ export default function ContactPage() {
         </div>
         <ActionButton
           type="submit"
-          buttonType={ACTION_BUTTON_TYPE.PRIMARY}
+          buttonType={ACTION_BUTTON_TYPE.GHOST}
           className="submit-btn"
           title={status === "loading" ? "Sending…" : "Send Message →"}
           disabled={status === "loading"}

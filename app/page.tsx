@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   HERO_DATA,
   EXPERIENCE,
@@ -13,8 +14,14 @@ export default function Homepage() {
     <main className="portfolio-home">
       <FadeIn>
         <section className="hero">
-          <div className="hero__left">
-            <span className="hero__tag">{HERO_DATA.tag}</span>
+          <div className="hero__content">
+            <Image
+              src="/portfoliopic.jpg"
+              alt="Sew"
+              width={150}
+              height={150}
+              className="hero__portfolio-pic"
+            />
             <h1 className="hero__heading">
               {HERO_DATA.name}
               <br />
@@ -22,11 +29,11 @@ export default function Homepage() {
               <br />
               <span className="hero__accent">{HERO_DATA.accent}</span>
             </h1>
-            <p className="hero__sub">{HERO_DATA.summary}</p>
+            {HERO_DATA.summary && <p className="hero__sub">{HERO_DATA.summary}</p>}
             <div className="hero__cta">
               <ActionButton
-                title="Get in touch"
-                link="/contact"
+                title="My Experience"
+                link="#experience"
                 buttonType={ACTION_BUTTON_TYPE.PRIMARY}
               />
               <ActionButton
@@ -36,13 +43,6 @@ export default function Homepage() {
               />
             </div>
           </div>
-          <div className="hero__right">
-            <img
-              src="/portfoliopic.webp"
-              alt="Sew"
-              className="hero__portfolio-pic"
-            />
-          </div>
         </section>
       </FadeIn>
       <FadeIn delay={0.1}>
@@ -51,7 +51,7 @@ export default function Homepage() {
             <div className="portfolio__grid">
               {PORTFOLIO.map((project, index) => (
                 <div key={index} className="portfolio__item">
-                  <img src={project.image} alt={project.title} />
+                  <Image src={project.image} alt={project.title} fill />
                   <div className="portfolio__overlay">
                     <span>{project.title}</span>
                   </div>

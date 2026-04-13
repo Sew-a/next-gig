@@ -1,22 +1,16 @@
 "use client";
 import { useAppContext } from "@/contexts/appContext";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { useEffect, useState } from "react";
+import { Moon } from "lucide-react";
 
 const VersionSwitcher = () => {
   const { isIdeMode, setIsIdeMode, setTheme } = useAppContext();
-  const useSize = useWindowSize();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const isIdeModeShown = mounted ? useSize?.width >= 900 : true;
+  const size = useWindowSize();
+  const isMobile = size.width < 1099;
 
   return (
     <div className="version-switcher-container">
-      {isIdeModeShown && (
+      {!isMobile && (
         <button
           onClick={() => setIsIdeMode((prev) => !prev)}
           className="mode-switcher"
@@ -34,7 +28,7 @@ const VersionSwitcher = () => {
         className="mode-switcher theme-switcher"
         style={{ position: "static", top: "auto", right: "auto" }}
       >
-        {"Switch Color"}
+        <Moon size={24} />
       </button>
     </div>
   );

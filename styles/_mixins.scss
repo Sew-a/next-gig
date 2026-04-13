@@ -37,30 +37,39 @@
   margin-bottom: 2.5rem;
 }
 
-// ─── Buttons ─────────────────────────────────────
 @mixin btn-base {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 12px 24px;
-  border-radius: $border-radius-md;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 4px;
   font-size: 18px;
   font-weight: 500;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   cursor: pointer;
   border: none;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 @mixin btn-primary {
   @include btn-base;
   background: $accent-dark;
   color: #fff;
-  box-shadow: $accent-glow-sm;
+  box-shadow: 0 4px 0 darken($accent-dark, 15%);
+  
   &:hover {
     background: $accent-hover;
-    box-shadow: $accent-glow-md;
-    transform: translateY(-2px);
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 darken($accent-dark, 15%);
+  }
+
+  &:active {
+    transform: translateY(4px);
+    box-shadow: none;
   }
 }
 
@@ -69,10 +78,18 @@
   background: transparent;
   color: $accent-main;
   border: 1px solid $border-accent;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+  
   &:hover {
     border-color: $accent-main;
     background: rgba(212, 148, 255, 0.066);
-    transform: translateY(-2px);
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translateY(4px);
+    box-shadow: none;
   }
 }
 

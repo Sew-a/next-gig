@@ -1,6 +1,6 @@
 export const HERO_DATA = {
   tag: "// SOFTWARE ENGINEER",
-  name: "I'm Sev,",
+  name: "Hello, I'm Sev",
   title: "Software",
   accent: "Engineer",
   summary:
@@ -71,4 +71,5 @@ export const SKILL_CATEGORIES = [
   { cat: "Testing & QA", items: ["JEST", "Storybook"] },
   { cat: "DevOps & Build", items: ["Git", "Docker", "Webpack", "CI/CD"] },
   { cat: "AI-Enhanced Dev", items: ["Claude", "Cursor", "Copilot"] },
+  { cat: "Game Development", items: ["Unity", "C#", "Pixel Art programs"] },
 ];

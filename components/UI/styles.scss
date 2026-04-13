@@ -12,8 +12,6 @@
 
 .action-button {
   @include btn-base;
-  text-decoration: none;
-  font-family: inherit;
 
   &--primary {
     @include btn-primary;
@@ -24,25 +22,37 @@
   }
 
   &--action {
-    background-color: #ffffff02;
+    background-color: rgba(255, 255, 255, 0.05);
     border: none;
-    transform: translateY(-2px);
     font-size: 13px;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.3);
 
     &:hover {
-      border-color: #e0b0ff;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px #da70d64d;
-      background-color: #1616160a;
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+      transform: translateY(3px);
+      box-shadow: none;
     }
   }
 
   &--standard {
     background-color: #322a63;
     color: #fff;
+    box-shadow: 0 4px 0 darken(#322a63, 10%);
 
     &:hover {
       background-color: #282241;
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 darken(#322a63, 10%);
+    }
+
+    &:active {
+      transform: translateY(4px);
+      box-shadow: none;
     }
   }
 }
@@ -55,6 +65,13 @@
   gap: 12px;
   z-index: 1000;
   flex-direction: row;
+
+
+  @media (max-width: $tablet) {
+    right: 10px;
+    top: 10px;
+  }
+
 }
 
 .mode-switcher {
@@ -62,22 +79,32 @@
   top: 26px;
   right: 46px;
   z-index: 100;
-
-  cursor: pointer;
   color: #d494ff;
-  background: none;
-  border: 3px solid hsla(276, 100%, 67%, 0.993);
-  border-radius: 8px;
-  padding: 12px 14px;
+  background-color: rgba(212, 148, 255, 0.05);
+  border: 2px solid hsla(276, 100%, 67%, 0.993);
+  border-radius: 4px;
+  padding: 10px 18px;
   font-size: 18px;
   font-weight: 500;
   text-decoration: none;
-  transition: all .2s;
+  transition: all 0.1s;
+  box-shadow: 0 4px 0 hsla(276, 100%, 30%, 0.8);
+  cursor: pointer;
+
+
+  @media (max-width: $tablet) {
+    font-size: 12px;
+    padding: 8px;
+  }
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px #da70d64d;
-    background-color: #1616160a;
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 hsla(276, 100%, 30%, 0.8);
+    background-color: rgba(212, 148, 255, 0.1);
+  }
+
+  &:active {
+    transform: translateY(4px);
+    box-shadow: none;
   }
 }
-

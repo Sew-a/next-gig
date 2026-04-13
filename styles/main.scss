@@ -72,7 +72,7 @@ a {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto 20px;
-  padding: 40px 44px 20px 40px;
+  padding: 0px 44px 20px 40px;
   position: relative;
 
   &.ide-mode {
@@ -82,7 +82,7 @@ a {
   }
 
   @media (max-width: 768px) {
-    padding: 36px 30px 40px 40px;
+    padding: 0;
   }
 }
 
@@ -95,9 +95,16 @@ a {
   .mode-switcher {
     border-color: var(--theme-secondary) !important;
     color: var(--theme-secondary) !important;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
 
     &:hover {
-      box-shadow: 0 4px 8px rgba(112, 119, 218, 0.4);
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+      transform: translateY(4px);
+      box-shadow: none;
     }
   }
 
@@ -106,14 +113,32 @@ a {
   .hack-close-btn {
     border-color: var(--theme-accent) !important;
     color: var(--theme-accent) !important;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
 
     &--primary {
       background-color: var(--theme-accent) !important;
       color: white !important;
+      box-shadow: 0 4px 0 darken(#354785, 10%);
+
+      &:hover {
+        transform: translateY(2px);
+        box-shadow: 0 2px 0 darken(#354785, 10%);
+      }
+
+      &:active {
+        transform: translateY(4px);
+        box-shadow: none;
+      }
     }
 
-    &:hover {
-      box-shadow: 0 4px 8px rgba(71, 120, 255, 0.4);
+    &:hover:not(.action-button--primary) {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+      transform: translateY(4px);
+      box-shadow: none;
     }
   }
 
@@ -192,14 +217,36 @@ a {
   }
 
   .hero__portfolio-pic {
+    position: relative;
     border-color: var(--theme-accent) !important;
     box-shadow: 0 0 30px rgba(53, 71, 133, 0.3) !important;
   }
 
-  // Sidebar & IDE Overrides
-  .sidebar-nav {
-    .nav-link {
-      border-color: currentColor !important;
+  // Sidebar Overrides
+  .sidebar-toggle {
+    color: var(--theme-accent) !important;
+    border-color: rgba(53, 71, 133, 0.2) !important;
+    background-color: rgba(53, 71, 133, 0.05) !important;
+
+    &:hover {
+      color: var(--theme-secondary) !important;
+      background-color: rgba(53, 71, 133, 0.1) !important;
+    }
+  }
+
+  .nav-link {
+    border-color: rgba(53, 71, 133, 0.2) !important;
+
+    &.active {
+      color: var(--theme-secondary) !important;
+      border-color: var(--theme-secondary) !important;
+      background-color: rgba(53, 71, 133, 0.1) !important;
+      box-shadow: 0 2px 0 var(--theme-accent) !important;
+    }
+
+    &:hover:not(.active) {
+      border-color: var(--theme-secondary) !important;
+      background-color: rgba(53, 71, 133, 0.05) !important;
     }
   }
 

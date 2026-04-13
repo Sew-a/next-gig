@@ -28,7 +28,7 @@ export const CHARACTER_CONFIG: Record<Action, ActionConfig> = {
     isOneShot: false,
   },
   kick: {
-    frames: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", "20.png", "20.png", "21.png", "22.png", "22.png"].map(f => `/game/footKick/${f}`),
+    frames: ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", "20.png", "20.png", "22.png", "22.png"].map(f => `/game/footKick/${f}`),
     fps: 10,
     isOneShot: true,
   },
