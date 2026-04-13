@@ -1,3 +1,4 @@
+@use "sass:color";
 @import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
 
 :root {
@@ -118,11 +119,11 @@ a {
     &--primary {
       background-color: var(--theme-accent) !important;
       color: white !important;
-      box-shadow: 0 4px 0 darken(#354785, 10%);
+      box-shadow: 0 4px 0 color.adjust(#354785, $lightness: -10%);
 
       &:hover {
         transform: translateY(2px);
-        box-shadow: 0 2px 0 darken(#354785, 10%);
+        box-shadow: 0 2px 0 color.adjust(#354785, $lightness: -10%);
       }
 
       &:active {
