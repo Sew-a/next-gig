@@ -113,7 +113,7 @@ const BandSections = () => {
               <div className="song-track-list">
                 {BAND_TRACKS.map((track, i) => (
                   <div key={i} className="song-item">
-                    <div className="song-play"><Play size={12} fill="currentColor" /></div>
+                    {/* <div className="song-play"><Play size={12} fill="currentColor" /></div> */}
                     <span className="song-name">{track.name}</span>
                     <span className="song-duration">{track.duration}</span>
                   </div>

@@ -15,10 +15,12 @@ export default function Homepage() {
       <FadeIn>
         <section className="hero">
           <div className="hero__content">
-            <img
+            <Image
               src="/portfoliopic.jpg"
               alt="Sew"
               className="hero__portfolio-pic"
+              width={150}
+              height={150}
             />
             <h1 className="hero__heading">
               {HERO_DATA.name}
@@ -27,7 +29,9 @@ export default function Homepage() {
               <br />
               <span className="hero__accent">{HERO_DATA.accent}</span>
             </h1>
-            {HERO_DATA.summary && <p className="hero__sub">{HERO_DATA.summary}</p>}
+            {HERO_DATA.summary && (
+              <p className="hero__sub">{HERO_DATA.summary}</p>
+            )}
             <div className="hero__cta">
               <ActionButton
                 title="My Experience"
@@ -60,7 +64,8 @@ export default function Homepage() {
               <span className="portfolio__label">// COLLECTIONS</span>
               <h2 className="portfolio__title">PROJECTS</h2>
               <p className="portfolio__desc">
-                A curated exhibition of my professional journey, key projects, and the creative milestones I’ve achieved along the way.
+                A curated exhibition of my professional journey, key projects,
+                and the creative milestones I’ve achieved along the way.
               </p>
               <ActionButton
                 title="View Gallery →"
@@ -84,7 +89,10 @@ export default function Homepage() {
           <div className="experience__timeline">
             <div className="experience__center-line"></div>
             {EXPERIENCE.map((exp, index) => (
-              <div key={index} className={`experience__item ${index % 2 === 0 ? "left" : "right"}`}>
+              <div
+                key={index}
+                className={`experience__item ${index % 2 === 0 ? "left" : "right"}`}
+              >
                 <div className="experience__connector"></div>
                 <div className="experience__card">
                   <div className="experience__card-header">
@@ -107,10 +115,7 @@ export default function Homepage() {
       {/* ─── SKILLS ─── */}
       <FadeIn delay={0.2}>
         <section className="skills">
-          <HeadingText
-            title="Technologies I work with"
-            label="// SKILLS"
-          />
+          <HeadingText title="Technologies I work with" label="// SKILLS" />
           <div className="skills__grid">
             {SKILL_CATEGORIES.map((category, index) => (
               <div key={index} className="skill-card">
