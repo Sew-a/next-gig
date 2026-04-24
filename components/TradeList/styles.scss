@@ -1,0 +1,102 @@
+.trade-list {
+  padding: 80px 25px;
+  min-height: 100vh;
+
+  .trade-title {
+    font-size: 28px;
+    margin-bottom: 24px;
+    color: #eee7e7;
+  }
+
+  .socket-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .socket-card {
+    background-color: #19181b;
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid #333;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .socket-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #333;
+
+      .socket-name {
+        font-weight: 600;
+        font-size: 18px;
+        color: #eee7e7;
+      }
+
+      .socket-symbol {
+        font-size: 12px;
+        letter-spacing: 2px;
+        color: #666;
+        background: #2a2a2a;
+        padding: 4px 8px;
+        border-radius: 4px;
+      }
+    }
+
+    .socket-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .socket-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4px 0;
+
+        .row-label {
+          font-size: 16px;
+          color: #888;
+        }
+
+        .row-value {
+          font-size: 16px;
+          color: #ccc;
+          font-weight: 500;
+
+          &.price {
+            font-size: 18px;
+            color: #eee7e7;
+            font-weight: 600;
+          }
+
+          &.positive {
+            color: #10b981;
+          }
+
+          &.negative {
+            color: #ef4444;
+          }
+        }
+
+        &.main-price {
+          padding-bottom: 8px;
+          border-bottom: 1px solid #2a2a2a;
+          margin-bottom: 4px;
+        }
+      }
+    }
+
+    .socket-loading {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+}
