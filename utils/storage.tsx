@@ -1,15 +1,5 @@
 // import Cookies from "js-cookie";
 
-// Local storage 5-10MB, untill deleted by user, XSS risk
-
-localStorage.setItem("theme", "dark");
-
-if (localStorage.getItem("theme") === "dark") {
-  document.documentElement.classList.add("dark");
-} else {
-  document.documentElement.classList.remove("dark");
-}
-
 // Session storage 5MB, deleted when tab closed, XSS risk
 
 sessionStorage.setItem("sessionId", "712472904048");

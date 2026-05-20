@@ -13,13 +13,11 @@ export interface AppContextType {
   isIdeMode: boolean;
   currentFile: string;
   isHacked: boolean;
-  theme: 'secondary-theme' | 'default';
 
   setImageFiles: React.Dispatch<React.SetStateAction<ImageItemProps[]>>;
   setIsIdeMode: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentFile: React.Dispatch<React.SetStateAction<string>>;
   setIsHacked: React.Dispatch<React.SetStateAction<boolean>>;
-  setTheme: React.Dispatch<React.SetStateAction<'secondary-theme' | 'default'>>;
 }
 
 //  Actions list types

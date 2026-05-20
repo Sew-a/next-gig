@@ -10,7 +10,7 @@ import "./Terminal.scss";
 const TERMINAL_STORAGE_KEY = 'terminal_log';
 
 const Terminal = () => {
-  const { setIsHacked, setTheme, theme, setIsIdeMode, isIdeMode } = useAppContext(); 
+  const { setIsHacked, setIsIdeMode, isIdeMode } = useAppContext(); 
   const [localHistory, setLocalHistory] = useState<string[]>([]);
   const [input, setInput] = useState('');
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -96,13 +96,6 @@ const Terminal = () => {
         break;
       }
 
-      case TerminalCommand.SWITCH_THEME: {
-        const next = theme === 'default' ? 'secondary-theme' : 'default';
-        setTheme(next);
-        newHistory.push(`Success: Theme switched to ${next === 'default' ? 'Default' : 'Secondary-Theme'}.`);
-        break;
-      }
-
       case TerminalCommand.SWITCH_MODE: {
         const nextMode = !isIdeMode;
         setIsIdeMode(nextMode);
@@ -117,7 +110,7 @@ const Terminal = () => {
 
     setLocalHistory(newHistory);
     setInput('');
-  }, [input, localHistory, router, setIsHacked, setTheme, theme, setIsIdeMode, isIdeMode]);
+  }, [input, localHistory, router, setIsHacked, setIsIdeMode, isIdeMode]);
 
   return (
     <FadeIn delay={0.1}>

@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
@@ -16,19 +16,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   const [isIdeMode, setIsIdeMode] = useState<boolean>(false);
   const [currentFile, setCurrentFile] = useState<string>("AboutMe.tsx");
   const [isHacked, setIsHacked] = useState<boolean>(false);
-  const [theme, setTheme] = useState<'secondary-theme' | 'default'>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('theme');
-      if (saved === 'default' || saved === 'secondary-theme') return saved;
-    }
-    return 'secondary-theme';
-  });
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('theme', theme);
-    }
-  }, [theme]);
-
   const [queryClient] = useState(() => new QueryClient());
 
   const client = new ApolloClient({
@@ -50,10 +37,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       setCurrentFile,
       isHacked,
       setIsHacked,
-      theme,
-      setTheme,
     }),
-    [imageFiles, isLoading, isIdeMode, currentFile, isHacked, theme],
+    [imageFiles, isLoading, isIdeMode, currentFile, isHacked],
   );
 
   return (

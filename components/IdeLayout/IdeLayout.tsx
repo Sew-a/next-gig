@@ -22,10 +22,10 @@ const HackAlert = ({ onClose }: { onClose: () => void }) => (
 );
 
 const IdeLayout = () => {
-  const { isHacked, setIsHacked, theme } = useAppContext();
+  const { isHacked, setIsHacked } = useAppContext();
 
   return (
-    <div className={`ide-layout theme-${theme}`}>
+    <div className="ide-layout theme-secondary-theme">
       <div className="editor-terminal-column">
         <CodeEditor />
         <Terminal />

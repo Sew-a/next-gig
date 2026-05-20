@@ -8,7 +8,6 @@ export enum TerminalCommand {
   ROUTE = 'route',
   HACK = 'hack',
   HISTORY = 'history',
-  SWITCH_THEME = 'switch-theme',
   SWITCH_MODE = 'switch-mode'
 }
 
@@ -22,7 +21,6 @@ export const TERMINAL_RESPONSES = {
     '- route <page>: Navigate to a page',
     '- history: Show command history',
     '- hack: Try it if you dare',
-    '- switch-theme: Toggle secondary-theme',
     '- switch-mode: Toggle IDE/Site mode'
   ],
   ABOUT: 'This is an IDE-based portfolio. Project where I will build as much interesting ideas as I can',
