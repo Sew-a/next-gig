@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/Image";
 import {
   HERO_DATA,
   EXPERIENCE,
@@ -16,7 +16,7 @@ export default function Homepage() {
         <section className="hero">
           <div className="hero__content">
             <Image
-              src="/portfoliopic.jpg"
+              src="https://res.cloudinary.com/dlggumsot/image/upload/v1779294439/portfoliopic_ubmfda.jpg"
               alt="Sew"
               className="hero__portfolio-pic"
               width={150}
@@ -61,7 +61,7 @@ export default function Homepage() {
               ))}
             </div>
             <div className="portfolio__header">
-              <span className="portfolio__label">// COLLECTIONS</span>
+              <span className="portfolio__label">COLLECTIONS</span>
               <h2 className="portfolio__title">PROJECTS</h2>
               <p className="portfolio__desc">
                 A curated exhibition of my professional journey, key projects,

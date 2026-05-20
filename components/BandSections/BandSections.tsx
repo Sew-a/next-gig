@@ -1,24 +1,22 @@
 "use client";
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { Music, Users, Info, Play, ChevronRight } from 'lucide-react';
-import { BAND_MEMBERS, BAND_TRACKS } from '@/data/bandData';
+import { motion } from "framer-motion";
+import { Music, Users } from "lucide-react";
+import { BAND_MEMBERS, BAND_TRACKS } from "@/data/bandData";
 import "./styles.scss";
 
 const BandSections = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1 }
+    visible: { y: 0, opacity: 1 },
   };
 
   return (
     <div className="band-sections">
-
       {/* ─── HERO SECTION (UI DESIGN INSPIRED) ─── */}
       <section className="band-hero">
         <div className="band-hero__overlay" />
@@ -33,7 +31,7 @@ const BandSections = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-          AFTERPARTY
+            KICKDOWN
           </motion.h1>
           <motion.div
             className="sub-text"
@@ -54,7 +52,8 @@ const BandSections = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {[
+          {/* TODO: Image holding */}
+          {/* {[
             { src: "/gallery/band1.jpg", label: "LIVE PERFORMANCE" },
             { src: "/gallery/badn2.jpg", label: "STUDIO SESSION" },
             { src: "/gallery/band3.jpg", label: "BACKSTAGE" }
@@ -65,7 +64,7 @@ const BandSections = () => {
                 <span>{item.label}</span>
               </div>
             </motion.div>
-          ))}
+          ))} */}
         </motion.div>
       </section>
 
@@ -78,19 +77,28 @@ const BandSections = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <motion.div className="grid-block grid-block--large info-block" variants={itemVariants}>
+            <motion.div
+              className="grid-block grid-block--large info-block"
+              variants={itemVariants}
+            >
               <h2>THE BAND</h2>
               <p>
-                Founded by 2 Vi and Sev, firstly formed as a cover band, then we started writing our own songs.
-                Our sound is a raw blend of post-punk energy and cinematic soundscapes that tell the stories of our lives.
+                Founded by 2 Vi and Sev, firstly formed as a cover band, then we
+                started writing our own songs. Our sound is a raw blend of
+                post-punk energy and cinematic soundscapes that tell the stories
+                of our lives.
                 <br />
-                Later We found two more members, They were from other band so we kind of stole them. 
+                Later We found two more members, They were from other band so we
+                kind of stole them.
                 <br />
-                We are Afterparty, and we are here to stay.
+                We are Kickdown, and we are here to stay.
               </p>
               <div className="block-footer">EST. 2025 / YEREVAN</div>
             </motion.div>
-            <motion.div className="grid-block grid-block--wide members-block" variants={itemVariants}>
+            <motion.div
+              className="grid-block grid-block--wide members-block"
+              variants={itemVariants}
+            >
               <div className="block-header">
                 <Users size={20} />
                 <span>MEET THE LINEUP</span>
@@ -105,7 +113,10 @@ const BandSections = () => {
                 ))}
               </div>
             </motion.div>
-            <motion.div className="grid-block grid-block--tall tracks-block" variants={itemVariants}>
+            <motion.div
+              className="grid-block grid-block--tall tracks-block"
+              variants={itemVariants}
+            >
               <div className="block-header">
                 <Music size={20} />
                 <span>ALBUM TRACKS</span>
@@ -120,8 +131,14 @@ const BandSections = () => {
                 ))}
               </div>
             </motion.div>
-            <motion.div className="grid-block quote-block" variants={itemVariants}>
-              <p>We play music that feels right to us, and we're not sure about our band name yet</p>
+            <motion.div
+              className="grid-block quote-block"
+              variants={itemVariants}
+            >
+              <p>
+                We play music that feels right to us, and were not sure about
+                our band name yet
+              </p>
             </motion.div>
           </motion.div>
         </section>

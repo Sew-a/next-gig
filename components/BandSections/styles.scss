@@ -12,7 +12,7 @@ $grid-gap: 1.5rem;
     justify-content: center;
     align-items: center;
     background-color: #573a8525;
-    background-image: url("/gallery/pixelart.jpg");
+    background-image: url("https://res.cloudinary.com/dlggumsot/image/upload/v1779294950/1355912_rvv3fh.png");
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -60,6 +60,8 @@ $grid-gap: 1.5rem;
       z-index: 5;
 
       .brush-text {
+       font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
         font-size: clamp(4rem, 13vw, 10rem);
         margin: 0;
         line-height: 0.9;

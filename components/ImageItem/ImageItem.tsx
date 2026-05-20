@@ -1,5 +1,5 @@
 import { ACTION_NAMES, type ImageItemProps } from "@/contexts/types";
-import Image from "next/image";
+import Image from "@/components/Image";
 import "./styles.scss";
 import ActionButton from "../UI/ActionButton";
 import { ACTION_BUTTON_TYPE } from "../types";

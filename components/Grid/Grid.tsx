@@ -1,6 +1,6 @@
 'use client';
 import { useMemo } from 'react';
-import Image from 'next/image';
+import Image from '@/components/Image';
 import { motion } from 'framer-motion';
 import { HeadingText } from '../UI';
 import { useWindowSize } from '@/hooks/useWindowSize';

@@ -15,11 +15,11 @@ export const HERO_DATA = {
 export const PORTFOLIO = [
   {
     title: "Editor Files",
-    image: "/gallery/MyProject3.png",
+    image: "https://res.cloudinary.com/dlggumsot/image/upload/v1779292518/MyProject3_yzfsbw.png",
   },
   {
     title: "Brandkit Dashboard",
-    image: "/gallery/MyProject6.png",
+    image: "https://res.cloudinary.com/dlggumsot/image/upload/v1779292519/MyProject6_xzhrew.png",
   },
 ];
 
