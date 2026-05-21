@@ -1,7 +1,6 @@
 'use client';
 import { useMemo } from 'react';
 import Image from '@/components/Image';
-import { motion } from 'framer-motion';
 import { HeadingText } from '../UI';
 import { useWindowSize } from '@/hooks/useWindowSize';
 import { getGalleryImages, type GalleryImage } from '@/utils/gallery';
@@ -9,28 +8,6 @@ import './styles.scss';
 import { useQuery } from '@tanstack/react-query';
 import { useImagePopup } from '@/hooks/useImagePopup';
 import { EXPERTISE_DATA } from './constants';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: [0.215, 0.61, 0.355, 1],
-    },
-  },
-} as any;
 
 export default function Grid() {
   const { width } = useWindowSize();
@@ -81,20 +58,16 @@ export default function Grid() {
         </div>
       </div>
       <HeadingText title="Work Gallery" label="// PORTFOLIO" />
-      <motion.div
+      <div
         className="masonry-grid"
-        style={{ '--col-count': columnsCount } as any}
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+        style={{ '--col-count': columnsCount } as React.CSSProperties }
       >
         {columns.map((col, i) => (
           <div key={i} className="masonry-column">
             {col.map((item) => (
-              <motion.div
+              <div
                 key={item.id}
                 className="masonry-item"
-                variants={itemVariants}
                 onClick={() => openPopup(item.src, item.title)}
               >
                 <div className="masonry-content">
@@ -112,11 +85,11 @@ export default function Grid() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         ))}
-      </motion.div>
+      </div>
       <PopupPreview />
     </>
   );

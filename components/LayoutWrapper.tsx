@@ -1,26 +1,33 @@
 "use client";
-import React from 'react';
-import Sidebar from "../components/Sidebar";
+import dynamic from "next/dynamic";
 import FollowSection from "@/components/FollowSection";
 import Footer from "@/components/Footer";
 import IdeLayout from "@/components/IdeLayout/IdeLayout";
 import VersionSwitcher from "@/components/UI/VersionSwitcher";
 import { useAppContext } from "@/contexts/appContext";
-import { useWindowSize } from '@/hooks/useWindowSize';
-import MobileHeader from './Sidebar/MobileHeader';
+import { useWindowSize } from "@/hooks/useWindowSize";
 
-export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
+// Dynamically import the mobile/desktop navigation and disable SSR for them
+const Sidebar = dynamic(() => import("../components/Sidebar"), { ssr: false });
+const MobileHeader = dynamic(() => import("./Sidebar/MobileHeader"), {
+  ssr: false,
+});
+
+export default function LayoutWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const { isIdeMode } = useAppContext();
   const size = useWindowSize();
-
-  const isMobile = size.width < 1099;
+  const isDesktop = size.width >= 1099;
 
   return (
     <div className="main-theme-wrapper theme-secondary-theme">
       <div className="main">
-        {isMobile ? <MobileHeader /> : <Sidebar />}
+        {isDesktop ? <Sidebar /> : <MobileHeader />}
         <div className="main-content">
-          <div className={`page-content ${isIdeMode && 'ide-mode'}`}>
+          <div className={`page-content ${isIdeMode && "ide-mode"}`}>
             {isIdeMode ? <IdeLayout /> : children}
           </div>
           <FollowSection />
