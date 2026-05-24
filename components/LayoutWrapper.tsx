@@ -23,7 +23,7 @@ export default function LayoutWrapper({
   const isDesktop = size.width >= 1099;
 
   return (
-    <div className="main-theme-wrapper theme-secondary-theme">
+    <div className="main-theme-wrapper">
       <div className="main">
         {isDesktop ? <Sidebar /> : <MobileHeader />}
         <div className="main-content">

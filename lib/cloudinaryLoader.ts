@@ -1,15 +1,14 @@
-import { ImageLoaderProps } from "next/image";
-
-export default function cloudinaryLoader({
-  src,
-  width,
-  quality,
-}: ImageLoaderProps): string {
+export default function cloudinaryLoader(
+  src: string,
+  width?: number,
+  height?: number,
+): string {
   const base = "https://res.cloudinary.com/dlggumsot/image/upload";
-  const params = `w_${width},q_${quality ?? "auto"},f_auto`;
+  const params = ["f_auto", "q_auto"];
+  if (width) params.push(`w_${width}`);
+  if (height) params.push(`h_${height}`);
 
-  // Handle both full URLs and bare public IDs
   const publicId = src.startsWith(base) ? src.replace(`${base}/`, "") : src;
 
-  return `${base}/${params}/${publicId}`;
+  return `${base}/${params.join(",")}/${publicId}`;
 }

@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect } from 'react';
-import Image from '@/components/Image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import "./ImagePopup.scss";
@@ -51,12 +50,13 @@ const ImagePopup: React.FC<ImagePopupProps> = ({ src, alt, onClose }) => {
           </button>
           
           <div className="popup-image-wrapper">
-            <Image 
-              src={src} 
-              alt={alt} 
-              fill
+            <img
+              src={src}
+              alt={alt}
+              width={800}
+              height={600}
               className="popup-image"
-              priority
+              fetchPriority="high"
               sizes="90vw"
             />
           </div>

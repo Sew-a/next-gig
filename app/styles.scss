@@ -164,7 +164,7 @@ html {
     @include content-wrapper;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
-    gap: 4rem;
+    gap: 2rem;
     align-items: center;
 
     @media (max-width: $tablet) {
@@ -229,7 +229,7 @@ html {
 
   &__item {
     min-width: 280px;
-    height: 380px;
+    height: 320px;
     border-radius: $border-radius-lg;
     overflow: hidden;
     position: relative;

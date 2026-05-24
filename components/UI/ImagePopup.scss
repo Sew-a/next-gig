@@ -60,6 +60,8 @@
 .popup-image-wrapper {
     position: relative;
     aspect-ratio: auto;
+    display: flex;
+    justify-content: center;
     width: 60vw;
     height: 65vh;
     border-radius: 8px;

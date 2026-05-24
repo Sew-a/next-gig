@@ -52,19 +52,6 @@ const BandSections = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {/* TODO: Image holding */}
-          {/* {[
-            { src: "/gallery/band1.jpg", label: "LIVE PERFORMANCE" },
-            { src: "/gallery/badn2.jpg", label: "STUDIO SESSION" },
-            { src: "/gallery/band3.jpg", label: "BACKSTAGE" }
-          ].map((item, index) => (
-            <motion.div key={index} className="gallery-item" variants={itemVariants}>
-              <Image src={item.src} alt={item.label} fill />
-              <div className="gallery-overlay">
-                <span>{item.label}</span>
-              </div>
-            </motion.div>
-          ))} */}
         </motion.div>
       </section>
 

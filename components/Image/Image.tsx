@@ -1,16 +1,20 @@
 "use client";
-import NextImage from "next/image";
-import type { ImageProps as NextImageProps } from "next/image";
 import cloudinaryLoader from "@/lib/cloudinaryLoader";
 
-// Re-export Next's ImageProps so consumers keep the same type contract
-export type ImageProps = NextImageProps;
+export type ImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
+  width?: number;
+  height?: number;
+};
 
-export default function Image(props: ImageProps) {
+export default function Image({ src, width, height, alt, ...rest }: ImageProps) {
   return (
-    <NextImage
-      loader={cloudinaryLoader}
-      {...props}
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={cloudinaryLoader(src!, width, height)}
+      width={width}
+      height={height}
+      alt={alt ?? "untitled_image"}
+      {...rest}
     />
   );
 }

@@ -1,5 +1,4 @@
 import { ACTION_NAMES, type ImageItemProps } from "@/contexts/types";
-import Image from "@/components/Image";
 import "./styles.scss";
 import ActionButton from "../UI/ActionButton";
 import { ACTION_BUTTON_TYPE } from "../types";
@@ -28,11 +27,12 @@ export default function ImageItem({
     <div ref={elementRef} className="image-container">
       <div className="image-holder">
         {isVisible ? (
-          <Image
+          <img
             src={url}
             alt={name}
-            fill
-            style={{ objectFit: "cover" }}
+            width={300}
+            height={220}
+            style={{ objectFit: "cover", width: "100%", height: "100%" }}
             loading="lazy"
           />
         ) : (

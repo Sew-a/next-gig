@@ -1,15 +1,18 @@
-'use client';
-import { useMemo } from 'react';
-import Image from '@/components/Image';
-import { HeadingText } from '../UI';
-import { useWindowSize } from '@/hooks/useWindowSize';
-import { getGalleryImages, type GalleryImage } from '@/utils/gallery';
-import './styles.scss';
-import { useQuery } from '@tanstack/react-query';
-import { useImagePopup } from '@/hooks/useImagePopup';
-import { EXPERTISE_DATA } from './constants';
+"use client";
+import { useMemo } from "react";
+import Image from "@/components/Image";
+import { HeadingText } from "../UI";
+import { useWindowSize } from "@/hooks/useWindowSize";
+import type { GalleryImage } from "@/utils/gallery";
+import "./styles.scss";
+import { useImagePopup } from "@/hooks/useImagePopup";
+import { EXPERTISE_DATA } from "./constants";
 
-export default function Grid() {
+interface GridProps {
+  images: GalleryImage[];
+}
+
+export default function Grid({ images }: GridProps) {
   const { width } = useWindowSize();
   const { openPopup, PopupPreview } = useImagePopup();
 
@@ -20,24 +23,11 @@ export default function Grid() {
     return 2;
   }, [width]);
 
-  const { data: galleryData, isLoading } = useQuery<GalleryImage[]>({
-    queryKey: ["gallery"],
-    queryFn: async () => {
-      const response = getGalleryImages();
-      return response;
-    },
-  });
-
-  if (isLoading) {
-    return (
-      <section className="grid-section">
-        <div className="grid-loading">Loading Gallery...</div>
-      </section>
-    );
-  }
-
-  const columns = Array.from({ length: columnsCount }, () => [] as GalleryImage[]);
-  (galleryData || []).forEach((item, index) => {
+  const columns = Array.from(
+    { length: columnsCount },
+    () => [] as GalleryImage[],
+  );
+  images.forEach((item, index) => {
     columns[index % columnsCount].push(item);
   });
 
@@ -57,10 +47,11 @@ export default function Grid() {
           ))}
         </div>
       </div>
+      {/* GALLERY */}
       <HeadingText title="Work Gallery" label="// PORTFOLIO" />
       <div
         className="masonry-grid"
-        style={{ '--col-count': columnsCount } as React.CSSProperties }
+        style={{ "--col-count": columnsCount } as React.CSSProperties}
       >
         {columns.map((col, i) => (
           <div key={i} className="masonry-column">
@@ -74,8 +65,7 @@ export default function Grid() {
                   <Image
                     src={item.src}
                     alt={item.title}
-                    width={600}
-                    height={800}
+                    width={item.width}
                     className="masonry-image"
                     sizes={`(max-width: 480px) 100vw, (max-width: 764px) 50vw, (max-width: 1200px) 33vw, 25vw`}
                   />

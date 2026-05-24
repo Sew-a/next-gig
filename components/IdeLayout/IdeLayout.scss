@@ -6,28 +6,6 @@
   overflow: hidden;
   background-color: #0d1117; // Standard VS Code sidebar BG
 
-  &.theme-secondary-theme {
-    // Overrides for the theme
-    --accent-color: #354785; // Red
-    --border-color: rgba(112, 128, 218, 0.4); // Orchid with opacity
-    --text-accent: #354785; // Red
-    --active-bg: rgba(218, 112, 214, 0.1); 
-
-    .code-editor, .terminal, .file-explorer {
-      border-color: var(--border-color) !important;
-    }
-    
-    .prompt, .file-name, .header-left, .active {
-      color: var(--text-accent) !important;
-    }
-
-    // Target the active file explorer item
-    .file-item.active {
-      background-color: var(--active-bg);
-      border-left: 3px solid #da70d6; // Orchid
-    }
-  }
-
   .editor-terminal-column {
     flex: 1;
     display: flex;

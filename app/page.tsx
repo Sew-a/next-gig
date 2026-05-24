@@ -17,7 +17,7 @@ export default function Homepage() {
           <div className="hero__content">
             <Image
               src="https://res.cloudinary.com/dlggumsot/image/upload/v1779294439/portfoliopic_ubmfda.jpg"
-              alt="Sew"
+              alt="sevak_avetisyan"
               className="hero__portfolio-pic"
               width={150}
               height={150}
@@ -53,7 +53,7 @@ export default function Homepage() {
             <div className="portfolio__grid">
               {PORTFOLIO.map((project, index) => (
                 <div key={index} className="portfolio__item">
-                  <Image src={project.image} alt={project.title} fill />
+                  <Image src={project.image} alt={project.title} width={220} height={280} />
                   <div className="portfolio__overlay">
                     <span>{project.title}</span>
                   </div>
