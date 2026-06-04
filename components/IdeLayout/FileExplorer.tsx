@@ -2,7 +2,7 @@
 import { FileJson, FileText, FileCode, Folder } from 'lucide-react';
 import { useAppContext } from '@/contexts/appContext';
 import "./FileExplorer.scss";
-import { ideFiles } from './constants';
+import { ideFiles } from '@/utils/terminalCom';
 
 const getFileIcon = (fileName: string) => {
   const cn = `file-icon ${fileName.split('.').pop()}`;

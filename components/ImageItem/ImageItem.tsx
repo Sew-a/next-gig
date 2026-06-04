@@ -2,7 +2,7 @@ import { ACTION_NAMES, type ImageItemProps } from "@/contexts/types";
 import "./styles.scss";
 import ActionButton from "../UI/ActionButton";
 import { ACTION_BUTTON_TYPE } from "../types";
-import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import useScrollReveal from "@/hooks/useScrollReveal";
 
 const imageActions = [
   ACTION_NAMES.OPEN,
@@ -18,13 +18,14 @@ export default function ImageItem({
   name,
   handleClick,
 }: ImageItemProps) {
-  const { elementRef, isVisible } = useIntersectionObserver<HTMLDivElement>({
-    rootMargin: "200px",
-    threshold: 0.1,
+  const { ref, isVisible } = useScrollReveal({
+    threshold: 0.15,
+    rootMargin: "0px 0px -40px 0px",
+    once: false,
   });
 
   return (
-    <div ref={elementRef} className="image-container">
+    <div ref={ref} className="image-container">
       <div className="image-holder">
         {isVisible ? (
           <img

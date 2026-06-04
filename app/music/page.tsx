@@ -1,7 +1,4 @@
 import type { Metadata } from "next";
-
-// const LazyImageItems = lazy(() => import("@/components/ImageItems"));
-// const LazyMusicPlayer = lazy(() => import("@/components/MusicPlayer"));
 import BandSections from "@/components/BandSections";
 import "../styles.scss";
 
@@ -20,8 +17,6 @@ export default function NextGigPage() {
   return (
     <div className="pages-spacing">
       <BandSections />
-      {/* <LazyImageItems /> */}
-      {/* <LazyMusicPlayer /> */}
     </div>
   );
 }

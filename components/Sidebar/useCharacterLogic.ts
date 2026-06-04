@@ -1,11 +1,18 @@
-import { useState, useEffect, useRef } from "react";
-import { Action } from "./characterConstants";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { Action } from "../../utils/characterConstants";
 
 export function useCharacterLogic() {
   const [isRunning, setIsRunning] = useState(false);
   const [currentAction, setCurrentAction] = useState<Action>("idle");
+  const [isReady, setIsReady] = useState(false);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
   const keysPressed = useRef<Set<string>>(new Set());
+
+
+  const handleLoaded = useCallback(() => {
+    const timer = setTimeout(() => setIsReady(true), 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,9 +91,11 @@ export function useCharacterLogic() {
   };
 
   return {
+    isReady,
     isRunning,
     currentAction,
-    handleActionComplete,
     triggerKick,
+    handleLoaded,
+    handleActionComplete,
   };
 }

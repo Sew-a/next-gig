@@ -101,7 +101,7 @@ export default function Homepage() {
                     <span className="experience__period">{exp.period}</span>
                   </div>
                   <ul className="experience__achievements">
-                    {exp.achievements.slice(0, 6).map((achievement, aIndex) => (
+                    {exp.achievements.map((achievement, aIndex) => (
                       <li key={aIndex}>{achievement}</li>
                     ))}
                   </ul>
