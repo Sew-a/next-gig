@@ -19,12 +19,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "app/*": ["./app/*"],           // you can add whatever you need
-      "components/*": ["./components/*"],
-      "context/*": ["./contexts/*"],
-      "hooks/*": ["./hooks/*"],
-      "lib/*": ["./lib/*"]
+      "@/*": ["./src/*", "./*"],
+      "app/*": ["/src/*"], 
+      "components/*": ["/src/components/*"],
+      "context/*": ["/src/contexts/*"],
+      "hooks/*": ["/src/hooks/*"],
+      "lib/*": ["/src/lib/*"]
     }
   },
   "include": [

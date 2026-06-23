@@ -1,0 +1,117 @@
+@use "sass:color";
+@use 'variables' as *;
+
+// ─── Layout ──────────────────────────────────────
+@mixin content-wrapper {
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+@mixin section-padding {
+  padding: 5rem 4rem;
+  @media (max-width: $tablet) {
+    padding: 3rem 1.5rem;
+  }
+}
+
+// ─── Dark Card ───────────────────────────────────
+@mixin dark-card($radius: $border-radius-xl) {
+  background: $bg-secondary;
+  border: 1px solid $border-color;
+  border-radius: $radius;
+}
+
+// ─── Accent Text / Labels ────────────────────────
+@mixin section-label-style {
+  display: inline-block;
+  color: $accent-main;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+@mixin section-title-style {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: 2.5rem;
+}
+
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 0;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.12s ease;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-family: 'Rajdhani', sans-serif;
+  // Cyberpunk top-left diagonal cut corner
+  clip-path: polygon(14px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 14px);
+}
+
+@mixin btn-primary {
+  @include btn-base;
+  background: $accent-main;
+  color: #000;
+  border: 2px solid $accent-main;
+  // filter: drop-shadow works outside clip-path; box-shadow does not
+  filter: drop-shadow(0 5px 0 $accent-dark) drop-shadow(0 0 10px rgba(0, 240, 255, 0.35));
+  
+  &:hover {
+    background: $accent-hover;
+    border-color: $accent-hover;
+    transform: translateY(2px);
+    filter: drop-shadow(0 3px 0 $accent-dark) drop-shadow(0 0 18px rgba(0, 240, 255, 0.6));
+  }
+
+  &:active {
+    transform: translateY(5px);
+    filter: none;
+  }
+}
+
+@mixin btn-ghost {
+  @include btn-base;
+  background: transparent;
+  color: $accent-main;
+  border: 2px solid $accent-main;
+  filter: drop-shadow(0 5px 0 $accent-dark) drop-shadow(0 0 6px rgba(0, 240, 255, 0.2));
+  
+  &:hover {
+    background: rgba(0, 240, 255, 0.08);
+    border-color: $accent-hover;
+    color: $accent-hover;
+    transform: translateY(2px);
+    filter: drop-shadow(0 3px 0 $accent-dark) drop-shadow(0 0 14px rgba(0, 240, 255, 0.45));
+  }
+
+  &:active {
+    transform: translateY(5px);
+    filter: none;
+  }
+}
+
+// ─── Hover lift ──────────────────────────────────
+@mixin hover-lift($y: -2px) {
+  transition: transform 0.2s ease;
+  &:hover { transform: translateY($y); }
+}
+
+// ─── Accent border card hover ────────────────────
+@mixin card-hover-glow {
+  transition: border-color 0.2s, box-shadow 0.2s;
+  &:hover {
+    border-color: $border-accent;
+    box-shadow: 0 0 30px $accent-subtle;
+  }
+}

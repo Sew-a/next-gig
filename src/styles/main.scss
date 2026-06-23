@@ -1,0 +1,265 @@
+@use "sass:color";
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+:root {
+  --background: #0b071494;
+  --foreground: #f0e6e6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Rajdhani', 'Jersey 25', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+/* Main Layout Styles */
+.main {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  height: 100vh;
+
+  @media (max-width: 1099px) {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.page-content {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 20px;
+  position: relative;
+  min-height: 60vh;
+
+  &.ide-mode {
+    padding: 0;
+    max-width: none;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+}
+
+.main-theme-wrapper {
+  // Cyberpunk 2077 theme: cyan primary, red secondary
+  --theme-accent: #00f0ff;
+  --theme-secondary: #ff1161;
+  --theme-border: #007a8a;
+
+  // Global Button Overrides
+  .mode-switcher {
+    border-color: var(--theme-secondary);
+    color: var(--theme-secondary);
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+
+    &:hover {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+      transform: translateY(4px);
+      box-shadow: none;
+    }
+  }
+
+  .action-button,
+  .btn-action,
+  .hack-close-btn {
+    border: 2px solid var(--theme-accent);
+    color: var(--theme-accent);
+    border-radius: 0;
+    clip-path: polygon(12px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 12px);
+    box-shadow: none;
+    filter: drop-shadow(0 4px 0 #007a8a) drop-shadow(0 0 6px rgba(0, 240, 255, 0.2));
+
+    &--primary {
+      background-color: var(--theme-accent);
+      color: #000;
+      border: 2px solid var(--theme-accent);
+      border-radius: 0;
+      filter: drop-shadow(0 4px 0 #007a8a) drop-shadow(0 0 10px rgba(0, 240, 255, 0.35));
+
+      &:hover {
+        transform: translateY(2px);
+        filter: drop-shadow(0 2px 0 #007a8a) drop-shadow(0 0 18px rgba(0, 240, 255, 0.55));
+      }
+
+      &:active {
+        transform: translateY(4px);
+        filter: none;
+      }
+    }
+
+    &:hover:not(.action-button--primary) {
+      transform: translateY(2px);
+      filter: drop-shadow(0 2px 0 #007a8a) drop-shadow(0 0 14px rgba(0, 240, 255, 0.4));
+    }
+
+    &:active {
+      transform: translateY(4px);
+      filter: none;
+    }
+  }
+
+  // Headings & Text
+  h1,
+  h2,
+  h3,
+  .section-title,
+  .hero__accent,
+  .portfolio__title,
+  .timeline__role,
+  .opened-icon {
+    color: var(--theme-secondary);
+  }
+
+  .section-label,
+  .portfolio__label,
+  .hero__tag,
+  .sidebar-toggle,
+  .prompt {
+    color: var(--theme-accent);
+  }
+
+  .active {
+    color: var(--theme-accent);
+
+    &::after {
+      background-color: var(--theme-accent);
+    }
+  }
+
+  // Portfolio & Experience Overrides
+  .portfolio {
+    border-top-color: var(--theme-accent);
+  }
+
+  .experience__role {
+    color: var(--theme-accent);
+
+    &::before {
+      background-color: var(--theme-accent);
+    }
+  }
+
+  // Skills & Components
+  .skill-card__cat,
+  .footer__logo,
+  .follow-section__title,
+  .testimonial-relation {
+    color: var(--theme-accent);
+  }
+
+  .follow-section__line {
+    background: linear-gradient(180deg, var(--theme-accent), transparent);
+  }
+
+  .footer__col-title {
+    &:hover {
+      color: var(--theme-accent);
+    }
+  }
+
+  .follow-link {
+    &:hover {
+      color: var(--theme-accent);
+    }
+  }
+
+  .portfolio__title::after {
+    background-color: var(--theme-accent);
+  }
+
+  .quote-icon {
+    color: var(--theme-accent);
+  }
+
+  .hero__portfolio-pic {
+    position: relative;
+    border-color: var(--theme-accent);
+  }
+
+  // Sidebar Overrides
+  .sidebar-toggle {
+    color: var(--theme-accent);
+    border-color: rgba(0, 240, 255, 0.25);
+    background-color: rgba(0, 240, 255, 0.05);
+
+    &:hover {
+      color: var(--theme-accent);
+      background-color: rgba(0, 240, 255, 0.12);
+    }
+  }
+
+  .nav-link {
+    border-color: rgba(0, 240, 255, 0.2);
+
+    &.active {
+      color: var(--theme-accent);
+      border-color: var(--theme-accent);
+      background-color: rgba(0, 240, 255, 0.1);
+      box-shadow: 0 2px 0 #007a8a;
+    }
+
+    &:hover:not(.active) {
+      border-color: var(--theme-accent);
+      background-color: rgba(0, 240, 255, 0.05);
+    }
+  }
+
+  .ide-explorer .file-item.active {
+    background-color: rgba(0, 240, 255, 0.08);
+    color: var(--theme-accent);
+    border-left-color: var(--theme-accent);
+  }
+
+  // Timeline & Lines
+  .experience__line-top,
+  .experience__center-line,
+  .experience__connector,
+  .hero__heading::after {
+    background-color: var(--theme-secondary);
+    opacity: 0.6;
+  }
+}
