@@ -77,13 +77,6 @@ export function useCommandHandler({
         break;
       }
 
-      case TerminalCommand.SWITCH_MODE: {
-        const next = !isIdeMode;
-        setIsIdeMode(next);
-        push(`Success: Switching to ${next ? "IDE Mode" : "Site Mode"}.`);
-        break;
-      }
-
       default:
         push(TERMINAL_RESPONSES.NOT_FOUND(mainCmd));
     }
