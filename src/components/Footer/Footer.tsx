@@ -13,7 +13,6 @@ function Footer() {
         <div className="footer__brand">
           <span className="footer__logo">{FOOTER_BRAND.logo}</span>
         </div>
-
         <div className="footer__cols">
           <div className="footer__col">
             <span className="footer__col-title">Navigation</span>

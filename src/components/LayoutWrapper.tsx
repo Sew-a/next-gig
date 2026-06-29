@@ -7,7 +7,6 @@ import VersionSwitcher from "@/src/components/UI/VersionSwitcher";
 import { useAppContext } from "@/src/contexts/appContext";
 import { useWindowSize } from "@/src/hooks/useWindowSize";
 
-// Dynamically import the mobile/desktop navigation and disable SSR for them
 const Sidebar = dynamic(() => import("./Sidebar"), { ssr: false });
 const MobileHeader = dynamic(() => import("./Sidebar/MobileHeader"), {
   ssr: false,

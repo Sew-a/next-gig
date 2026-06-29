@@ -18,7 +18,6 @@ const ImagePopup: React.FC<ImagePopupProps> = ({ src, alt, onClose }) => {
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleEsc);
-    // Prevent scrolling when popup is open
     document.body.style.overflow = 'hidden';
     
     return () => {

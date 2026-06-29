@@ -16,7 +16,7 @@ export function useCommandHandler({
   push,
   clear,
 }: UseCommandHandlerProps) {
-  const { setIsHacked, setIsIdeMode, isIdeMode } = useAppContext();
+  const { setIsHacked, setIsIdeMode } = useAppContext();
   const router = useRouter();
 
   const execute = (raw: string) => {
