@@ -1,22 +1,20 @@
-import GetInTouch from "@/src/components/GetInTouch/GetInTouch";
-// import Contact from "@/components/Contact/Contact";
+import type { Metadata } from "next";
+import AiShowcase from "@/src/components/AiShowcase/AiShowcase";
 import "../../styles.scss";
 
-import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Contact — Sevak Avetisyan",
-  description: "Get in touch with me for collaborations or inquiries.",
+  title: "Agentic AI — Sevak Avetisyan",
+  description: "AI Agents & Prompt Engineering educational platform showcase.",
   openGraph: {
-    title: "Contact — Sevak Avetisyan",
-    description: "Get in touch with me for collaborations or inquiries.",
+    title: "Agentic AI — Sevak Avetisyan",
+    description: "AI Agents & Prompt Engineering educational platform showcase.",
   },
 };
 
 const page = () => {
   return (
     <div className="pages-spacing">
-      <GetInTouch />
-      {/* <Contact /> */}
+      <AiShowcase />
     </div>
   );
 };

@@ -55,7 +55,7 @@ html {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    opacity: 0.4;
+    opacity: 0.5;
     z-index: 0;
   }
 
@@ -67,9 +67,9 @@ html {
     width: 100%;
     height: 100%;
     background: linear-gradient(180deg,
-        rgba(#0d0608, 0.55) 0%,
-        rgba(#1a0308, 0.3) 50%,
-        #0d0608 100%);
+        rgba(#06090d, 0.55) 0%,
+        rgba(#030a1a, 0.3) 50%,
+        #06080d 100%);
     z-index: 1;
   }
 
@@ -335,6 +335,66 @@ html {
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
+  }
+}
+
+/* ─────────────────────────────────
+   AI WORK
+───────────────────────────────── */
+.ai-work {
+  @include section-padding;
+  position: relative;
+
+  &__card {
+    @include content-wrapper;
+    background: rgba(25, 25, 30, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      border-color: rgba(0, 240, 255, 0.4);
+      box-shadow: 0 16px 40px rgba(0, 240, 255, 0.06);
+    }
+  }
+
+  &__desc {
+    color: $text-secondary;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0 0 1.5rem;
+  }
+
+  &__highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+
+    li {
+      position: relative;
+      padding-left: 1.5rem;
+      color: $text-muted;
+      font-size: 0.95rem;
+      line-height: 1.5;
+
+      &::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: $accent-main;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 }
 

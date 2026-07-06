@@ -10,6 +10,6 @@ export const routeNames = [
     { name: 'Portfolio', path: paths.home },
     { name: 'Projects', path: paths.projects },
     { name: 'Music', path: paths.music },
-    { name: 'Get In Touch', path: paths.contact },
+    { name: 'Agentic AI', path: paths.contact },
     // { name: 'File System', path: paths.filesSystem },
 ]

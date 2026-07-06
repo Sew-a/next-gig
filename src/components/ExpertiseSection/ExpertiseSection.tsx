@@ -11,7 +11,7 @@ const ExpertiseSection = () => {
         <div className="expertise-grid">
           {EXPERTISE_DATA.map((expertise, index) => (
             <div
-              className={`expertise-card expertise-card--${index === 0 ? "frontend" : "gamedev"}`}
+              className={`expertise-card expertise-card--${index === 0 ? "frontend" : index === 1 ? "gamedev" : "ai"}`}
               key={index}
             >
               <div className="expertise-card__body">

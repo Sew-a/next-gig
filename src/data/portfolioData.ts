@@ -4,7 +4,7 @@ export const HERO_DATA = {
   title: "Front-end",
   accent: "Engineer",
   summary:
-    "",
+    "Senior Frontend Engineer with 5+ years building large-scale React and TypeScript applications, micro-frontends, and shared frontend platforms. Promoted twice at Picsart while engineering infrastructure adopted across products serving 150M+ users. Passionate about scalable architecture, frontend performance, and developer experience.",
   aboutText:
     "Specialized in architecting federated module systems and enterprise-scale component libraries 5+ years of experience leveraging React, Next.js, and GraphQL to build robust, accessible web ecosystems. Proven ability to reduce production overhead, mentor teams on modular architecture, and deliver high-performance internal tools that serve organization-wide needs.",
   email: "sevavetisyan97@gmail.com",
@@ -18,57 +18,75 @@ export const PORTFOLIO = [
     image: "https://res.cloudinary.com/dlggumsot/image/upload/v1779292518/MyProject3_yzfsbw.png",
   },
   {
-    title: "Brandkit Dashboard",
-    image: "https://res.cloudinary.com/dlggumsot/image/upload/v1779292519/MyProject6_xzhrew.png",
+    title: "AI Agents Hub",
+    image: "https://res.cloudinary.com/dlggumsot/image/upload/v1783354442/Screenshot_2026-07-06_193857_ubcvpw.webp",
   },
 ];
+
+export const AI_SUMMARY = {
+  title: "AI Agents & Prompt Engineering Hub",
+  description:
+    "Built a comprehensive educational platform covering prompt engineering, AI agents, RAG, and practical LLM workflows. The site serves as a curated knowledge hub with interactive prompt libraries, reusable patterns, and real-world examples for ChatGPT, Claude, Gemini, and other LLMs.",
+  link: "https://ai-agents.sevavetisyan97.workers.dev",
+  repo: "https://github.com/Sew-a/AI-Agents",
+  highlights: [
+    "Prompt Engineering guide covering 9 techniques from zero-shot to Reflexion with copyable examples",
+    "AI Agents deep-dive on planning, tools, memory, and agent vs workflow architecture",
+    "RAG & Grounding section explaining how to ground LLMs in external knowledge",
+    "Open Source AI Tools showcase featuring n8n, Appflowy, Ollama, Fooocus, and Whisper",
+    "Dark/Light mode, search functionality, and structured learning path from basics to context engineering",
+  ],
+};
 
 export const EXPERIENCE = [
   {
     company: "Picsart",
-    location: "Yerevan",
-    period: "May 2021 – Mar 2026",
+    location: "Yerevan, Armenia",
+    period: "May 2021 – Feb 2026",
     roles: [
       {
-        title: "Software Engineer 2",
+        title: "Frontend Engineer II",
+        period: "Feb 2025 – Feb 2026",
         achievements: [
-          "Engineered a FileSystem as a Service library adopted across 2 products after aligning with 3 team leads on a shared interface contract. Standardised multimedia asset handling and eliminated 20 hours/sprint of duplicated integration work, freeing teams to focus on product features rather than infrastructure plumbing.",
-          "Proposed, architected, and deployed a universal Google Picker micro app after identifying that 4 product teams were independently solving the same Google Drive integration problem; adoption across all Picsart platforms eliminated a manual file transfer workflow that had previously required dedicated engineering support per team.",
-          "Designed the component architecture for a cross-project commenting micro frontend. Applied AI-assisted development (Cursor + Claude) to accelerate API integration, reducing implementation time from 8 weeks based on a comparable prior integration to 3 weeks, enabling an earlier product launch.",
-          "Delivered 5+ production micro-frontend applications across all Picsart product surfaces (~150M users); consolidated shared runtime into a single federated shell that reduced cross team dependency blockers and allowed product teams to ship independently without coordinating on infrastructure releases.",
-          "Reduced production bug volume 9.3% on the core editor through systematic live environment triage identifying root causes directly in production rather than waiting for staging reproduction, cutting mean time to resolution and preventing recurring issue classes.",
-          "Developed a standalone micro-frontend preview engine that improved LCP by 20% through lazy asset hydration and prioritised render sequencing; adopted by all internal teams as the standard preview surface, replacing 3 inconsistent per product implementations.",
-          "Identified a UX defect in the storage limit notification system the popup fired on every page visit due to absent remote config fallbacks proposed and implemented a once-per-day display strategy with local fallback defaults, reducing disruptive interruptions without requiring backend changes."
+          "Eliminated 20 hours/sprint of duplicated integration work across 2 products by architecting a File System library, aligning 3 team leads on a shared interface contract.",
+          "Removed a manual, per-team file-transfer workflow platform-wide by proposing, architecting, and deploying a universal Google Picker micro app, consolidating 4 teams' duplicate Google Drive integrations.",
+          "Cut implementation time for a cross-project commenting micro-frontend from an 8-week baseline to 3 weeks by designing the component architecture and applying AI-assisted development (Cursor + Claude) to accelerate API integration, enabling an earlier product launch.",
+          "Enabled 5+ product teams to ship independently across a ~150M-user platform by delivering 5+ production micro-frontend applications and consolidating them into a single federated shell.",
+          "Reduced core editor production bugs by 9.3% by running systematic live-environment triage to find root causes directly in production, cutting mean time to resolution.",
+          "Improved platform-wide LCP by 20% by building a standalone micro-frontend preview engine with lazy asset hydration, replacing 3 inconsistent per-product implementations."
         ]
       },
       {
-        title: "Software Engineer 1",
+        title: "Frontend Engineer I",
+        period: "Apr 2022 – Feb 2025",
         achievements: [
-          "Established greenfield unit testing using Jest across core repositories; built comprehensive test suites for the landings project and cloud library system from 0% to 80-90% coverage, catching 3 regression classes in the first post launch sprint that would otherwise have reached production.",
-          "Built accessible component libraries for 2 core products in collaboration with design, integrating a standardised tabs system that brought keyboard navigation and WCAG 2.1 AA compliance to components previously failing automated accessibility audits.",
-          "Introduced Storybook to an opaque, untestable UI library, documenting and auditing 20+ components to make them visible, testable, and consumable unblocking adoption across teams that previously had no way to inspect component behaviour without running the full app.",
-          "Built and maintained the component library and shared logic layer underpinning the Drive project. Standardised patterns reduced new feature scaffolding time and cut onboarding ramp-up for 2 engineers joining mid-project."
+          "Caught 3 regression classes before they reached production by establishing Jest unit testing from 0% to 85%+ coverage across core repositories, including the landings project and cloud library system.",
+          "Brought WCAG 2.1 AA compliance and keyboard navigation to components that were failing automated accessibility audits, building accessible component libraries and a standardized tabs system with design.",
+          "Unblocked cross-team component adoption by introducing Storybook to a previously opaque UI library, documenting and auditing 20+ components.",
+          "Cut onboarding ramp-up for 2 incoming engineers by building and maintaining the shared component library and logic layer underpinning the Drive project."
         ]
       },
       {
         title: "UI Engineer",
+        period: "May 2021 – Apr 2022",
         achievements: [
-          "Delivered 20+ marketing landing pages achieving Lighthouse scores of 90+ across Performance and Accessibility; pages served as the primary organic acquisition surface for a platform with 150M users, with each percentage point of load-time improvement directly tied to SEO ranking targets.",
-          "Optimized data delivery pipelines to support future SDK consumers, ensuring high availability and standardized API responses for downstream integrations."
+          "Drove organic acquisition for a 150M-user platform by delivering 20+ marketing landing pages scoring 90+ on Lighthouse for Performance and Accessibility.",
+          "Ensured high availability for downstream SDK consumers by optimizing data delivery pipelines and standardizing API responses."
         ]
       }
     ]
   },
   {
     company: "JoinToHire",
-    location: "Yerevan",
+    location: "Yerevan, Armenia",
     period: "Nov 2020 – May 2021",
     roles: [
       {
-        title: "Front end Engineer",
+        title: "Frontend Engineer",
+        period: "Nov 2020 – May 2021",
         achievements: [
-          "Built and optimised 3 marketing landing pages to Lighthouse performance scores above 90, applying lazy loading, image compression, and critical-path CSS extraction to support SEO-driven acquisition.",
-          "Contributed to full codebase migration from vanilla JS to React, reducing time to interactive by 30% and enabling component reuse that cut estimated build time for new pages by half."
+          "Improved SEO-driven organic acquisition by building 3 marketing landing pages scoring 90+ on Lighthouse, using lazy loading, image compression, and critical-path CSS extraction.",
+          "Cut new-page build time in half by migrating the codebase from vanilla JS to React, reducing time-to-interactive by 30% and enabling component reuse."
         ]
       }
     ]

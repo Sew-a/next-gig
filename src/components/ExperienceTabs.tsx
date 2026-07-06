@@ -78,7 +78,7 @@ export default function ExperienceTabs() {
               </span>
               <span className="experience-tabs__separator">|</span>
               <span className="experience-tabs__period">
-                {activeCompany.period}
+                {activeRole.period || activeCompany.period}
               </span>
             </div>
           </div>

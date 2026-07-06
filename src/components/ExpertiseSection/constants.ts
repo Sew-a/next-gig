@@ -1,4 +1,4 @@
-import { Monitor, Gamepad2 } from 'lucide-react';
+import { Monitor, Gamepad2, Bot } from 'lucide-react';
 
 export const EXPERTISE_DATA = [
   {
@@ -21,6 +21,17 @@ export const EXPERTISE_DATA = [
       "Currently working on a 3D first-person storytelling game"
     ],
     skills: ["C#", "Unity", "Blender"]
+  },
+  {
+    icon: Bot,
+    title: "AI & Agentic AI",
+    desc: "Built a comprehensive educational platform covering prompt engineering, AI agents, RAG, and practical LLM workflows. Experienced in designing agent architectures, prompt patterns, and self-hosted open-source AI tooling.",
+    emphasis: [
+      "Architected an AI Agents educational hub with prompt engineering, RAG, and agent workflow guides",
+              "Implemented 9 prompt techniques from zero-shot to Reflexion with copyable examples",
+      "Showcased 5 open-source AI tools including n8n, Ollama, and Whisper for self-hosted AI infrastructure"
+    ],
+    skills: ["Prompt Engineering", "AI Agents", "RAG", "LLM Workflows", "Open Source AI"]
   }
 ];
 

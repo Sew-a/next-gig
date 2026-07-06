@@ -3,6 +3,7 @@ import {
   HERO_DATA,
   SKILL_CATEGORIES,
   PORTFOLIO,
+  AI_SUMMARY,
 } from "@/src/data/portfolioData";
 import { HeadingText, ActionButton, FadeIn } from "@/src/components/UI";
 import { ACTION_BUTTON_TYPE } from "@/src/components/types";
@@ -49,6 +50,33 @@ export default function Homepage() {
           </div>
         </section>
       </FadeIn>
+      {/* ─── AI WORK ─── */}
+      <FadeIn delay={0.1}>
+        <section className="ai-work">
+          <HeadingText title={AI_SUMMARY.title} label="// AI & AGENTS" />
+          <div className="ai-work__card">
+            <p className="ai-work__desc">{AI_SUMMARY.description}</p>
+            <ul className="ai-work__highlights">
+              {AI_SUMMARY.highlights.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+            <div className="ai-work__links">
+              <ActionButton
+                title="Visit Website →"
+                link={AI_SUMMARY.link}
+                buttonType={ACTION_BUTTON_TYPE.PRIMARY}
+              />
+              <ActionButton
+                title="View Source →"
+                link={AI_SUMMARY.repo}
+                buttonType={ACTION_BUTTON_TYPE.GHOST}
+              />
+            </div>
+          </div>
+        </section>
+      </FadeIn>
+
       {/* ─── EXPERIENCE ─── */}
       <FadeIn delay={0.1}>
         <section className="experience" id="experience">
@@ -91,8 +119,8 @@ export default function Homepage() {
                   <Image
                     src={project.image}
                     alt={project.title}
-                    width={220}
-                    height={280}
+                    width={364}
+                    height={300}
                   />
                   <div className="portfolio__overlay">
                     <span>{project.title}</span>

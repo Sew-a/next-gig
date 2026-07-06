@@ -19,5 +19,7 @@ export function getGalleryImages(): GalleryImage[] {
     { id: '8', src: 'https://res.cloudinary.com/dlggumsot/image/upload/v1779292550/MyProject8_oua6ww.jpg', title: 'Team Building', category: 'Work', width: 600, height: 400 },
     { id: '9', src: 'https://res.cloudinary.com/dlggumsot/image/upload/v1782209157/IMG20260616175745_nlv53i.webp', title: 'Live Moment', category: 'Work', width: 600, height: 400 },
     { id: '10', src: 'https://res.cloudinary.com/dlggumsot/image/upload/v1782203152/5296787088474840984_skkoad.webp', title: 'The Crowd', category: 'Work', width: 600, height: 400 },
+    { id: '11', src: 'https://res.cloudinary.com/dlggumsot/image/upload/v1783354442/Screenshot_2026-07-06_193857_ubcvpw.webp', title: 'AI Agents Website', category: 'AI', width: 600, height: 400 },
+    { id: '12', src: 'https://res.cloudinary.com/dlggumsot/image/upload/v1783354442/Screenshot_2026-07-06_193842_qqp0jb.webp', title: 'AI Agents Wesite prompts', category: 'AI', width: 600, height: 400 },
   ];
 }

@@ -65,6 +65,34 @@
         }
     }
 
+    &--ai {
+        border-color: rgba(168, 85, 247, 0.25);
+
+        &:hover {
+            border-color: #a855f7;
+            box-shadow: 0 16px 40px rgba(168, 85, 247, 0.1);
+        }
+
+        h3::after {
+            background-color: #a855f7;
+        }
+
+        .expertise-icon {
+            color: #a855f7;
+        }
+
+        .expertise-skill-tag {
+            border-color: rgba(168, 85, 247, 0.3);
+            color: #a855f7;
+            background: rgba(168, 85, 247, 0.06);
+
+            &:hover {
+                background: rgba(168, 85, 247, 0.15);
+                border-color: #a855f7;
+            }
+        }
+    }
+
     &--gamedev {
         border-color: rgba(255, 17, 97, 0.25);
 
