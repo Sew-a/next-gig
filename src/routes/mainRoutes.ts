@@ -5,7 +5,6 @@ const paths = {
     jobs: '/jobs',
     agenticai: '/agentic-ai',
     filesSystem: '/files-system',
-    interviewPrep: '/interview-prep',
 }
 
 export const routeNames = [
