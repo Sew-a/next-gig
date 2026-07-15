@@ -347,7 +347,7 @@ html {
 
   &__card {
     @include content-wrapper;
-    background: rgba(25, 25, 30, 0.4);
+    background: #0e142554;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(0, 240, 255, 0.15);
     border-radius: 16px;
