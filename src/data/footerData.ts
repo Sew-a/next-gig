@@ -2,7 +2,7 @@ export const FOOTER_NAV = [
   { label: "Home", href: "/" },
   { label: "Music", href: "/music" },
   { label: "Work Gallery", href: "/projects" },
-  { label: "Contact", href: "/contact" },
+  { label: "Agentic AI", href: "/agentic-ai" },
 ];
 
 export const FOOTER_CONTACT = [

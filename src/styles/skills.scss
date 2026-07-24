@@ -1,0 +1,60 @@
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
+
+.skills {
+  @include section-padding;
+
+  &__grid {
+    @include content-wrapper;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.skill-card {
+  background-color: $bg-primary;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-lg;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: $border-accent;
+  }
+
+  &__cat {
+    font-size: 16px;
+    color: $accent-main;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+.tag {
+  color: #ccc;
+  font-size: 18px;
+  padding: 4px 10px;
+  border-radius: 1px;
+  border: 1px solid #00f0ff4d;
+}
+
+.skills .section-title {
+  @include content-wrapper;
+  margin-bottom: 2.5rem;
+}
+
+.skills .section-label {
+  display: block;
+  @include content-wrapper;
+  margin-bottom: 0.5rem;
+}

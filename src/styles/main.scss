@@ -45,20 +45,17 @@ a {
 /* Main Layout Styles */
 .main {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   width: 100%;
   position: relative;
+  padding-top: 70px;
 }
 
 .main-content {
   flex: 1;
-  overflow-y: auto;
-  height: 100vh;
-
-  @media (max-width: 1099px) {
-    width: 100%;
-    margin-left: 0;
-  }
+  width: 100%;
+  margin: 0 auto;
 }
 
 .page-content {
@@ -80,27 +77,24 @@ a {
   }
 }
 
+/* ─── Theme Wrapper (Dark — Default) ─── */
 .main-theme-wrapper {
-  // Cyberpunk 2077 theme: cyan primary, red secondary
   --theme-accent: #00f0ff;
   --theme-secondary: #ff1161;
   --theme-border: #007a8a;
+  --theme-bg: #0b071494;
+  --theme-bg-secondary: #0e142554;
+  --theme-text: #f0e6e6;
+  --theme-text-secondary: #c8b8b8;
+  --theme-text-muted: #9e8888;
+  --theme-card-bg: #120a0b;
+  --theme-card-border: #1a223a;
 
-  // Global Button Overrides
+  // ── Global Button Overrides ──
   .mode-switcher {
     border-color: var(--theme-secondary);
     color: var(--theme-secondary);
     box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
-
-    &:hover {
-      transform: translateY(2px);
-      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
-    }
-
-    &:active {
-      transform: translateY(4px);
-      box-shadow: none;
-    }
   }
 
   .action-button,
@@ -117,14 +111,12 @@ a {
       background-color: var(--theme-accent);
       color: #000;
       border: 2px solid var(--theme-accent);
-      border-radius: 0;
       filter: drop-shadow(0 4px 0 #007a8a) drop-shadow(0 0 10px rgba(0, 240, 255, 0.35));
 
       &:hover {
         transform: translateY(2px);
         filter: drop-shadow(0 2px 0 #007a8a) drop-shadow(0 0 18px rgba(0, 240, 255, 0.55));
       }
-
       &:active {
         transform: translateY(4px);
         filter: none;
@@ -135,17 +127,14 @@ a {
       transform: translateY(2px);
       filter: drop-shadow(0 2px 0 #007a8a) drop-shadow(0 0 14px rgba(0, 240, 255, 0.4));
     }
-
     &:active {
       transform: translateY(4px);
       filter: none;
     }
   }
 
-  // Headings & Text
-  h1,
-  h2,
-  h3,
+  // ── Headings & Text ──
+  h1, h2, h3,
   .section-title,
   .hero__accent,
   .portfolio__title,
@@ -157,33 +146,22 @@ a {
   .section-label,
   .portfolio__label,
   .hero__tag,
-  .sidebar-toggle,
   .prompt {
     color: var(--theme-accent);
   }
 
   .active {
     color: var(--theme-accent);
-
-    &::after {
-      background-color: var(--theme-accent);
-    }
+    &::after { background-color: var(--theme-accent); }
   }
 
-  // Portfolio & Experience Overrides
-  .portfolio {
-    border-top-color: var(--theme-accent);
-  }
+  .portfolio { border-top-color: var(--theme-accent); }
 
   .experience__role {
     color: var(--theme-accent);
-
-    &::before {
-      background-color: var(--theme-accent);
-    }
+    &::before { background-color: var(--theme-accent); }
   }
 
-  // Skills & Components
   .skill-card__cat,
   .footer__logo,
   .follow-section__title,
@@ -195,53 +173,24 @@ a {
     background: linear-gradient(180deg, var(--theme-accent), transparent);
   }
 
-  .footer__col-title {
-    &:hover {
-      color: var(--theme-accent);
-    }
-  }
-
-  .follow-link {
-    &:hover {
-      color: var(--theme-accent);
-    }
-  }
-
-  .portfolio__title::after {
-    background-color: var(--theme-accent);
-  }
-
-  .quote-icon {
-    color: var(--theme-accent);
-  }
+  .footer__col-title:hover { color: var(--theme-accent); }
+  .follow-link:hover { color: var(--theme-accent); }
+  .portfolio__title::after { background-color: var(--theme-accent); }
+  .quote-icon { color: var(--theme-accent); }
 
   .hero__portfolio-pic {
     position: relative;
     border-color: var(--theme-accent);
   }
 
-  // Sidebar Overrides
-  .sidebar-toggle {
-    color: var(--theme-accent);
-    border-color: rgba(0, 240, 255, 0.25);
-    background-color: rgba(0, 240, 255, 0.05);
-
-    &:hover {
-      color: var(--theme-accent);
-      background-color: rgba(0, 240, 255, 0.12);
-    }
-  }
-
   .nav-link {
     border-color: rgba(0, 240, 255, 0.2);
-
     &.active {
       color: var(--theme-accent);
       border-color: var(--theme-accent);
       background-color: rgba(0, 240, 255, 0.1);
       box-shadow: 0 2px 0 #007a8a;
     }
-
     &:hover:not(.active) {
       border-color: var(--theme-accent);
       background-color: rgba(0, 240, 255, 0.05);
@@ -254,12 +203,511 @@ a {
     border-left-color: var(--theme-accent);
   }
 
-  // Timeline & Lines
   .experience__line-top,
   .experience__center-line,
   .experience__connector,
   .hero__heading::after {
     background-color: var(--theme-secondary);
     opacity: 0.6;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════
+   LIGHT THEME
+   Clean, airy — soft blues, warm grays, subtle shadows
+   ═══════════════════════════════════════════════ */
+.main-theme-wrapper.light-theme {
+  --theme-accent: #0077b6;
+  --theme-secondary: #d00000;
+  --theme-border: #0096c7;
+  --theme-bg: #f5f6f8;
+  --theme-bg-secondary: #edf0f4;
+  --theme-text: #1a1d23;
+  --theme-text-secondary: #4a5568;
+  --theme-text-muted: #718096;
+  --theme-card-bg: #ffffff;
+  --theme-card-border: #e2e6ec;
+
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+
+  body { background-color: var(--theme-bg); }
+
+  // ── Header ──
+  .header {
+    background-color: rgba(245, 246, 248, 0.92);
+
+    &--scrolled {
+      background-color: rgba(245, 246, 248, 0.97);
+      border-bottom-color: var(--theme-card-border);
+    }
+  }
+
+  .header__nav-link {
+    color: var(--theme-text-secondary);
+    border-color: transparent;
+
+    &.active {
+      color: var(--theme-accent);
+      border-color: var(--theme-accent);
+      background-color: rgba(0, 119, 182, 0.08);
+    }
+    &:hover:not(.active) {
+      color: var(--theme-accent);
+      border-color: rgba(0, 119, 182, 0.25);
+      background-color: rgba(0, 119, 182, 0.04);
+    }
+  }
+
+  .header__ide-btn {
+    color: var(--theme-secondary);
+    background-color: rgba(208, 0, 0, 0.06);
+    border-color: var(--theme-secondary);
+    filter: none;
+
+    &:hover {
+      background-color: rgba(208, 0, 0, 0.12);
+      filter: none;
+    }
+  }
+
+  .header__theme-track {
+    background-color: rgba(0, 119, 182, 0.15);
+    border-color: var(--theme-accent);
+  }
+
+  .header__theme-icon { color: var(--theme-accent); }
+
+  // ── Hero ──
+  .hero {
+    background-color: var(--theme-bg-secondary);
+
+    &::after {
+      background: linear-gradient(180deg,
+        rgba(#ffffff, 0.7) 0%,
+        rgba(#f5f6f8, 0.5) 50%,
+        #f5f6f8 100%);
+    }
+  }
+
+  .hero__heading {
+    color: #1a1d23;
+  }
+
+  .hero__accent { color: var(--theme-accent); }
+
+  .hero__sub { color: var(--theme-text-secondary); }
+
+  .hero__heading::after { background-color: var(--theme-accent); opacity: 0.5; }
+
+  .portfolio-home { color: var(--theme-text); }
+
+  // ── Buttons ──
+  .action-button--ghost {
+    color: var(--theme-accent);
+    border-color: var(--theme-accent);
+    background: transparent;
+    filter: drop-shadow(0 3px 0 rgba(0, 119, 182, 0.15));
+
+    &:hover {
+      background: rgba(0, 119, 182, 0.06);
+      filter: drop-shadow(0 2px 0 rgba(0, 119, 182, 0.2));
+    }
+  }
+
+  .action-button--primary {
+    background-color: var(--theme-accent);
+    color: #ffffff;
+    border-color: var(--theme-accent);
+    filter: drop-shadow(0 3px 0 rgba(0, 119, 182, 0.2));
+
+    &:hover {
+      background-color: #0096c7;
+      filter: drop-shadow(0 2px 0 rgba(0, 119, 182, 0.3));
+    }
+  }
+
+  // ── Portfolio / Projects ──
+  .portfolio { background-color: transparent; }
+
+  .portfolio__desc-card {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: var(--theme-card-border);
+    backdrop-filter: blur(8px);
+  }
+
+  .portfolio__desc { color: var(--theme-text-secondary); }
+  .portfolio__label { color: var(--theme-accent); }
+  .portfolio__title { color: #1a1d23; }
+  .portfolio__title::after { background-color: var(--theme-accent); }
+
+  .portfolio__item {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  // ── AI Work ──
+  .ai-work__card {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: var(--theme-card-border);
+    backdrop-filter: blur(8px);
+  }
+
+  .ai-work__desc { color: var(--theme-text-secondary); }
+
+  .ai-work__highlights li {
+    color: var(--theme-text-muted);
+    &::before { color: var(--theme-accent); }
+  }
+
+  // ── AI Showcase ──
+  .ai-showcase__intro {
+    background: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+    backdrop-filter: blur(10px);
+  }
+
+  .ai-showcase__desc { color: var(--theme-text-secondary); }
+
+  .ai-showcase__screenshot {
+    border-color: var(--theme-card-border);
+  }
+
+  .ai-showcase__card {
+    background: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+
+    h3 { color: #1a1d23; }
+    p { color: var(--theme-text-secondary); }
+  }
+
+  // ── IDE Mode ──
+  .header__ide-btn {
+    color: var(--theme-text-secondary);
+    border-color: var(--theme-card-border);
+    background-color: transparent;
+
+    &:hover {
+      color: var(--theme-accent);
+      border-color: rgba(0, 119, 182, 0.3);
+      background-color: rgba(0, 119, 182, 0.05);
+    }
+
+    &.active {
+      color: var(--theme-accent);
+      border-color: var(--theme-accent);
+      background-color: rgba(0, 119, 182, 0.1);
+    }
+  }
+
+  // ── Experience ──
+  .experience__title { color: #1a1d23; }
+  .experience__line-top { background-color: var(--theme-accent); opacity: 0.5; }
+  .experience__role { color: var(--theme-accent); }
+  .experience__role::before { background-color: var(--theme-accent); }
+
+  .experience-tabs__company-btn {
+    color: var(--theme-text-secondary);
+    border-color: var(--theme-card-border);
+    background-color: var(--theme-card-bg);
+
+    &.active {
+      color: #ffffff;
+      background-color: var(--theme-accent);
+      border-color: var(--theme-accent);
+    }
+
+    &:hover:not(.active) {
+      border-color: var(--theme-accent);
+    }
+  }
+
+  .experience-tabs__role-nav-btn {
+    color: var(--theme-text-muted);
+    border-color: var(--theme-card-border);
+
+    &.active {
+      color: var(--theme-accent);
+      border-color: var(--theme-accent);
+      background-color: rgba(0, 119, 182, 0.06);
+    }
+  }
+
+  .experience-tabs__panel {
+    background: transparent;
+  }
+
+  .experience-tabs__content {
+    background-color: transparent;
+    border-color: var(--theme-card-border);
+  }
+
+  .experience-tabs__role-title { color: #1a1d23; }
+  .experience-tabs__company-name { color: var(--theme-text-secondary); }
+  .experience-tabs__location { color: var(--theme-text-muted); }
+  .experience-tabs__period { color: var(--theme-text-muted); }
+  .experience-tabs__achievement-text { color: var(--theme-text-secondary); }
+  .experience-tabs__bullet { color: var(--theme-accent); }
+
+  // ── Skills ──
+  .skill-card {
+    background-color: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+
+    &:hover { border-color: var(--theme-border); }
+  }
+
+  .skill-card__cat { color: var(--theme-accent); }
+
+  .tag {
+    color: var(--theme-text-secondary);
+    border-color: rgba(0, 119, 182, 0.25);
+    background-color: rgba(0, 119, 182, 0.04);
+  }
+
+  // ── Expertise Section ──
+  .expertise-card {
+    background: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+
+    h3 { color: #1a1d23; }
+    .expertise-desc { color: var(--theme-text-secondary); }
+    .expertise-emphasis li { color: var(--theme-text-secondary); }
+
+    &__skills {
+      border-left-color: var(--theme-card-border);
+    }
+
+    .expertise-skills-label { color: var(--theme-text-muted); }
+
+    &--frontend {
+      border-color: rgba(0, 119, 182, 0.2);
+      &:hover { border-color: var(--theme-accent); box-shadow: 0 12px 32px rgba(0, 119, 182, 0.08); }
+      .expertise-skill-tag { background: rgba(0, 119, 182, 0.06); border-color: rgba(0, 119, 182, 0.25); color: var(--theme-accent); }
+      h3::after { background-color: var(--theme-accent); }
+      .expertise-icon { color: var(--theme-accent); }
+    }
+
+    &--ai {
+      border-color: rgba(168, 85, 247, 0.2);
+      &:hover { border-color: #a855f7; box-shadow: 0 12px 32px rgba(168, 85, 247, 0.08); }
+      .expertise-skill-tag { background: rgba(168, 85, 247, 0.06); border-color: rgba(168, 85, 247, 0.25); color: #a855f7; }
+      h3::after { background-color: #a855f7; }
+      .expertise-icon { color: #a855f7; }
+    }
+
+    &--gamedev {
+      border-color: rgba(255, 17, 97, 0.2);
+      &:hover { border-color: #ff1161; box-shadow: 0 12px 32px rgba(255, 17, 97, 0.08); }
+      .expertise-skill-tag { background: rgba(255, 17, 97, 0.06); border-color: rgba(255, 17, 97, 0.25); color: #ff1161; }
+      h3::after { background-color: #ff1161; }
+      .expertise-icon { color: #ff1161; }
+    }
+  }
+
+  // ── Testimonials ──
+  .testimonial-card {
+    background-color: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+
+    &:hover { box-shadow: 0 12px 32px rgba(0, 119, 182, 0.08); }
+
+    .author-name { color: #1a1d23; }
+    .author-position { color: var(--theme-text-muted); }
+    .testimonial-relation { color: var(--theme-accent); }
+    .testimonial-date { color: var(--theme-text-muted); }
+    .quote-icon { color: var(--theme-accent); }
+
+    .card-header { border-bottom-color: var(--theme-card-border); }
+    .testimonial-footer { border-top-color: var(--theme-card-border); }
+  }
+
+  .testimonials-section .testimonial-card .testimonial-content .testimonial-text { color: var(--theme-text-secondary); }
+
+  // ── Footer ──
+  .portfolio-footer {
+    background-color: var(--theme-card-bg);
+    border-top-color: var(--theme-card-border);
+  }
+
+  .footer__logo { color: var(--theme-accent); }
+  .footer__col-title { color: #1a1d23; }
+  .footer__col-title:hover { color: var(--theme-accent); }
+
+  .footer__col a,
+  .footer__col span {
+    color: var(--theme-text-secondary);
+    &:hover { color: var(--theme-accent); }
+  }
+
+  .footer__bottom {
+    border-top-color: var(--theme-card-border);
+    color: var(--theme-text-muted);
+  }
+
+  // ── Follow Section ──
+  .follow-section__title { color: var(--theme-accent); }
+  .follow-section__line { background: linear-gradient(180deg, var(--theme-accent), transparent); }
+  .follow-link { color: var(--theme-text-muted); }
+  .follow-link:hover { color: var(--theme-accent); }
+
+  // ── Get In Touch ──
+  .interactive-text-box {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: var(--theme-card-border);
+    backdrop-filter: blur(8px);
+  }
+
+  .primary-text { color: #1a1d23; }
+  .secondary-text { color: var(--theme-text-secondary); }
+  .final-message { color: #1a1d23; }
+  .boring-text { color: var(--theme-text-muted); }
+
+  // ── Music / Band Pages ──
+  .band-sections {
+    background-color: var(--theme-bg);
+    color: var(--theme-text);
+  }
+
+  .band-hero {
+    background-color: var(--theme-bg-secondary);
+
+    &::after {
+      background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.7) 0%,
+        rgba(245, 246, 248, 0.5) 50%,
+        #f5f6f8 100%);
+    }
+  }
+
+  .band-hero .brush-text { color: #1a1d23; }
+  .band-hero .sub-text { color: var(--theme-text-secondary); }
+
+  .band-grid-section .info-block {
+    background-color: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+
+    h2 { color: #1a1d23; }
+    p { color: var(--theme-text-secondary); }
+    .block-footer { color: var(--theme-text-muted); }
+  }
+
+  .band-grid-section .members-block,
+  .band-grid-section .tracks-block {
+    background-color: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+  }
+
+  .band-grid-section .block-header { color: var(--theme-text); }
+  .band-grid-section .member-item .name { color: var(--theme-text); }
+  .band-grid-section .member-item .role { color: var(--theme-text-muted); }
+  .band-grid-section .song-name { color: var(--theme-text); }
+  .band-grid-section .song-duration { color: var(--theme-text-muted); }
+  .band-grid-section .quote-block p { color: var(--theme-text-secondary); }
+
+  .gallery-item {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  // ── Grid (Projects Page) ──
+  .grid-wrapper { background-color: transparent; }
+
+  // ── IDE Mode (Light) ──
+  .ide-layout {
+    background-color: #fafbfc;
+  }
+
+  .code-editor .editor-header {
+    background-color: rgba(226, 230, 236, 0.6);
+    border-bottom-color: var(--theme-card-border);
+  }
+
+  .code-editor .editor-tab {
+    color: var(--theme-text-muted);
+    border-right-color: rgba(226, 230, 236, 0.6);
+
+    &:hover { color: var(--theme-text); background-color: rgba(0, 119, 182, 0.04); }
+    &--active { color: var(--theme-accent); background-color: rgba(0, 119, 182, 0.06); }
+  }
+
+  .ide-explorer {
+    background-color: var(--theme-card-bg);
+    border-right-color: var(--theme-card-border);
+
+    .file-item {
+      color: var(--theme-text-secondary);
+      border-bottom-color: var(--theme-card-border);
+
+      &.active {
+        background-color: rgba(0, 119, 182, 0.08);
+        color: var(--theme-accent);
+        border-left-color: var(--theme-accent);
+      }
+    }
+
+    .explorer-header {
+      background-color: rgba(226, 230, 236, 0.6);
+      border-bottom-color: var(--theme-card-border);
+      color: var(--theme-text);
+    }
+  }
+
+  .terminal {
+    background-color: var(--theme-card-bg);
+    border-top-color: var(--theme-card-border);
+
+    .terminal-header {
+      background-color: rgba(226, 230, 236, 0.6);
+      border-bottom-color: var(--theme-card-border);
+      color: var(--theme-text);
+    }
+
+    .terminal-container {
+      color: var(--theme-text);
+
+      .output-line { color: var(--theme-text); }
+      .command-input-area .command-input { color: var(--theme-text); }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgba(0, 119, 182, 0.2);
+      }
+    }
+  }
+
+  .code-editor .editor-container {
+    &::-webkit-scrollbar-track {
+      background: rgba(200, 206, 216, 0.4);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 119, 182, 0.3);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 119, 182, 0.5);
+    }
+  }
+
+  // ── Playground / Search ──
+  .search-bar {
+    background-color: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+    color: var(--theme-text);
+  }
+
+  // ── Loading states ──
+  .jobs-loading, .jobs-error {
+    color: var(--theme-text-secondary);
+  }
+
+  // ── Image Popup ──
+  .popup-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
   }
 }

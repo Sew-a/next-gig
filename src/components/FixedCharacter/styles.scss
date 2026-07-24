@@ -1,0 +1,55 @@
+@use "../../styles/variables" as *;
+
+.fixed-character {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 900;
+  width: 180px;
+  height: 200px;
+
+  @media (max-width: $tablet) {
+    width: 120px;
+    height: 140px;
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .character-section-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .icon-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: $text-muted;
+
+    @media (max-width: $tablet) {
+      font-size: 8px;
+      gap: 2px;
+    }
+  }
+
+  .character-animation-container {
+    width: 100%;
+    height: 150px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+
+    @media (max-width: $tablet) {
+      height: 100px;
+    }
+
+    &.ready {
+      opacity: 1;
+    }
+  }
+}

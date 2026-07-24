@@ -3,7 +3,14 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useAppContext } from "@/src/contexts/appContext";
 import "./CodeEditor.scss";
-import { FadeIn } from "../UI";
+
+const FILES = [
+  "AboutMe.tsx",
+  "Experience.ts",
+  "Skills.json",
+  "Contact.md",
+  "Documentation.md",
+];
 
 const fileContents: Record<string, string> = {
   "AboutMe.tsx": `export const Bio = () => {
@@ -13,7 +20,7 @@ const fileContents: Record<string, string> = {
       <p>I build things with React, Next.js, and TypeScript.</p>
       <p>I Also build things with C# and Unity.</p>
       <p>I have started all this with hacked games downloads and fixes in configuration files.</p>
-      <p>Then I started building ladnidng pages and other websites.</p>
+      <p>Then I started building landing pages and other websites.</p>
       <p>Then I have builded (not completed) a game with Unity. Platformer with parkour POP style</p>
       <span>I have no idea how I got here.</span>
     </div>
@@ -77,7 +84,7 @@ This project is a high-end personal portfolio website built with **Next.js**,
 };
 
 const CodeEditor = () => {
-  const { currentFile } = useAppContext();
+  const { currentFile, setCurrentFile } = useAppContext();
   const language =
     currentFile.endsWith(".ts") || currentFile.endsWith(".tsx")
       ? "typescript"
@@ -87,27 +94,35 @@ const CodeEditor = () => {
 
   return (
     <div className="code-editor">
-      <FadeIn delay={0.2}>
-        <div className="editor-header">
-          <span className="file-name">{currentFile}</span>
+      <div className="editor-header">
+        <div className="editor-tabs">
+          {FILES.map((file) => (
+            <button
+              key={file}
+              className={`editor-tab ${currentFile === file ? "editor-tab--active" : ""}`}
+              onClick={() => setCurrentFile(file)}
+            >
+              {file}
+            </button>
+          ))}
         </div>
-        <div className="editor-container custom-scrollbar">
-          <SyntaxHighlighter
-            language={language}
-            style={dracula}
-            showLineNumbers={true}
-            customStyle={{
-              margin: 0,
-              padding: "2rem",
-              backgroundColor: "transparent",
-              fontSize: "15px",
-              lineHeight: "1.8",
-            }}
-          >
-            {fileContents[currentFile] || "// File not found"}
-          </SyntaxHighlighter>
-        </div>
-      </FadeIn>
+      </div>
+      <div className="editor-container custom-scrollbar">
+        <SyntaxHighlighter
+          language={language}
+          style={dracula}
+          showLineNumbers={true}
+          customStyle={{
+            margin: 0,
+            padding: "2rem",
+            backgroundColor: "transparent",
+            fontSize: "15px",
+            lineHeight: "1.8",
+          }}
+        >
+          {fileContents[currentFile] || "// File not found"}
+        </SyntaxHighlighter>
+      </div>
     </div>
   );
 };

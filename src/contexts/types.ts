@@ -8,16 +8,22 @@ export type ImageItemProps = {
   handleClick: (action: ActionType, id: string, url: string) => void;
 };
 
+export type Theme = "dark" | "light";
+
 export interface AppContextType {
   imageFiles: ImageItemProps[];
   isIdeMode: boolean;
   currentFile: string;
   isHacked: boolean;
+  isLoading: boolean;
+  theme: Theme;
 
   setImageFiles: React.Dispatch<React.SetStateAction<ImageItemProps[]>>;
   setIsIdeMode: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentFile: React.Dispatch<React.SetStateAction<string>>;
   setIsHacked: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setTheme: React.Dispatch<React.SetStateAction<Theme>>;
 }
 
 //  Actions list types

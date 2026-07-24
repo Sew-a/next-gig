@@ -1,0 +1,212 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  background-color: transparent;
+
+  &--scrolled {
+    background-color: rgba(#14121b, 0.90);
+    backdrop-filter: blur(2px);
+    border-bottom: 1px solid $border-color;
+    padding: 0.75rem 2rem;
+  }
+
+  &--menu-open {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    border-bottom-color: transparent !important;
+    transition: none !important;
+    z-index: 1100 !important;
+  }
+
+  &__inner {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: $tablet) {
+      justify-content: flex-start;
+    }
+  }
+
+  // ── Navigation ──
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex: 1;
+    gap: 0.5rem;
+
+    @media (max-width: $tablet) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba($bg-dark, 0.98);
+      backdrop-filter: blur(12px);
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+      z-index: 1001;
+
+      &--open {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &__nav-link {
+    padding: 0.5rem 1rem;
+    color: $text-secondary;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 0;
+    clip-path: polygon(8px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 8px);
+    transition: all 0.15s ease;
+    position: relative;
+
+    @media (max-width: $tablet) {
+      font-size: 1.25rem;
+      padding: 0.75rem 2rem;
+    }
+
+    &.active {
+      color: $accent-main;
+      border-color: $accent-main;
+      background-color: rgba($accent-main, 0.1);
+    }
+
+    &:hover:not(.active) {
+      color: $accent-main;
+      border-color: rgba($accent-main, 0.3);
+      background-color: rgba($accent-main, 0.05);
+    }
+  }
+
+  // ── Controls (theme + IDE) ──
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    gap: 12px;
+
+    @media (max-width: $tablet) {
+      display: none;
+    }
+  }
+
+  &__theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  &__theme-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $accent-main;
+    transition: color 0.2s ease;
+  }
+
+  &__theme-track {
+    position: relative;
+    width: 36px;
+    height: 18px;
+    background-color: rgba($accent-main, 0.2);
+    border: 1px solid $accent-main;
+    border-radius: 0;
+    clip-path: polygon(5px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 5px);
+    transition: all 0.2s ease;
+  }
+
+  &__theme-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    background-color: $accent-main;
+    border-radius: 0;
+    clip-path: polygon(3px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 3px);
+    transition: transform 0.2s ease;
+
+    .light-theme & {
+      transform: translateX(18px);
+    }
+  }
+
+  &__ide-btn {
+    color: $text-secondary;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 0;
+    clip-path: polygon(8px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 8px);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    font-family: 'Rajdhani', sans-serif;
+    position: relative;
+
+    &:hover {
+      color: $accent-main;
+      border-color: rgba($accent-main, 0.3);
+      background-color: rgba($accent-main, 0.05);
+    }
+
+    &.active {
+      color: $accent-main;
+      border-color: $accent-main;
+      background-color: rgba($accent-main, 0.1);
+    }
+  }
+
+  // ── Mobile Menu Button ──
+  &__menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: $text-primary;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.2s ease;
+    z-index: 1002;
+
+    &:hover {
+      color: $accent-main;
+    }
+
+    @media (max-width: $tablet) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
