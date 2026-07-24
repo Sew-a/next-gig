@@ -31,6 +31,9 @@ export default function Header() {
   return (
     <header className={`header ${isScrolled ? "header--scrolled" : ""} ${isOpen ? "header--menu-open" : ""}`}>
       <div className="header__inner">
+        <div className="header__logo">
+          Sev
+        </div>
         <nav className={`header__nav ${isOpen ? "header__nav--open" : ""}`}>
           {routeNames.map((route) => (
             <Link
