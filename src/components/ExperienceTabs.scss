@@ -54,7 +54,6 @@
     color: $accent-main;
     transition: all 0.2s ease;
     clip-path: polygon(12px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 12px);
-    filter: drop-shadow(0 4px 0 $accent-dark) drop-shadow(0 0 6px rgba(0, 240, 255, 0.2));
 
     @media (max-width: 768px) {
       flex: 1;
@@ -80,7 +79,6 @@
       background: $accent-main;
       color: #000;
       border-color: $accent-main;
-      filter: drop-shadow(0 4px 0 $accent-dark) drop-shadow(0 0 16px rgba(0, 240, 255, 0.55));
       transform: translateY(2px);
 
       &:hover {

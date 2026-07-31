@@ -1,8 +1,8 @@
 export const FOOTER_NAV = [
   { label: "Home", href: "/" },
-  { label: "Music", href: "/music" },
-  { label: "Work Gallery", href: "/projects" },
-  { label: "Agentic AI", href: "/agentic-ai" },
+  { label: "Work", href: "/work" },
+  { label: "Contact", href: "/contact" },
+  { label: "Résumé", href: "/resume" },
 ];
 
 export const FOOTER_CONTACT = [

@@ -9,6 +9,7 @@
 
 @mixin section-padding {
   padding: 5rem 4rem;
+
   @media (max-width: $tablet) {
     padding: 3rem 1.5rem;
   }
@@ -64,9 +65,7 @@
   background: $accent-main;
   color: #000;
   border: 2px solid $accent-main;
-  // filter: drop-shadow works outside clip-path; box-shadow does not
-  filter: drop-shadow(0 5px 0 $accent-dark) drop-shadow(0 0 10px rgba(0, 240, 255, 0.35));
-  
+
   &:hover {
     background: $accent-hover;
     border-color: $accent-hover;
@@ -85,8 +84,7 @@
   background: transparent;
   color: $accent-main;
   border: 2px solid $accent-main;
-  filter: drop-shadow(0 5px 0 $accent-dark) drop-shadow(0 0 6px rgba(0, 240, 255, 0.2));
-  
+
   &:hover {
     background: rgba(0, 240, 255, 0.08);
     border-color: $accent-hover;
@@ -104,12 +102,16 @@
 // ─── Hover lift ──────────────────────────────────
 @mixin hover-lift($y: -2px) {
   transition: transform 0.2s ease;
-  &:hover { transform: translateY($y); }
+
+  &:hover {
+    transform: translateY($y);
+  }
 }
 
 // ─── Accent border card hover ────────────────────
 @mixin card-hover-glow {
   transition: border-color 0.2s, box-shadow 0.2s;
+
   &:hover {
     border-color: $border-accent;
     box-shadow: 0 0 30px $accent-subtle;

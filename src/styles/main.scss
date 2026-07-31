@@ -3,8 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Jersey+25&family=Rajdhani:wght@400;500;600;700&display=swap');
 
 :root {
-  --background: #0b071494;
-  --foreground: #f0e6e6;
+  --background: #100b1f94;
+  --foreground: #e2dada;
 }
 
 html {
@@ -80,14 +80,14 @@ a {
 /* ─── Theme Wrapper (Dark — Default) ─── */
 .main-theme-wrapper {
   --theme-accent: #00f0ff;
-  --theme-secondary: #ff1161;
+  --theme-secondary: #f30086;
   --theme-border: #007a8a;
   --theme-bg: #0b071494;
   --theme-bg-secondary: #0e142554;
   --theme-text: #f0e6e6;
   --theme-text-secondary: #c8b8b8;
   --theme-text-muted: #9e8888;
-  --theme-card-bg: #120a0b;
+  --theme-card-bg: #131022;
   --theme-card-border: #1a223a;
 
   // ── Global Button Overrides ──
@@ -105,13 +105,11 @@ a {
     border-radius: 0;
     clip-path: polygon(12px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 12px);
     box-shadow: none;
-    filter: drop-shadow(0 4px 0 #007a8a) drop-shadow(0 0 6px rgba(0, 240, 255, 0.2));
 
     &--primary {
       background-color: var(--theme-accent);
       color: #000;
       border: 2px solid var(--theme-accent);
-      filter: drop-shadow(0 4px 0 #007a8a) drop-shadow(0 0 10px rgba(0, 240, 255, 0.35));
 
       &:hover {
         transform: translateY(2px);
@@ -219,7 +217,7 @@ a {
    ═══════════════════════════════════════════════ */
 .main-theme-wrapper.light-theme {
   --theme-accent: #0077b6;
-  --theme-secondary: #d00000;
+  --theme-secondary: #d00072;
   --theme-border: #0096c7;
   --theme-bg: #f5f6f8;
   --theme-bg-secondary: #edf0f4;
@@ -498,10 +496,10 @@ a {
 
     &--gamedev {
       border-color: rgba(255, 17, 97, 0.2);
-      &:hover { border-color: #ff1161; box-shadow: 0 12px 32px rgba(255, 17, 97, 0.08); }
-      .expertise-skill-tag { background: rgba(255, 17, 97, 0.06); border-color: rgba(255, 17, 97, 0.25); color: #ff1161; }
-      h3::after { background-color: #ff1161; }
-      .expertise-icon { color: #ff1161; }
+      &:hover { border-color: #f30086; box-shadow: 0 12px 32px rgba(255, 17, 97, 0.08); }
+      .expertise-skill-tag { background: rgba(255, 17, 97, 0.06); border-color: rgba(255, 17, 97, 0.25); color: #f30086; }
+      h3::after { background-color: #f30086; }
+      .expertise-icon { color: #f30086; }
     }
   }
 
@@ -565,54 +563,104 @@ a {
   .final-message { color: #1a1d23; }
   .boring-text { color: var(--theme-text-muted); }
 
-  // ── Music / Band Pages ──
-  .band-sections {
-    background-color: var(--theme-bg);
-    color: var(--theme-text);
+  // ── Grid (Projects Page) ──
+  .grid-wrapper { background-color: transparent; }
+
+  // ── Hero ──
+  .hero__tag {
+    color: var(--theme-accent);
+    border-color: rgba(0, 119, 182, 0.35);
+    background: rgba(0, 119, 182, 0.06);
   }
 
-  .band-hero {
-    background-color: var(--theme-bg-secondary);
+  .hero__scroll-hint { color: var(--theme-text-muted); }
 
-    &::after {
-      background: linear-gradient(180deg,
-        rgba(255, 255, 255, 0.7) 0%,
-        rgba(245, 246, 248, 0.5) 50%,
-        #f5f6f8 100%);
+  // ── Featured Grid ──
+  .grid-card {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: var(--theme-card-border);
+    backdrop-filter: blur(8px);
+  }
+
+  .grid-card__name { color: var(--theme-text-secondary); }
+  .grid-card__soon { color: var(--theme-accent); }
+  .grid-card__caption h3 { color: #1a1d23; }
+  .grid-card__caption p { color: var(--theme-text-muted); }
+
+  // ── Featured Projects ──
+  .featured-project__title { color: #1a1d23; }
+  .featured-project__summary { color: var(--theme-text-secondary); }
+  .featured-project__highlights li { color: var(--theme-text-muted); }
+  .featured-project__chip {
+    background: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+    color: var(--theme-text-secondary);
+  }
+  .featured-project__link { color: #1a1d23; }
+
+  .window {
+    background: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+  }
+
+  .window__bar {
+    background: rgba(226, 230, 236, 0.6);
+    border-bottom-color: var(--theme-card-border);
+  }
+
+  .window__title { color: var(--theme-text-muted); }
+
+  // ── Contact ──
+  .contact-page__title { color: #1a1d23; }
+  .contact-page__lead { color: var(--theme-text-secondary); }
+  .contact-page__form-card {
+    background: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+    backdrop-filter: blur(8px);
+  }
+  .contact-page__form-title { color: #1a1d23; }
+  .contact-page__form-title::after { background-color: var(--theme-accent); }
+  .contact-page__portrait-caption { color: var(--theme-text-muted); }
+
+  .contact-social {
+    background: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+
+    &:hover {
+      background: rgba(0, 119, 182, 0.06);
     }
   }
 
-  .band-hero .brush-text { color: #1a1d23; }
-  .band-hero .sub-text { color: var(--theme-text-secondary); }
+  .contact-social__icon {
+    color: var(--theme-accent);
+    border-color: rgba(0, 119, 182, 0.3);
+  }
 
-  .band-grid-section .info-block {
-    background-color: var(--theme-card-bg);
+  .contact-social__label { color: #1a1d23; }
+  .contact-social__value { color: var(--theme-text-muted); }
+  .contact-social__arrow { color: var(--theme-accent); }
+
+  .contact-form__field label { color: var(--theme-text-muted); }
+
+  .contact-form__field input,
+  .contact-form__field textarea {
+    background: var(--theme-bg);
     border-color: var(--theme-card-border);
+    color: var(--theme-text);
 
-    h2 { color: #1a1d23; }
-    p { color: var(--theme-text-secondary); }
-    .block-footer { color: var(--theme-text-muted); }
+    &::placeholder {
+      color: var(--theme-text-muted);
+    }
+
+    &:focus {
+      border-color: var(--theme-accent);
+      box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.12);
+    }
   }
 
-  .band-grid-section .members-block,
-  .band-grid-section .tracks-block {
-    background-color: var(--theme-card-bg);
-    border-color: var(--theme-card-border);
-  }
-
-  .band-grid-section .block-header { color: var(--theme-text); }
-  .band-grid-section .member-item .name { color: var(--theme-text); }
-  .band-grid-section .member-item .role { color: var(--theme-text-muted); }
-  .band-grid-section .song-name { color: var(--theme-text); }
-  .band-grid-section .song-duration { color: var(--theme-text-muted); }
-  .band-grid-section .quote-block p { color: var(--theme-text-secondary); }
-
-  .gallery-item {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  }
-
-  // ── Grid (Projects Page) ──
-  .grid-wrapper { background-color: transparent; }
+  // ── Résumé ──
+  .resume__label { color: var(--theme-accent); }
 
   // ── IDE Mode (Light) ──
   .ide-layout {

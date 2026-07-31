@@ -1,17 +1,17 @@
 const paths = {
     home: '/',
-    music: '/music',
-    projects: '/projects',
+    work: '/work',
+    contact: '/contact',
     jobs: '/jobs',
-    agenticai: '/agentic-ai',
+    resume: '/resume',
     filesSystem: '/files-system',
 }
 
 export const routeNames = [
     { name: 'Portfolio', path: paths.home },
-    { name: 'Projects', path: paths.projects },
-    { name: 'Music', path: paths.music },
+    { name: 'Work', path: paths.work },
+    { name: 'Contact', path: paths.contact },
     // { name: 'Jobs', path: paths.jobs },
-    { name: 'Agentic AI', path: paths.agenticai },
+    // { name: 'Resume', path: paths.resume },
     // { name: 'File System', path: paths.filesSystem },
 ]

@@ -1,74 +1,80 @@
 "use client";
-import Image from "@/src/components/Image";
-import {
-  HERO_DATA,
-  SKILL_CATEGORIES,
-  PORTFOLIO,
-  AI_SUMMARY,
-} from "@/src/data/portfolioData";
+import { motion } from "framer-motion";
+import { HERO_DATA, SKILL_CATEGORIES } from "@/src/data/portfolioData";
 import { HeadingText, ActionButton, FadeIn } from "@/src/components/UI";
 import { ACTION_BUTTON_TYPE } from "@/src/components/types";
 import ExperienceTabs from "@/src/components/ExperienceTabs";
+import FeaturedGrid from "@/src/components/FeaturedGrid";
+import Parallax from "@/src/components/Parallax";
 
 export function HeroSection() {
   return (
     <FadeIn>
       <section className="hero">
-        <div className="hero__content hero__content--centered">
-          <h1 className="hero__heading">
-            {HERO_DATA.name}
-            <br />
-            {HERO_DATA.title} <span className="hero__accent">{HERO_DATA.accent}</span>
-          </h1>
-          {HERO_DATA.summary && (
-            <p className="hero__sub">{HERO_DATA.summary}</p>
-          )}
-          <div className="hero__cta">
-            <ActionButton
-              title="My Experience"
-              link="#experience"
-              buttonType={ACTION_BUTTON_TYPE.PRIMARY}
-            />
-            <ActionButton
-              title="My work"
-              link="/projects"
-              buttonType={ACTION_BUTTON_TYPE.GHOST}
-            />
+        <Parallax speed={-34} className="hero__parallax">
+          <div className="hero__content hero__content--centered">
+            <motion.span
+              className="hero__tag"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+            >
+              {HERO_DATA.tag}
+            </motion.span>
+            <motion.h1
+              className="hero__heading"
+              initial={{ opacity: 0, y: 26 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25, ease: [0.21, 0.47, 0.32, 0.98] }}
+            >
+              {HERO_DATA.name}
+              <br />
+              {HERO_DATA.title}{" "}
+              <span className="hero__accent">{HERO_DATA.accent}</span>
+            </motion.h1>
+            <motion.p
+              className="hero__sub"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+            >
+              {HERO_DATA.summary}
+            </motion.p>
+            <motion.div
+              className="hero__cta"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
+            >
+              <ActionButton
+                title="My Experience"
+                link="#experience"
+                buttonType={ACTION_BUTTON_TYPE.PRIMARY}
+              />
+              <ActionButton
+                title="My work"
+                link="/work"
+                buttonType={ACTION_BUTTON_TYPE.GHOST}
+              />
+              <ActionButton
+                title="Résumé"
+                link="/resume"
+                buttonType={ACTION_BUTTON_TYPE.GHOST}
+              />
+            </motion.div>
           </div>
+        </Parallax>
+        <div className="hero__scroll-hint">
+          <span>scroll</span>
+          <span className="hero__scroll-line" />
         </div>
       </section>
     </FadeIn>
   );
 }
 
-export function AiWorkSection() {
-  return (
-    <FadeIn delay={0.1}>
-      <section className="ai-work">
-        <HeadingText title={AI_SUMMARY.title} label="// AI & AGENTS" />
-        <div className="ai-work__card">
-          <p className="ai-work__desc">{AI_SUMMARY.description}</p>
-          <ul className="ai-work__highlights">
-            {AI_SUMMARY.highlights.map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
-          <div className="ai-work__links">
-            <ActionButton
-              title="Visit Website →"
-              link={AI_SUMMARY.link}
-              buttonType={ACTION_BUTTON_TYPE.PRIMARY}
-            />
-            <ActionButton
-              title="View Source →"
-              link={AI_SUMMARY.repo}
-              buttonType={ACTION_BUTTON_TYPE.GHOST}
-            />
-          </div>
-        </div>
-      </section>
-    </FadeIn>
-  );
+export function FeaturedWorkSection() {
+  return <FeaturedGrid />;
 }
 
 export function ExperienceSection() {
@@ -76,7 +82,19 @@ export function ExperienceSection() {
     <FadeIn delay={0.1}>
       <section className="experience" id="experience">
         <div className="experience__header">
-          <h2 className="experience__title">WORK EXPERIENCE</h2>
+          <div>
+            <h2 className="experience__title">WORK EXPERIENCE</h2>
+            <p className="experience__subtitle">
+              5+ years · React · TypeScript · Micro-frontends
+            </p>
+          </div>
+          <div className="experience__actions">
+            <ActionButton
+              title="Download Résumé"
+              link="/resume"
+              buttonType={ACTION_BUTTON_TYPE.PRIMARY}
+            />
+          </div>
           <div className="experience__line-top"></div>
         </div>
         <ExperienceTabs />
@@ -103,50 +121,6 @@ export function SkillsSection() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-    </FadeIn>
-  );
-}
-
-export function ProjectsSection() {
-  return (
-    <FadeIn delay={0.2}>
-      <section className="portfolio" id="portfolio">
-        <div className="portfolio__content">
-          <div className="portfolio__grid">
-            {PORTFOLIO.map((project, index) => (
-              <div key={index} className="portfolio__item">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={364}
-                  height={300}
-                />
-                <div className="portfolio__overlay">
-                  <span>{project.title}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="portfolio__header">
-            <span className="portfolio__label">COLLECTIONS</span>
-            <h2 className="portfolio__title">PROJECTS</h2>
-            <div className="portfolio__desc-card">
-              <p className="portfolio__desc">
-                A curated exhibition of my professional journey — featuring
-                micro-frontend architectures, FileSystem libraries, Google
-                Picker integrations, and the creative milestones I&apos;ve
-                achieved along the way.
-              </p>
-              <ActionButton
-                title="View Full Gallery →"
-                link="/projects"
-                buttonType={ACTION_BUTTON_TYPE.GHOST}
-                className="portfolio__cta"
-              />
-            </div>
-          </div>
         </div>
       </section>
     </FadeIn>

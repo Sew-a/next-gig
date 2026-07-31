@@ -33,7 +33,7 @@ export default function Grid({ images }: GridProps) {
   return (
     <>
       <div className="grid-wrapper">
-        <HeadingText title="Work Gallery" label="// PORTFOLIO" />
+        <HeadingText title="Work Gallery" label="// WORK" />
         <div
           className="masonry-grid"
           style={{ "--col-count": columnsCount } as React.CSSProperties}

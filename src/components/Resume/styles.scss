@@ -1,0 +1,257 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.resume {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  &__label {
+    @include section-label-style;
+    margin: 0;
+  }
+
+  &__download {
+    @include btn-ghost;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  &__sheet {
+    background: #ffffff;
+    color: #1a1d23;
+    border-radius: 8px;
+    padding: 3rem;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+
+    @media (max-width: $tablet) {
+      padding: 1.75rem;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid #111;
+    margin-bottom: 1.75rem;
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+
+  &__name {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  &__title {
+    color: #0077b6;
+    font-weight: 600;
+    margin-top: 0.25rem;
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 0.88rem;
+    color: #333;
+    text-align: right;
+
+    @media (max-width: 640px) {
+      text-align: left;
+    }
+
+    a {
+      color: #0077b6;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__block {
+    margin-bottom: 1.5rem;
+  }
+
+  &__block-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #0077b6;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.35rem;
+    margin-bottom: 0.9rem;
+  }
+
+  &__summary {
+    color: #333;
+    line-height: 1.65;
+    font-size: 0.95rem;
+  }
+
+  &__company {
+    margin-bottom: 1.25rem;
+  }
+
+  &__company-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+  }
+
+  &__company-period {
+    color: #555;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  &__company-summary {
+    color: #555;
+    font-size: 0.88rem;
+    margin-top: 0.15rem;
+  }
+
+  &__role {
+    margin: 0.9rem 0 0 0;
+  }
+
+  &__role-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+
+    h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #111;
+    }
+  }
+
+  &__role-period {
+    color: #666;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  &__achievements {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+
+    li {
+      position: relative;
+      padding-left: 1rem;
+      color: #333;
+      font-size: 0.9rem;
+      line-height: 1.55;
+
+      &::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #0077b6;
+        font-weight: 700;
+      }
+    }
+  }
+
+  &__skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__skill {
+    background: #eef3f7;
+    border: 1px solid #d6e2ea;
+    color: #1a3b52;
+    border-radius: 4px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  &__edu {
+    color: #333;
+    font-size: 0.95rem;
+  }
+
+  &__languages {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    color: #333;
+    font-size: 0.92rem;
+  }
+
+  &__footer {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #ddd;
+    color: #777;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media print {
+  .header,
+  .footer,
+  .follow-section,
+  .resume__toolbar {
+    display: none !important;
+  }
+
+  .main {
+    padding-top: 0;
+  }
+
+  .resume {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .resume__sheet {
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0.5rem 1rem;
+  }
+
+  .resume__download {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+}

@@ -97,26 +97,26 @@
         border-color: rgba(255, 17, 97, 0.25);
 
         &:hover {
-            border-color: #ff1161;
+            border-color: #f30086;
             box-shadow: 0 16px 40px rgba(255, 17, 97, 0.1);
         }
 
         h3::after {
-            background-color: #ff1161;
+            background-color: #f30086;
         }
 
         .expertise-icon {
-            color: #ff1161;
+            color: #f30086;
         }
 
         .expertise-skill-tag {
             border-color: rgba(255, 17, 97, 0.3);
-            color: #ff1161;
+            color: #f30086;
             background: rgba(255, 17, 97, 0.06);
 
             &:hover {
                 background: rgba(255, 17, 97, 0.15);
-                border-color: #ff1161;
+                border-color: #f30086;
             }
         }
     }
