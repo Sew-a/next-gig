@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
+// import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, ArrowUpRight, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
-import { FormState, SubmitStatus, ContactResponse } from "./types";
+import { Mail, ArrowUpRight } from "lucide-react";
+// import { FormState, SubmitStatus, ContactResponse } from "./types";
 import "./styles.scss";
 
 function LinkedinIcon({ size = 22 }: { size?: number }) {
@@ -73,6 +73,7 @@ const fadeUp = {
 };
 
 export default function ContactPage() {
+  /*
   const [form, setForm] = useState<FormState>({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<SubmitStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -103,7 +104,7 @@ export default function ContactPage() {
         setStatus("error");
         setErrorMessage(
           data.error ||
-            "Something went wrong. Please try again or email me directly.",
+          "Something went wrong. Please try again or email me directly.",
         );
       }
     } catch {
@@ -111,6 +112,7 @@ export default function ContactPage() {
       setErrorMessage("Something went wrong. Please try again or email me directly.");
     }
   };
+  */
 
   return (
     <section className="contact-page">
@@ -160,6 +162,7 @@ export default function ContactPage() {
           })}
         </motion.div>
 
+        {/* Contact form and its functionality commented out for now
         <motion.div
           className="contact-page__form-card"
           variants={fadeUp}
@@ -235,6 +238,7 @@ export default function ContactPage() {
             )}
           </form>
         </motion.div>
+        */}
       </div>
 
       <motion.div

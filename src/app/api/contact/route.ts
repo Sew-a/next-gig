@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+// import nodemailer from "nodemailer";
 import { z } from "zod";
+
+export const runtime = "edge";
 
 const contactSchema = z.object({
   name: z.string().min(1).max(120),
@@ -24,8 +26,9 @@ export async function POST(req: Request) {
     );
   }
 
-  const { name, email, message } = parsed.data;
+  // const { name, email, message } = parsed.data;
 
+  /*
   const host = process.env.CONTACT_SMTP_HOST;
   const user = process.env.CONTACT_SMTP_USER;
   const pass = process.env.CONTACT_SMTP_PASS;
@@ -73,8 +76,12 @@ export async function POST(req: Request) {
       { status: 500 },
     );
   }
+  */
+
+  return NextResponse.json({ ok: true });
 }
 
+/*
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, "&amp;")
@@ -83,3 +90,4 @@ function escapeHtml(value: string): string {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 }
+*/
