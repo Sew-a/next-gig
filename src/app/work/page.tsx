@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import ProjectsHero from "@/src/components/ProjectsPage/ProjectsHero";
-import FeaturedProjects from "@/src/components/ProjectsPage/FeaturedProjects";
+import ProjectsHero from "./_components/ProjectsPage/ProjectsHero";
+import FeaturedProjects from "./_components/ProjectsPage/FeaturedProjects";
 import Grid from "@/src/components/Grid";
 import Testimonials from "@/src/components/Testimonials";
 import ExpertiseSection from "@/src/components/ExpertiseSection/ExpertiseSection";

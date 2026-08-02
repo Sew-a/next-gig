@@ -44,6 +44,15 @@ This project is a high-end personal portfolio website built with **Next.js**, **
 
 ---
 
+## Deployment
+
+This project has **two independent deploy paths** — be aware which one you are using:
+
+1. **Cloudflare Pages** (primary): `npm run pages:build` (`@cloudflare/next-on-pages`), configured via `wrangler.toml` with `.open-next/` build output. Data via Turso/libSQL + Prisma.
+2. **Standalone Node server** (`server/server.ts`): an independent Apollo GraphQL server (port 4000), not wired into the Next.js app. Run separately with `node server/server.ts` and keep it out of the Cloudflare bundle.
+
+Deploying to one path does not deploy the other.
+
 ## Future Roadmap
 - Integration of a live contact form with server actions.
 - Enhanced terminal interactivity for a truly immersive developer experience.

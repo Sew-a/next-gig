@@ -21,6 +21,7 @@ export default function Resume() {
           </div>
           <div className="resume__contact">
             <span>{RESUME.location}</span>
+            <span>{RESUME.phone}</span>
             <a href={`mailto:${RESUME.email}`}>{RESUME.email}</a>
             <a href={RESUME.linkedin} target="_blank" rel="noreferrer">
               LinkedIn
@@ -28,6 +29,7 @@ export default function Resume() {
             <a href={RESUME.github} target="_blank" rel="noreferrer">
               GitHub
             </a>
+            <a href={RESUME.portfolio}>Portfolio</a>
           </div>
         </header>
 
@@ -64,11 +66,16 @@ export default function Resume() {
 
         <section className="resume__block">
           <h2 className="resume__block-title">Skills</h2>
-          <div className="resume__skills">
-            {RESUME.skills.map((skill) => (
-              <span key={skill} className="resume__skill">
-                {skill}
-              </span>
+          <div className="resume__skill-groups">
+            {RESUME.skillGroups.map((group) => (
+              <div key={group.category} className="resume__skill-group">
+                <h3 className="resume__skill-category">{group.category}</h3>
+                <ul className="resume__skill-items">
+                  {group.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
         </section>

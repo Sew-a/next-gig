@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ProjectDetail from "@/src/components/ProjectDetail/ProjectDetail";
+import ProjectDetail from "../_components/ProjectDetail/ProjectDetail";
 import { PROJECTS } from "@/src/data/portfolioData";
 import "../../../styles.scss";
 
