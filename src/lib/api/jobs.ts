@@ -108,8 +108,7 @@ function normalizeHimalayas(raw: z.infer<typeof HimalayasJobSchema>): Job {
 async function fetchArbeitnow(): Promise<Job[]> {
   const result = await fetchJson(
     "https://www.arbeitnow.com/api/job-board-api",
-    ArbeitnowResponseSchema,
-    { next: { revalidate: 300 } }
+    ArbeitnowResponseSchema
   );
   if (!result.ok) return [];
   return result.data.data.map(normalizeArbeitnow);
@@ -118,8 +117,7 @@ async function fetchArbeitnow(): Promise<Job[]> {
 async function fetchJobicy(): Promise<Job[]> {
   const result = await fetchJson(
     "https://jobicy.com/api/v2/remote-jobs?count=100",
-    JobicyResponseSchema,
-    { next: { revalidate: 300 } }
+    JobicyResponseSchema
   );
   if (!result.ok) return [];
   return result.data.jobs.map(normalizeJobicy);
@@ -128,8 +126,7 @@ async function fetchJobicy(): Promise<Job[]> {
 async function fetchRemotive(): Promise<Job[]> {
   const result = await fetchJson(
     "https://remotive.com/api/remote-jobs",
-    RemotiveResponseSchema,
-    { next: { revalidate: 300 } }
+    RemotiveResponseSchema
   );
   if (!result.ok) return [];
   return result.data.jobs.map(normalizeRemotive);
@@ -138,8 +135,7 @@ async function fetchRemotive(): Promise<Job[]> {
 async function fetchHimalayas(): Promise<Job[]> {
   const result = await fetchJson(
     "https://himalayas.app/jobs/api/search?worldwide=true&sort=recent",
-    HimalayasResponseSchema,
-    { next: { revalidate: 300 } }
+    HimalayasResponseSchema
   );
   if (!result.ok) return [];
   return result.data.jobs.map(normalizeHimalayas);

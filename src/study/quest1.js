@@ -49,16 +49,57 @@ const orders = [
   { orderId: 4, product: "Tablet" },
 ];
 
-function orderMapper() {
-  const userMap = new Map(users.map((user) => [user.id, user]));
-  console.log("User Map:", userMap); // Debugging line to check the userMap
+function orderMapper(users, orders) {
+  if (!Array.isArray(users) || !Array.isArray(orders)) {
+    throw new Error("Both users and orders must be arrays");
+  }
 
-  return orders.map((order) => [
-    {
+  const userMap = new Map(users.map((user) => [user.id, user]));
+
+  return orders.map((order) => {
+    if (!order || typeof order.orderId === "undefined") {
+      console.warn("Invalid order:", order);
+      return { ...order, user: null };
+    }
+
+    return {
       ...order,
       user: userMap.get(order.orderId) || null,
-    },
-  ]);
+    };
+  });
+}
+console.log("Mapped Orders:", orderMapper(users, orders));
+
+const newInput = [
+  { value: "abcd", order: 4, expired: false },
+  { value: "qwer", order: 2, expired: true },
+  { value: "xyz1", order: 1, expired: false },
+  { value: "abx2", order: 3, expired: false },
+];
+
+function filteredSymbols(input) {
+  if (!Array.isArray(input)) {
+    throw new Error("Input must be an array");
+  }
+
+  const validItems = input
+    .filter((item) => !item.expired)
+    .sort((a, b) => a.order - b.order)
+    .map((item) => item.value.split("").reverse());
+
+  console.log("validItems:", validItems);
+
+  const uniqueChars = [];
+  const seenChars = new Set();
+
+  for (const char of validItems) {
+    if (!seenChars.has(char)) {
+      seenChars.add(char);
+      uniqueChars.push(char);
+    }
+  }
+
+  return uniqueChars.join(' ');
 }
 
-console.log("Mapped Orders:", orderMapper());
+console.log("Filtered Symbols:", filteredSymbols(newInput));

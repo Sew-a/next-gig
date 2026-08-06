@@ -1,8 +1,5 @@
-"use client";
 import { createContext, useContext, useMemo, useState, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
-import { ApolloProvider } from "@apollo/client/react";
 import { AppContextType, ImageItemProps, Theme } from "@/src/contexts/types";
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -52,17 +49,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, [theme, hydrated]);
 
-  const client = useMemo(
-    () =>
-      new ApolloClient({
-        link: new HttpLink({
-          uri: "http://localhost:4000",
-        }),
-        cache: new InMemoryCache(),
-      }),
-    []
-  );
-
   const value = useMemo(
     () => ({
       imageFiles,
@@ -82,13 +68,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 
   return (
-    <ApolloProvider client={client}>
-      <QueryClientProvider client={queryClient}>
-        <AppContext.Provider value={value}>
-          {children}
-        </AppContext.Provider>
-      </QueryClientProvider>
-    </ApolloProvider>
+    <QueryClientProvider client={queryClient}>
+      <AppContext.Provider value={value}>
+        {children}
+      </AppContext.Provider>
+    </QueryClientProvider>
   );
 };
 

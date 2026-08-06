@@ -1,0 +1,26 @@
+import { useEffect } from "react";
+
+interface SeoProps {
+  title: string;
+  description?: string;
+}
+
+export default function Seo({ title, description }: SeoProps) {
+  useEffect(() => {
+    document.title = title;
+
+    if (description) {
+      let meta = document.head.querySelector<HTMLMetaElement>(
+        'meta[name="description"]'
+      );
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute("name", "description");
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute("content", description);
+    }
+  }, [title, description]);
+
+  return null;
+}

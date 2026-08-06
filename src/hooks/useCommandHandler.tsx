@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 import { useAppContext } from "@/src/contexts/appContext";
 import { TERMINAL_RESPONSES, TerminalCommand } from "@/src/utils/terminalCom";
 
@@ -17,7 +17,7 @@ export function useCommandHandler({
   clear,
 }: UseCommandHandlerProps) {
   const { setIsHacked, setIsIdeMode } = useAppContext();
-  const router = useRouter();
+  const navigate = useNavigate();
 
   const execute = (raw: string) => {
     const trimmed = raw.trim();
@@ -53,7 +53,7 @@ export function useCommandHandler({
         } else {
           push(`Redirecting to /${page === "home" ? "" : page}...`);
           setIsIdeMode(false);
-          router.push(page === "home" ? "/" : `/${page}`);
+          navigate(page === "home" ? "/" : `/${page}`);
         }
         break;
       }

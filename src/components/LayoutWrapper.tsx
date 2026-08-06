@@ -1,13 +1,14 @@
 "use client";
-import { useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { lazy, Suspense, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Header from "@/src/components/Header";
 import FollowSection from "@/src/components/FollowSection";
 import Footer from "@/src/components/Footer";
-import IdeLayout from "@/src/components/IdeLayout/IdeLayout";
 import FixedCharacter from "@/src/components/FixedCharacter";
 import { useAppContext } from "@/src/contexts/appContext";
+
+const IdeLayout = lazy(() => import("@/src/components/IdeLayout/IdeLayout"));
 
 const pageTransition = {
   initial: { opacity: 0, y: 16, filter: "blur(6px)" },
@@ -22,7 +23,7 @@ export default function LayoutWrapper({
   children: React.ReactNode;
 }) {
   const { isIdeMode } = useAppContext();
-  const pathname = usePathname();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,7 +36,9 @@ export default function LayoutWrapper({
         <div className="main-content">
           <div className={`page-content ${isIdeMode && "ide-mode"}`}>
             {isIdeMode ? (
-              <IdeLayout />
+              <Suspense fallback={null}>
+                <IdeLayout />
+              </Suspense>
             ) : (
               <AnimatePresence mode="wait">
                 <motion.div

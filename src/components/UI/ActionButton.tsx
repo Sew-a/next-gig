@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { ACTION_BUTTON_TYPE } from "../types";
 import "./styles.scss";
 
@@ -29,7 +29,7 @@ export default function ActionButton({
 
   if (link) {
     return (
-      <Link href={link} className={classes}>
+      <Link to={link} className={classes}>
         {content}
       </Link>
     );

@@ -14,7 +14,6 @@ export default function Image({
   ...rest
 }: ImageProps) {
   return (
-    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={cloudinaryLoader(src!, width, height)}
       width={width}

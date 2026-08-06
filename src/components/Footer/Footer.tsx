@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import {
   FOOTER_NAV,
   FOOTER_CONTACT,
@@ -17,7 +17,7 @@ function Footer() {
           <div className="footer__col">
             <span className="footer__col-title">Navigation</span>
             {FOOTER_NAV.map((link) => (
-              <Link key={link.href} href={link.href}>
+              <Link key={link.href} to={link.href}>
                 {link.label}
               </Link>
             ))}

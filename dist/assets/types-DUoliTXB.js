@@ -1,0 +1,1 @@
+var e=function(e){return e.STANDARD=`standard`,e.ACTION=`action`,e.SPECIAL=`special`,e.PRIMARY=`primary`,e.GHOST=`ghost`,e}({});export{e as t};

@@ -1,28 +1,45 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
+import js from "@eslint/js";
+import globals from "globals";
+import tseslint from "typescript-eslint";
+import reactHooks from "eslint-plugin-react-hooks";
 
-const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  // Override default ignores of eslint-config-next.
-    {
-    settings: {
-      "import/resolver": {
-        node: {
-          paths: ["src"],          // match tsconfig baseUrl
-          extensions: [".js", ".ts", ".tsx"],
-        },
+const eslintConfig = tseslint.config(
+  {
+    ignores: [
+      "dist/**",
+      "node_modules/**",
+      "public/**",
+      "src/study/**",
+      ".next/**",
+    ],
+  },
+  {
+    files: ["**/*.{ts,tsx}"],
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+    ],
+    plugins: {
+      "react-hooks": reactHooks,
+    },
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
       },
     },
-  },
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
-]);
+    rules: {
+      "no-unused-vars": "off",
+      "no-undef": "off",
+      "no-empty": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+    },
+  }
+);
 
 export default eslintConfig;

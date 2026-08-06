@@ -1,8 +1,15 @@
 "use client";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
+import typescript from "react-syntax-highlighter/dist/esm/languages/prism/typescript";
+import json from "react-syntax-highlighter/dist/esm/languages/prism/json";
+import markdown from "react-syntax-highlighter/dist/esm/languages/prism/markdown";
 import { useAppContext } from "@/src/contexts/appContext";
 import "./CodeEditor.scss";
+
+SyntaxHighlighter.registerLanguage("typescript", typescript);
+SyntaxHighlighter.registerLanguage("json", json);
+SyntaxHighlighter.registerLanguage("markdown", markdown);
 
 const FILES = [
   "AboutMe.tsx",

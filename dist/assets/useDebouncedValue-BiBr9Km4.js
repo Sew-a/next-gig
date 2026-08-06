@@ -1,0 +1,1 @@
+import{a as e}from"./rolldown-runtime-B0Z9INg1.js";import{o as t}from"./three-BC8X_KNM.js";var n=e(t());function r(e,t){let[r,i]=(0,n.useState)(e);return(0,n.useEffect)(()=>{let n=setTimeout(()=>i(e),t);return()=>clearTimeout(n)},[e,t]),r}export{r as t};

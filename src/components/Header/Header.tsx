@@ -1,14 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, useLocation } from "react-router-dom";
 import { routeNames } from "@/src/routes/mainRoutes";
 import { useAppContext } from "@/src/contexts/appContext";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import "./styles.scss";
 
 export default function Header() {
-  const pathname = usePathname();
+  const { pathname } = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { isIdeMode, setIsIdeMode, theme, setTheme } = useAppContext();
@@ -38,7 +37,7 @@ export default function Header() {
           {routeNames.map((route) => (
             <Link
               key={route.path}
-              href={route.path}
+              to={route.path}
               className={`header__nav-link ${pathname === route.path ? "active" : ""}`}
             >
               {route.name}

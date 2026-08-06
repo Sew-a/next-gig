@@ -1,16 +1,17 @@
 "use client";
-import dynamic from "next/dynamic";
+import { lazy, Suspense } from "react";
 import "./styles.scss";
 
-const CharacterAnimation = dynamic(
+const CharacterAnimation = lazy(
   () => import("@/src/components/Sidebar/CharacterAnimation"),
-  { ssr: false },
 );
 
 export default function FixedCharacter() {
   return (
     <div className="fixed-character">
-      <CharacterAnimation />
+      <Suspense fallback={null}>
+        <CharacterAnimation />
+      </Suspense>
     </div>
   );
 }

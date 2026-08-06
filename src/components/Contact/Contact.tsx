@@ -249,7 +249,6 @@ export default function ContactPage() {
         custom={0.45}
       >
         <div className="contact-page__portrait-frame">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={PORTRAIT} alt="Sevak Avetisyan" />
         </div>
         <p className="contact-page__portrait-caption">
