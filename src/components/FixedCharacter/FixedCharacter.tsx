@@ -1,4 +1,3 @@
-"use client";
 import { lazy, Suspense } from "react";
 import "./styles.scss";
 

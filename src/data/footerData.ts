@@ -1,8 +1,10 @@
+import { paths } from "@/src/routes/mainRoutes";
+
 export const FOOTER_NAV = [
-  { label: "Home", href: "/" },
-  { label: "Work", href: "/work" },
-  { label: "Contact", href: "/contact" },
-  { label: "Résumé", href: "/resume" },
+  { label: "Home", href: paths.home },
+  { label: "Work", href: paths.work },
+  { label: "Contact", href: paths.contact },
+  { label: "Résumé", href: paths.resume },
 ];
 
 export const FOOTER_CONTACT = [

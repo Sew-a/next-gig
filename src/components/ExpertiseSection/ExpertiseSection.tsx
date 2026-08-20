@@ -1,4 +1,3 @@
-"use client";
 import { HeadingText } from "../UI";
 import { EXPERTISE_DATA } from "./constants";
 import "./styles.scss";

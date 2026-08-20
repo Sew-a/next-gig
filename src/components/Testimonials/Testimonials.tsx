@@ -1,4 +1,3 @@
-"use client";
 import { Quote } from "lucide-react";
 import { HeadingText } from "@/src/components/UI";
 import { testimonialsData } from "@/src/data/testimonialsData";

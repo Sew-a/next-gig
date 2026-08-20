@@ -1,4 +1,3 @@
-"use client";
 import { lazy, Suspense, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";

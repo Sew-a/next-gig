@@ -1,10 +1,11 @@
-"use client";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { routeNames } from "@/src/routes/mainRoutes";
+import { routeNames, paths } from "@/src/routes/mainRoutes";
 import { useAppContext } from "@/src/contexts/appContext";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import "./styles.scss";
+
+const headerRoutes = routeNames.filter((r) => r.path !== paths.resume);
 
 export default function Header() {
   const { pathname } = useLocation();
@@ -34,7 +35,7 @@ export default function Header() {
           Sev
         </div>
         <nav className={`header__nav ${isOpen ? "header__nav--open" : ""}`}>
-          {routeNames.map((route) => (
+          {headerRoutes.map((route) => (
             <Link
               key={route.path}
               to={route.path}

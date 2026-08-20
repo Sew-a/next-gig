@@ -37,11 +37,6 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="footer__bottom">
-        <span>
-          © {new Date().getFullYear()} Sevak Avetisyan. All rights reserved.
-        </span>
-      </div>
     </footer>
   );
 }

@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState } from "react";
+import { useState } from "react";
 import { EXPERIENCE } from "../data/portfolioData";
 import "./ExperienceTabs.scss";
 

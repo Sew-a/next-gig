@@ -1,4 +1,3 @@
-"use client";
 import { Download } from "lucide-react";
 import { RESUME, EXPERIENCE } from "@/src/data/portfolioData";
 import "./styles.scss";

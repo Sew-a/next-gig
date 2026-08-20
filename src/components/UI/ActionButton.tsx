@@ -1,4 +1,3 @@
-"use client";
 import { Link } from "react-router-dom";
 import { ACTION_BUTTON_TYPE } from "../types";
 import "./styles.scss";
@@ -28,6 +27,14 @@ export default function ActionButton({
   const classes = `action-button action-button--${buttonType} ${className}`;
 
   if (link) {
+    if (link.startsWith("#")) {
+      return (
+        <a href={link} className={classes}>
+          {content}
+        </a>
+      );
+    }
+
     return (
       <Link to={link} className={classes}>
         {content}

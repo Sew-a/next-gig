@@ -540,11 +540,6 @@ a {
     &:hover { color: var(--theme-accent); }
   }
 
-  .footer__bottom {
-    border-top-color: var(--theme-card-border);
-    color: var(--theme-text-muted);
-  }
-
   // ── Follow Section ──
   .follow-section__title { color: var(--theme-accent); }
   .follow-section__line { background: linear-gradient(180deg, var(--theme-accent), transparent); }
@@ -572,8 +567,6 @@ a {
     border-color: rgba(0, 119, 182, 0.35);
     background: rgba(0, 119, 182, 0.06);
   }
-
-  .hero__scroll-hint { color: var(--theme-text-muted); }
 
   // ── Featured Grid ──
   .grid-card {

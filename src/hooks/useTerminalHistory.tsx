@@ -1,4 +1,3 @@
-"use client";
 import { TERMINAL_RESPONSES } from "@/src/utils/terminalCom";
 import { useState, useEffect } from "react";
 

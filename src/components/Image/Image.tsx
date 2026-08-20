@@ -1,4 +1,3 @@
-"use client";
 import cloudinaryLoader from "@/src/lib/cloudinaryLoader";
 
 export type ImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {

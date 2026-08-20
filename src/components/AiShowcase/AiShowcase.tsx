@@ -1,4 +1,3 @@
-"use client";
 import { HeadingText, ActionButton } from "@/src/components/UI";
 import Image from "@/src/components/Image";
 import { ACTION_BUTTON_TYPE } from "@/src/components/types";
@@ -15,7 +14,7 @@ export default function AiShowcase() {
       <div className="ai-showcase__intro">
         <p className="ai-showcase__desc">
           A curated knowledge hub and practical guide for prompt engineering, AI
-          agents, RAG, reusable agent workflow patterns, and everyday prompt
+          agents, reusable agent workflow patterns, and everyday prompt
           examples. Built for anyone who uses ChatGPT, Claude, Gemini, or any
           LLM-powered assistant and wants to go beyond basic chat interactions.
         </p>

@@ -1,4 +1,3 @@
-"use client";
 import { motion } from "framer-motion";
 import {
   ClipboardList,
@@ -15,6 +14,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { PROJECTS } from "@/src/data/portfolioData";
+import { paths } from "@/src/routes/mainRoutes";
 import Image from "@/src/components/Image";
 import Parallax from "@/src/components/Parallax";
 import { HeadingText, ActionButton } from "@/src/components/UI";
@@ -50,7 +50,7 @@ export default function ProjectDetail({ slug }: ProjectDetailProps) {
         <HeadingText title="Project not found" label="// 404" />
         <ActionButton
           title="← Back to work"
-          link="/work"
+          link={paths.work}
           buttonType={ACTION_BUTTON_TYPE.GHOST}
         />
       </section>
@@ -65,7 +65,7 @@ export default function ProjectDetail({ slug }: ProjectDetailProps) {
       style={{ "--project-accent": project.accent } as React.CSSProperties}
     >
       <div className="project-detail__back">
-        <Link to="/work">
+        <Link to={paths.work}>
           <ArrowLeft size={16} /> All work
         </Link>
       </div>
@@ -212,12 +212,12 @@ export default function ProjectDetail({ slug }: ProjectDetailProps) {
         <p>Like what you see? Let&apos;s build something together.</p>
         <ActionButton
           title="Get in touch →"
-          link="/contact"
+          link={paths.contact}
           buttonType={ACTION_BUTTON_TYPE.PRIMARY}
         />
         <ActionButton
           title="← Back to work"
-          link="/work"
+          link={paths.work}
           buttonType={ACTION_BUTTON_TYPE.GHOST}
         />
       </div>

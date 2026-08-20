@@ -1,6 +1,5 @@
-"use client";
 import { motion } from "framer-motion";
-import { FolderOpen, Code2 } from "lucide-react";
+import { Code2 } from "lucide-react";
 import Image from "@/src/components/Image";
 import type { FeaturedItem } from "@/src/data/portfolioData";
 import "./styles.scss";

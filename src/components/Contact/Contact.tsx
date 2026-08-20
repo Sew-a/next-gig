@@ -1,5 +1,3 @@
-"use client";
-// import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, ArrowUpRight } from "lucide-react";
 // import { FormState, SubmitStatus, ContactResponse } from "./types";

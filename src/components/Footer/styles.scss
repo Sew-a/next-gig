@@ -15,11 +15,13 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 4rem;
+  min-height: 200px;
 
   @media (max-width: $tablet) {
     grid-template-columns: 1fr;
     gap: 2rem;
     padding: 2rem 2.4rem;
+    min-height: 160px;
   }
 }
 
@@ -69,12 +71,4 @@
   letter-spacing: 0.15em;
   color: $accent-main;
   margin-bottom: 0.25rem;
-}
-
-.footer__bottom {
-  border-top: 1px solid #1e1e2a;
-  text-align: center;
-  padding: 1.25rem 2rem;
-  font-size: 0.8rem;
-  color: $accent-main;
 }

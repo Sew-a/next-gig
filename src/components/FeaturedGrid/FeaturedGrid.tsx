@@ -1,7 +1,7 @@
-"use client";
 import { FEATURED_WORK } from "@/src/data/portfolioData";
 import { HeadingText, ActionButton } from "@/src/components/UI";
 import { ACTION_BUTTON_TYPE } from "@/src/components/types";
+import { paths } from "@/src/routes/mainRoutes";
 import GridCard from "./GridCard";
 import "./styles.scss";
 
@@ -19,7 +19,7 @@ export default function FeaturedGrid() {
       <div className="featured-grid__more">
         <ActionButton
           title="See all work →"
-          link="/work"
+          link={paths.work}
           buttonType={ACTION_BUTTON_TYPE.GHOST}
         />
       </div>

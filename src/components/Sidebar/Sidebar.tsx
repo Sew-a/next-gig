@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { routeNames } from "@/src/routes/mainRoutes";

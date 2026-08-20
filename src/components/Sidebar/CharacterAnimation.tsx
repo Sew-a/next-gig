@@ -1,4 +1,3 @@
-"use client";
 import { Canvas } from "@react-three/fiber";
 import { useCharacterLogic } from "./useCharacterLogic";
 import { Character } from "./Character";

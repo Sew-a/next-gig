@@ -1,8 +1,8 @@
-"use client";
 import { motion } from "framer-motion";
 import { HERO_DATA, SKILL_CATEGORIES } from "@/src/data/portfolioData";
 import { HeadingText, ActionButton, FadeIn } from "@/src/components/UI";
 import { ACTION_BUTTON_TYPE } from "@/src/components/types";
+import { paths } from "@/src/routes/mainRoutes";
 import ExperienceTabs from "@/src/components/ExperienceTabs";
 import FeaturedGrid from "@/src/components/FeaturedGrid";
 import Parallax from "@/src/components/Parallax";
@@ -11,6 +11,21 @@ export function HeroSection() {
   return (
     <FadeIn>
       <section className="hero">
+        <img
+          className="hero__bg"
+          src="https://res.cloudinary.com/dlggumsot/image/upload/f_auto,q_auto,w_1920/v1782203370/maxresdefault_mu3oiu.webp"
+          srcSet="https://res.cloudinary.com/dlggumsot/image/upload/f_auto,q_auto,w_480/v1782203370/maxresdefault_mu3oiu.webp 480w,
+                  https://res.cloudinary.com/dlggumsot/image/upload/f_auto,q_auto,w_768/v1782203370/maxresdefault_mu3oiu.webp 768w,
+                  https://res.cloudinary.com/dlggumsot/image/upload/f_auto,q_auto,w_1280/v1782203370/maxresdefault_mu3oiu.webp 1280w,
+                  https://res.cloudinary.com/dlggumsot/image/upload/f_auto,q_auto,w_1920/v1782203370/maxresdefault_mu3oiu.webp 1920w"
+          sizes="100vw"
+          alt=""
+          width="1920"
+          height="1080"
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
+        />
         <Parallax speed={-34} className="hero__parallax">
           <div className="hero__content hero__content--centered">
             <motion.span
@@ -53,21 +68,17 @@ export function HeroSection() {
               />
               <ActionButton
                 title="My work"
-                link="/work"
+                link={paths.work}
                 buttonType={ACTION_BUTTON_TYPE.GHOST}
               />
               <ActionButton
                 title="Résumé"
-                link="/resume"
+                link={paths.resume}
                 buttonType={ACTION_BUTTON_TYPE.GHOST}
               />
             </motion.div>
           </div>
         </Parallax>
-        <div className="hero__scroll-hint">
-          <span>scroll</span>
-          <span className="hero__scroll-line" />
-        </div>
       </section>
     </FadeIn>
   );
@@ -91,7 +102,7 @@ export function ExperienceSection() {
           <div className="experience__actions">
             <ActionButton
               title="Download Résumé"
-              link="/resume"
+              link={paths.resume}
               buttonType={ACTION_BUTTON_TYPE.PRIMARY}
             />
           </div>

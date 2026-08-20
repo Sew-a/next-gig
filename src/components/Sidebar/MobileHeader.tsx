@@ -1,4 +1,3 @@
-"use client";
 import { Link } from "react-router-dom";
 import "./styles.scss";
 import { routeNames } from "@/src/routes/mainRoutes";

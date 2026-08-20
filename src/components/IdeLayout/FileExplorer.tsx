@@ -1,4 +1,3 @@
-"use client";
 import { FileJson, FileText, FileCode, Folder } from "lucide-react";
 import { useAppContext } from "@/src/contexts/appContext";
 import "./FileExplorer.scss";

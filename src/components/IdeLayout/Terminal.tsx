@@ -1,4 +1,3 @@
-"use client";
 import React, { useState, useRef, useEffect } from "react";
 import { Terminal as TerminalIcon } from "lucide-react";
 import { FadeIn } from "../UI";

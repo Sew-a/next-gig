@@ -1,9 +1,8 @@
-"use client";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "@/src/contexts/appContext";
 import { TERMINAL_RESPONSES, TerminalCommand } from "@/src/utils/terminalCom";
 
-const VALID_ROUTES = ["home", "contact", "work", "maelstrom"] as const;
+const VALID_ROUTES = ["home", "contact", "work"] as const;
 
 interface UseCommandHandlerProps {
   history: string[];

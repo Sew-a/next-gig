@@ -1,5 +1,5 @@
-"use client";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   ClipboardList,
   Bot,
@@ -9,6 +9,7 @@ import {
   Code2,
 } from "lucide-react";
 import Image from "@/src/components/Image";
+import { paths } from "@/src/routes/mainRoutes";
 import type { Project } from "@/src/data/portfolioData";
 import "./styles.scss";
 
@@ -88,12 +89,12 @@ export default function ProjectCard({
         </div>
 
         <div className="featured-project__links">
-          <a
-            href={`/work/${project.slug}`}
+          <Link
+            to={`${paths.work}/${project.slug}`}
             className="featured-project__link featured-project__link--primary"
           >
             Case study <ArrowUpRight size={16} />
-          </a>
+          </Link>
           {project.links.live && (
             <a
               href={project.links.live}

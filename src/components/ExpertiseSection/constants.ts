@@ -25,13 +25,13 @@ export const EXPERTISE_DATA = [
   {
     icon: Bot,
     title: "AI & Agentic AI",
-    desc: "Built a comprehensive educational platform covering prompt engineering, AI agents, RAG, and practical LLM workflows. Experienced in designing agent architectures, prompt patterns, and self-hosted open-source AI tooling.",
+    desc: "Built a comprehensive educational platform covering prompt engineering, AI agents, and practical LLM workflows. Experienced in designing agent architectures, prompt patterns, and self-hosted open-source AI tooling.",
     emphasis: [
-      "Architected an AI Agents educational hub with prompt engineering, RAG, and agent workflow guides",
+      "Architected an AI Agents educational hub with prompt engineering, and agent workflow guides",
               "Implemented 9 prompt techniques from zero-shot to Reflexion with copyable examples",
       "Showcased 5 open-source AI tools including n8n, Ollama, and Whisper for self-hosted AI infrastructure"
     ],
-    skills: ["Prompt Engineering", "AI Agents", "RAG", "LLM Workflows", "Open Source AI"]
+    skills: ["Prompt Engineering", "AI Agents", "LLM Workflows", "Open Source AI"]
   }
 ];
 

@@ -1,4 +1,3 @@
-"use client";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import typescript from "react-syntax-highlighter/dist/esm/languages/prism/typescript";

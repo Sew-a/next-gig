@@ -1,4 +1,3 @@
-"use client";
 import { CHARACTER_CONFIG, Action } from "@/src/utils/characterConstants";
 import { useState, useEffect, useMemo } from "react";
 import * as THREE from "three";

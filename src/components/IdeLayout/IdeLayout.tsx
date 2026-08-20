@@ -1,4 +1,3 @@
-"use client";
 import CodeEditor from "./CodeEditor";
 import Terminal from "./Terminal";
 import { useAppContext } from "@/src/contexts/appContext";

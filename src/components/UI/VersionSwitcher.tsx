@@ -1,4 +1,3 @@
-"use client";
 import { useAppContext } from "@/src/contexts/appContext";
 import { useWindowSize } from "@/src/hooks/useWindowSize";
 import { Sun, Moon } from "lucide-react";
