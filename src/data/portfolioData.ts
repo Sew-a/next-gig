@@ -1,12 +1,10 @@
 export const HERO_DATA = {
   tag: "// FRONT-END ENGINEER",
-  name: "I'm Sev",
-  title: "Front-end",
+  name: "I'm Sevak",
+  title: "Frontend",
   accent: "Engineer",
-  summary:
-    "Senior Frontend Engineer with 5+ years shipping large-scale React & TypeScript systems at Picsart — a 150M+ user creative platform. Promoted twice while architecting micro-frontends, a federated module shell, and shared frontend platforms used across 5+ product teams. I blend deep frontend architecture with AI-assisted delivery, real-time systems, and a designer's eye for polish.",
-  aboutText:
-    "Specialized in architecting federated module systems and enterprise-scale component libraries. 5+ years of experience leveraging React, Next.js, and GraphQL to build robust, accessible web ecosystems. Proven ability to reduce production overhead, mentor teams on modular architecture, and deliver high-performance internal tools that serve organization-wide needs.",
+ summary:
+    "Frontend Engineer with 5+ years of experience building scalable web applications with React and TypeScript. Specializes in Frontend Architecture, Micro-frontends, Module Federation, reusable component systems, performance, and testing.",
   email: "sevavetisyan97@gmail.com",
   phone: "+37441080497",
   linkedin: "https://www.linkedin.com/in/sevak-avetisyan-6122411b2/",
@@ -54,14 +52,13 @@ export const PROJECTS: Project[] = [
       repo: "https://github.com/Sew-a/form-builder",
     },
     techStack: [
-      "Next.js",
-      "React 18",
+      "Next",
+      "React",
       "TypeScript",
       "Express",
       "Socket.io",
       "MongoDB / Mongoose",
       "Zustand",
-      "@dnd-kit",
       "Zod",
       "Tailwind CSS",
       "Jest",
@@ -260,36 +257,29 @@ export const EXPERIENCE = [
     location: "Yerevan, Armenia",
     period: "May 2021 – Feb 2026",
     companySummary:
-      "One of the world's largest creative platforms with 150M+ monthly active users.",
+      "AI-powered creative platform for photo, video, and design, serving 150M+ users worldwide.",
     roles: [
       {
-        title: "Frontend Engineer II",
-        period: "Feb 2025 – Feb 2026",
+        title: "Frontend Engineer",
+        period: "Apr 2022 – Feb 2026",
         achievements: [
-          "Eliminated 20 hours/sprint of duplicated integration work across 2 products by architecting a File System library, aligning 3 team leads on a shared interface contract.",
-          "Removed a manual, per-team file-transfer workflow platform-wide by proposing, architecting, and deploying a universal Google Picker micro app, consolidating 4 teams' duplicate Google Drive integrations.",
-          "Cut implementation time for a cross-project commenting micro-frontend from an 8-week baseline to 3 weeks by designing the component architecture and applying AI-assisted development (Cursor + Claude) to accelerate API integration, enabling an earlier product launch.",
-          "Enabled 5+ product teams to ship independently across a ~150M-user platform by delivering 5+ production micro-frontend applications and consolidating them into a single federated shell.",
-          "Reduced core editor production bugs by 9.3% by running systematic live-environment triage to find root causes directly in production, cutting mean time to resolution.",
-          "Improved platform-wide LCP by 20% by building a standalone micro-frontend preview engine with lazy asset hydration, replacing 3 inconsistent per-product implementations.",
-        ],
-      },
-      {
-        title: "Frontend Engineer I",
-        period: "Apr 2022 – Feb 2025",
-        achievements: [
-          "Caught 3 regression classes before they reached production by establishing Jest unit testing from 0% to 85%+ coverage across core repositories, including the landings project and cloud library system.",
-          "Brought WCAG 2.1 AA compliance and keyboard navigation to components that were failing automated accessibility audits, building accessible component libraries and a standardized tabs system with design.",
-          "Unblocked cross-team component adoption by introducing Storybook to a previously opaque UI library, documenting and auditing 20+ components.",
-          "Cut onboarding ramp-up for 2 incoming engineers by building and maintaining the shared component library and logic layer underpinning the Drive project.",
+          "Architected Frontend solutions for the photo editor, File System, component library, and Micro-frontend ecosystem serving 150M+ users.",
+          "Created a reusable File System library, ~15 reusable components, and a unified interface contract, saving 20 hours per sprint.",
+          "Built the Google Picker Micro-frontend from scratch with Module Federation, enabling reuse across 4 teams.",
+          "Developed the FullStorage Micro-frontend from scratch and contributed to the architecture of 5+ production Micro-frontends, enabling independent integration and releases.",
+          "Architected a cross-project Commenting Micro-frontend and leveraged Cursor + Claude for API integration, reducing delivery time from 6 to 3 weeks.",
+          "Reduced production bugs in the core editor by 9.3% through Datadog-driven root-cause analysis.",
+          "Increased unit test coverage across the landing and File System projects to 50–65% within 3–5 weeks.",
         ],
       },
       {
         title: "UI Engineer",
         period: "May 2021 – Apr 2022",
         achievements: [
-          "Drove organic acquisition for a 150M-user platform by delivering 20+ marketing landing pages scoring 90+ on Lighthouse for Performance and Accessibility.",
-          "Ensured high availability for downstream SDK consumers by optimizing data delivery pipelines and standardizing API responses.",
+          "Built and optimized React/Next.js landing pages for web performance.",
+          "Increased the main page Lighthouse performance score to 90%.",
+          "Built and contributed to 20+ landing pages, maintaining Lighthouse scores of 75-85%.",
+          "Automated landing page data migration from local storage to CDN, optimizing content delivery architecture.",
         ],
       },
     ],
@@ -299,14 +289,15 @@ export const EXPERIENCE = [
     location: "Yerevan, Armenia",
     period: "Nov 2020 – May 2021",
     companySummary:
-      "Fast-growing hiring platform where I owned marketing pages and performance.",
+      "Freelance marketplace connecting businesses with remote digital professionals.",
     roles: [
       {
         title: "Frontend Engineer",
         period: "Nov 2020 – May 2021",
         achievements: [
-          "Improved SEO-driven organic acquisition by building 3 marketing landing pages scoring 90+ on Lighthouse, using lazy loading, image compression, and critical-path CSS extraction.",
-          "Cut new-page build time in half by migrating the codebase from vanilla JS to React, reducing time-to-interactive by 30% and enabling component reuse.",
+          "Built lightweight landing pages and e-commerce interfaces with HTML, CSS/Sass, JavaScript, jQuery, and React.",
+          "Migrated legacy vanilla JavaScript functionality to React, improving maintainability and extensibility.",
+          "Optimized Frontend performance, achieving 80-90% Lighthouse scores.",
         ],
       },
     ],

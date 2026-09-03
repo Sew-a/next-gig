@@ -1,3 +1,5 @@
+@use "../../styles/variables" as *;
+
 .image-container {
   position: relative;
   width: 100%;
@@ -28,8 +30,8 @@
       margin: 0;
       padding: 4px 0;
       color: #333;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: $fs-sm;
+      font-weight: $fw-semibold;
     }
   }
 

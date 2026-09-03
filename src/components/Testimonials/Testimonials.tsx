@@ -10,12 +10,6 @@ export default function Testimonials() {
       <div className="testimonials-grid">
         {testimonialsData.map((testimonial) => (
           <div key={testimonial.id} className="testimonial-card">
-            <div className="card-header">
-              <div className="quote-icon">
-                <Quote size={20} fill="currentColor" />
-              </div>
-            </div>
-
             <div className="testimonial-content">
               <p className="testimonial-text">{testimonial.text}</p>
             </div>

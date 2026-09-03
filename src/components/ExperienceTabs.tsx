@@ -84,7 +84,6 @@ export default function ExperienceTabs() {
           <ul className="experience-tabs__achievements">
             {activeRole.achievements.map((achievement, idx) => (
               <li key={idx} className="experience-tabs__achievement-item">
-                <span className="experience-tabs__bullet">&gt;&gt;</span>
                 <span className="experience-tabs__achievement-text">
                   {achievement}
                 </span>

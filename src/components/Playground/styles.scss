@@ -1,4 +1,5 @@
 @use "@/src/styles/variables" as v;
+@use "@/src/styles/variables" as *;
 
 .playground-section {
     width: 100%;
@@ -35,7 +36,7 @@
         border: none;
         outline: none;
         color: v.$text-primary;
-        font-size: 0.95rem;
+        font-size: $fs-body;
 
         &::placeholder {
             color: v.$text-dimmer;
@@ -48,8 +49,8 @@
         border: 1px solid v.$border-accent;
         border-radius: 999px;
         color: v.$accent-main;
-        font-size: 0.9rem;
-        font-weight: 500;
+        font-size: $fs-body;
+        font-weight: $fw-medium;
         letter-spacing: 0.02em;
         cursor: pointer;
         transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
@@ -93,7 +94,7 @@
 
         .suggestion-title {
             color: v.$text-primary;
-            font-size: 0.85rem;
+            font-size: $fs-sm;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -101,7 +102,7 @@
 
         .suggestion-category {
             flex-shrink: 0;
-            font-size: 0.7rem;
+            font-size: $fs-micro;
             text-transform: uppercase;
             letter-spacing: 0.06em;
             color: v.$text-dimmer;
@@ -150,8 +151,8 @@
 
     h3 {
         color: v.$text-primary;
-        font-size: 1rem;
-        font-weight: 500;
+        font-size: $fs-body;
+        font-weight: $fw-medium;
         line-height: 1.4;
         margin: 0.25rem 0 0;
         display: -webkit-box;
@@ -162,15 +163,15 @@
 
     p {
         color: v.$text-muted;
-        font-size: 0.85rem;
+        font-size: $fs-sm;
         line-height: 1.5;
         margin: 0;
     }
 
     .product-price {
         color: v.$accent-main;
-        font-size: 1.15rem;
-        font-weight: 600;
+        font-size: $fs-lead;
+        font-weight: $fw-semibold;
     }
 
     .product-description {
@@ -191,7 +192,7 @@
     }
 
     .category {
-        font-size: 0.72rem;
+        font-size: $fs-micro;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         color: v.$accent-main;
@@ -202,7 +203,7 @@
     }
 
     .rating {
-        font-size: 0.8rem;
+        font-size: $fs-sm;
         color: v.$text-secondary;
 
         .rating-count {
@@ -217,7 +218,7 @@
     text-align: center;
     padding: 3rem;
     color: v.$text-muted;
-    font-size: 0.95rem;
+    font-size: $fs-body;
 }
 
 .error {

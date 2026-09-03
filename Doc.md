@@ -19,7 +19,60 @@ This project is a high-end personal portfolio website built with **Next.js**, **
 - **Premium UI**: Uses a sophisticated dark-themed palette with vibrant purple (`#d494ff`) accents.
 - **Glassmorphism**: Integrated across various components for a state-of-the-art look.
 - **Micro-animations**: Hover effects, scroll-triggered fade-ins (`FadeIn` component), and interactive project cards.
-- **Custom Typography**: Leverages 'Advent Pro' and 'Poppins' for a modern, distinct architectural feel.
+- **Custom Typography**: Inter (UI/body) with JetBrains Mono for code, driven by a centralized font-size and weight scale. See the [Typography System](#typography-system) section below.
+
+---
+
+## Typography System
+
+All typography is driven by a centralized design-token scale defined in
+`src/styles/_variables.scss` under the "Fonts" section. Every `font-size`,
+`font-weight`, and site-wide `font-family` across the codebase should reference
+these tokens — no hardcoded font values in component SCSS.
+
+### Font Family
+| Token | Value | Use |
+|-------|-------|-----|
+| `$font-family-sans` | `Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` | All UI/body text (set globally on `*` in `main.scss`) |
+| `$font-family-mono` | `"JetBrains Mono", "Fira Code", monospace` | Code/technical text (code blocks, editor, terminal) |
+
+> Legacy brand font `"Plaster", system-ui` is intentionally preserved only for the
+> Header logo element. It is the sole literal `font-family` left in source.
+
+### Font Weight Scale
+| Token | Value |
+|-------|-------|
+| `$fw-regular` | 400 |
+| `$fw-medium` | 500 |
+| `$fw-semibold` | 600 |
+| `$fw-bold` | 700 |
+
+### Font Size & Font Weight Scale
+| Role / Element | SCSS Token | px | rem | Tailwind Eq. | Typical Use Case |
+|----------------|-----------|-----|-----|--------------|------------------|
+| Hero / Display 1 | `$fs-display` | 56px | 3.5rem | `text-6xl/7xl` | Main homepage hero headline |
+| Heading 1 (H1) | `$fs-h1` | 40–48px | 2.5–3rem | `text-4xl/5xl` | Section titles, feature highlights |
+| Heading 2 (H2) | `$fs-h2` | 30–32px | 1.875–2rem | `text-3xl` | Sub-section headers, feature grid titles |
+| Heading 3 (H3) | `$fs-h3` | 24px | 1.5rem | `text-2xl` | Card titles, block headers |
+| H4 / Large Subtitle | `$fs-h4` | 20px | 1.25rem | `text-xl` | Lead paragraphs, callouts, modal titles |
+| Body Large / Lead | `$fs-lead` | 18px | 1.125rem | `text-lg` | Secondary hero copy, highlighted descriptions |
+| Body (Base) | `$fs-body` | 16px | 1rem | `text-base` | Standard body text, main UI content |
+| Body Small / Caption | `$fs-sm` | 14px | 0.875rem | `text-sm` | Secondary text, nav items, buttons |
+| Micro / Overline | `$fs-micro` | 12px | 0.75rem | `text-xs` | Category tags, badges, footer legal text |
+
+### Shared Typography Mixins (`src/styles/_mixins.scss`)
+- `section-label-style` → `$fs-micro`, Medium weight, uppercase overline.
+- `section-title-style` → `$fs-h2`, Bold weight.
+- `btn-base` → `$fs-sm`, Semi-Bold weight, uppercase, `$font-family-sans`.
+
+### Usage Rules
+- Map each element to its **semantic role** (hero, title, body, caption), never copy a raw
+  pixel value.
+- Use `$fw-bold` (700) for display titles — do not exceed the 700 cap (no 800/900).
+- Code/editor/terminal text always uses `$font-family-mono` (typically at `$fs-sm`).
+- The root `html { font-size: $base-font-size; }` is 16px; all `rem` tokens scale off it.
+
+---
 
 ### 3. Key Components
 - **Portfolio/Projects Section**: A modern grid displaying projects with high-quality images sourced directly from the `public/gallery`.

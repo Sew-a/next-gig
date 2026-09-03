@@ -10,29 +10,33 @@
   overflow: hidden;
   background-color: $bg-primary;
 
-  &__bg {
+  // Appwrite-style dotted grid pattern
+  &::before {
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.5;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
     z-index: 0;
+    animation: dot-drift 30s linear infinite;
   }
 
+  // Radial glow overlay
   &::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg,
-        rgba(#06090d, 0.55) 0%,
-        rgba(#030a1a, 0.3) 50%,
-        #06080d 100%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 240, 255, 0.04) 0%,
+      transparent 68%
+    );
     z-index: 1;
+    pointer-events: none;
   }
 
   &__content {
@@ -62,15 +66,14 @@
   &__tag {
     display: inline-block;
     color: $accent-main;
-    font-size: 0.85rem;
+    font-size: $fs-micro;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     margin-bottom: 1.25rem;
-    padding: 0.35rem 0.9rem;
-    border: 1px solid rgba($accent-main, 0.35);
-    background: rgba($accent-main, 0.05);
-    clip-path: polygon(8px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 8px);
-    text-shadow: 0 0 14px rgba($accent-main, 0.6);
+    padding: 0.3rem 0.75rem;
+    border: 1px solid rgba($accent-main, 0.25);
+    background: rgba($accent-main, 0.04);
+    border-radius: $border-radius-md;
   }
 
   &__scroll-hint {
@@ -82,16 +85,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.5rem;
     color: $text-muted;
-    font-size: 0.72rem;
+    font-size: $fs-micro;
     letter-spacing: 0.3em;
     text-transform: uppercase;
   }
 
   &__scroll-line {
     width: 1px;
-    height: 44px;
+    height: 36px;
     background: linear-gradient(180deg, $accent-main, transparent);
     position: relative;
     overflow: hidden;
@@ -109,18 +112,18 @@
   }
 
   &__heading {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
+    font-size: clamp(2.5rem, 4.5vw, $fs-display);
+    font-weight: $fw-bold;
     line-height: 1.1;
     color: #fff;
 
     &::after {
       content: "";
       display: block;
-      width: 60px;
-      height: 3px;
+      width: 48px;
+      height: 2px;
       background: $accent-dark;
-      margin: 1.5rem auto 0 auto;
+      margin: 1.25rem auto 0 auto;
     }
   }
 
@@ -129,28 +132,29 @@
   }
 
   &__sub {
-    font-size: 1.05rem;
+    font-size: $fs-body;
     color: $text-secondary;
     line-height: 1.7;
-    max-width: 600px;
-    margin: 1.5rem 0 0 0;
+    max-width: 580px;
+    margin: 1.25rem 0 0 0;
     text-align: center;
   }
 
   &__cta {
     display: flex;
-    gap: 1rem;
+    gap: 0.75rem;
     flex-wrap: wrap;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     justify-content: center;
   }
 }
 
 @keyframes hero-scroll-line {
-  0% {
-    top: -50%;
-  }
-  100% {
-    top: 110%;
-  }
+  0% { top: -50%; }
+  100% { top: 110%; }
+}
+
+@keyframes dot-drift {
+  0% { background-position: 0 0; }
+  100% { background-position: 24px 24px; }
 }

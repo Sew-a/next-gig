@@ -2,35 +2,11 @@ import { motion } from "framer-motion";
 import Parallax from "@/src/components/Parallax";
 import "./styles.scss";
 
-const HERO_BASE = "https://res.cloudinary.com/dlggumsot/image/upload";
-const HERO_ID = "v1785506072/ENiK5-pUcAAd0Tt_jomyao.webp";
-const HERO_SRC = `${HERO_BASE}/f_auto,q_auto,w_1920/${HERO_ID}`;
-const HERO_SRCSET = [
-  { w: 480, url: `${HERO_BASE}/f_auto,q_auto,w_480/${HERO_ID}` },
-  { w: 768, url: `${HERO_BASE}/f_auto,q_auto,w_768/${HERO_ID}` },
-  { w: 1280, url: `${HERO_BASE}/f_auto,q_auto,w_1280/${HERO_ID}` },
-  { w: 1920, url: `${HERO_BASE}/f_auto,q_auto,w_1920/${HERO_ID}` },
-];
-
 export default function ProjectsHero() {
   return (
     <section className="projects-hero">
-      <div className="projects-hero__bg-wrap">
-        <Parallax speed={90} className="projects-hero__bg">
-          <img
-            src={HERO_SRC}
-            srcSet={HERO_SRCSET.map((s) => `${s.url} ${s.w}w`).join(", ")}
-            sizes="100vw"
-            alt="Sevak Avetisyan work backdrop"
-            width="1920"
-            height="1080"
-            fetchPriority="high"
-            loading="eager"
-            decoding="async"
-          />
-        </Parallax>
-      </div>
-      <div className="projects-hero__overlay" />
+      <div className="projects-hero__grid-dots" aria-hidden="true" />
+      <div className="projects-hero__glow" aria-hidden="true" />
       <div className="projects-hero__content">
         <motion.span
           className="projects-hero__label"

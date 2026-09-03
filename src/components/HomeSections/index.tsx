@@ -1,5 +1,20 @@
+import type { ComponentType } from "react";
 import { motion } from "framer-motion";
-import { HERO_DATA, SKILL_CATEGORIES } from "@/src/data/portfolioData";
+import {
+  SiReact,
+  SiRedux,
+  SiJavascript,
+  SiTypescript,
+  SiDocker,
+  SiNextdotjs,
+  SiGraphql,
+  SiNodedotjs,
+  SiHtml5,
+  SiCss,
+  SiStorybook,
+} from "react-icons/si";
+import { GiBearFace } from "react-icons/gi";
+import { HERO_DATA } from "@/src/data/portfolioData";
 import { HeadingText, ActionButton, FadeIn } from "@/src/components/UI";
 import { ACTION_BUTTON_TYPE } from "@/src/components/types";
 import { paths } from "@/src/routes/mainRoutes";
@@ -11,21 +26,7 @@ export function HeroSection() {
   return (
     <FadeIn>
       <section className="hero">
-        <img
-          className="hero__bg"
-          src="https://res.cloudinary.com/dlggumsot/image/upload/f_auto,q_auto,w_1920/v1782203370/maxresdefault_mu3oiu.webp"
-          srcSet="https://res.cloudinary.com/dlggumsot/image/upload/f_auto,q_auto,w_480/v1782203370/maxresdefault_mu3oiu.webp 480w,
-                  https://res.cloudinary.com/dlggumsot/image/upload/f_auto,q_auto,w_768/v1782203370/maxresdefault_mu3oiu.webp 768w,
-                  https://res.cloudinary.com/dlggumsot/image/upload/f_auto,q_auto,w_1280/v1782203370/maxresdefault_mu3oiu.webp 1280w,
-                  https://res.cloudinary.com/dlggumsot/image/upload/f_auto,q_auto,w_1920/v1782203370/maxresdefault_mu3oiu.webp 1920w"
-          sizes="100vw"
-          alt=""
-          width="1920"
-          height="1080"
-          fetchPriority="high"
-          loading="eager"
-          decoding="async"
-        />
+        <div className="hero__grid-dots" aria-hidden="true" />
         <Parallax speed={-34} className="hero__parallax">
           <div className="hero__content hero__content--centered">
             <motion.span
@@ -114,23 +115,31 @@ export function ExperienceSection() {
   );
 }
 
+const TECH_ICONS: { name: string; Icon: ComponentType<{ size?: number }> }[] = [
+  { name: "React", Icon: SiReact },
+  { name: "Redux", Icon: SiRedux },
+  { name: "JavaScript", Icon: SiJavascript },
+  { name: "TypeScript", Icon: SiTypescript },
+  { name: "Docker", Icon: SiDocker },
+  { name: "Next.js", Icon: SiNextdotjs },
+  { name: "Zustand", Icon: GiBearFace },
+  { name: "GraphQL", Icon: SiGraphql },
+  { name: "Node.js", Icon: SiNodedotjs },
+  { name: "HTML", Icon: SiHtml5 },
+  { name: "CSS", Icon: SiCss },
+  { name: "Storybook", Icon: SiStorybook },
+];
+
 export function SkillsSection() {
   return (
     <FadeIn delay={0.2}>
       <section className="skills">
         <HeadingText title="Technologies I work with" label="// SKILLS" />
-        <div className="skills__grid">
-          {SKILL_CATEGORIES.map((category, index) => (
-            <div key={index} className="skill-card">
-              <span className="skill-card__cat">{category.cat}</span>
-              <div className="skill-card__tags">
-                {category.items.map((item) => (
-                  <span key={item} className="tag">
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
+        <div className="skills__icon-grid">
+          {TECH_ICONS.map(({ name, Icon }) => (
+            <span key={name} className="tech-icon-cell" title={name} role="img" aria-label={name}>
+              <Icon size={36} />
+            </span>
           ))}
         </div>
       </section>

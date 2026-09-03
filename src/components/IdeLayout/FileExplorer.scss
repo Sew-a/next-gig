@@ -13,8 +13,8 @@
     gap: 8px;
     padding: 0 10px;
     color: $text-secondary;
-    font-weight: 600;
-    font-size: 17px;
+    font-weight: $fw-semibold;
+    font-size: $fs-body;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 8px;
@@ -41,7 +41,7 @@
     cursor: pointer;
     transition: all 0.2s ease;
     color: $text-muted;
-    font-size: 16px;
+    font-size: $fs-body;
 
     &:hover {
       background-color: rgba($accent-main, 0.05);

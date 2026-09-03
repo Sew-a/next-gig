@@ -1,11 +1,13 @@
+@use "../../styles/variables" as *;
+
 .grid-loading {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 400px;
-    font-size: 1.2rem;
+    font-size: $fs-lead;
     color: #a855f7;
-    font-weight: 500;
+    font-weight: $fw-medium;
     letter-spacing: 1px;
     text-transform: uppercase;
     animation: pulse 2s infinite;
@@ -93,9 +95,9 @@
 
                 h4 {
                     margin: 0;
-                    font-size: 1.4rem;
+                    font-size: $fs-h3;
                     color: white;
-                    font-weight: 600;
+                    font-weight: $fw-semibold;
                     letter-spacing: -0.5px;
                 }
             }

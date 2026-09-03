@@ -1,3 +1,5 @@
+@use "../../styles/variables" as *;
+
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -17,7 +19,7 @@
 
   &__tag {
     display: inline-block;
-    font-size: 0.72rem;
+    font-size: $fs-micro;
     padding: 2px 10px;
     border-radius: 20px;
     background: var(--tag-bg);
@@ -27,13 +29,13 @@
   }
 
   &__title {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: $fs-body;
+    font-weight: $fw-semibold;
     margin-bottom: 0.5rem;
   }
 
   &__description {
-    font-size: 0.85rem;
+    font-size: $fs-sm;
     color: var(--text-muted);
     line-height: 1.6;
   }

@@ -35,7 +35,7 @@ export default function GridCard({ item }: { item: FeaturedItem }) {
         </div>
       </div>
       <div className="grid-card__caption">
-        <h3>{item.title}</h3>
+        <h4>{item.title}</h4>
         <p>{item.tagline}</p>
       </div>
     </>

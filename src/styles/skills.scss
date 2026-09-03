@@ -7,19 +7,54 @@
   &__grid {
     @include content-wrapper;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  &__icon-grid {
+    @include content-wrapper;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}
+
+.tech-icon-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-md;
+  background: $bg-secondary;
+  color: $text-secondary;
+  transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s;
+
+  &:hover {
+    border-color: rgba($accent-main, 0.4);
+    color: $accent-main;
+    background: rgba($accent-main, 0.04);
+    transform: translateY(-2px);
+  }
+
+  svg {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    opacity: 0.9;
   }
 }
 
 .skill-card {
-  background-color: $bg-primary;
+  background-color: $bg-secondary;
   border: 1px solid $border-color;
   border-radius: $border-radius-lg;
-  padding: 1.25rem 1.5rem;
+  padding: 1.1rem 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.7rem;
   transition: border-color 0.2s;
 
   &:hover {
@@ -27,7 +62,7 @@
   }
 
   &__cat {
-    font-size: 16px;
+    font-size: $fs-micro;
     color: $accent-main;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -36,21 +71,57 @@
   &__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
 }
 
 .tag {
-  color: #ccc;
-  font-size: 18px;
+  color: $text-secondary;
+  font-size: $fs-micro;
+  padding: 3px 8px;
+  border-radius: $border-radius-sm;
+  border: 1px solid rgba($border-color, 0.8);
+  background: rgba($bg-primary, 0.5);
+  transition: border-color 0.2s, color 0.2s;
+
+  &:hover {
+    border-color: rgba($accent-main, 0.3);
+    color: $accent-main;
+  }
+}
+
+.tech-icon-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: $text-secondary;
+  font-size: $fs-micro;
   padding: 4px 10px;
-  border-radius: 1px;
-  border: 1px solid #00f0ff4d;
+  border-radius: $border-radius-sm;
+  border: 1px solid $border-color;
+  background: $bg-primary;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+
+  &:hover {
+    border-color: rgba($accent-main, 0.3);
+    color: $accent-main;
+    background: rgba($accent-main, 0.04);
+  }
+
+  svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  &:hover svg {
+    opacity: 1;
+  }
 }
 
 .skills .section-title {
   @include content-wrapper;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .skills .section-label {

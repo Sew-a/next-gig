@@ -27,8 +27,8 @@
 
   .editor-tab {
     padding: 10px 20px;
-    font-family: var(--font-geist-mono, monospace);
-    font-size: 13px;
+    font-family: $font-family-mono;
+    font-size: $fs-sm;
     color: $text-muted;
     background: transparent;
     border: none;

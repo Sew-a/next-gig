@@ -6,8 +6,8 @@
   height: 250px;
   display: flex;
   flex-direction: column;
-  font-family: var(--font-geist-mono, monospace);
-  font-size: 14px;
+  font-family: $font-family-mono;
+  font-size: $fs-sm;
   transition: height 0.3s ease;
 
   .terminal-header {
@@ -24,8 +24,8 @@
       gap: 8px;
       color: $text-secondary;
       text-transform: uppercase;
-      font-size: 16px;
-      font-weight: 600;
+      font-size: $fs-body;
+      font-weight: $fw-semibold;
       letter-spacing: 1px;
     }
   }
@@ -34,7 +34,7 @@
     flex: 1;
     overflow-y: auto;
     padding: 16px;
-    font-size: 16px;
+    font-size: $fs-sm;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -65,7 +65,7 @@
 
       .prompt {
         color: $accent-main;
-        font-weight: 700;
+        font-weight: $fw-bold;
       }
 
       .command-input {

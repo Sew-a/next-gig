@@ -92,7 +92,7 @@
   display: block;
   padding: 12px;
   color: #fff;
-  font-weight: 600;
+  font-weight: $fw-semibold;
   text-align: center;
   transition: all 0.12s ease;
   border: 1px solid rgba($accent-main, 0.2);
@@ -102,14 +102,14 @@
   cursor: pointer;
   text-decoration: none;
   text-wrap: nowrap;
-  font-size: 16px;
+  font-size: $fs-body;
   letter-spacing: 0.1em;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: $font-family-sans;
   filter: drop-shadow(0 4px 0 rgba(0, 0, 0, 0.35));
   margin-bottom: 4px;
 
   @media (max-width: $tablet) {
-    font-size: 14px;
+    font-size: $fs-sm;
     padding: 8px;
   }
 
@@ -117,7 +117,7 @@
     color: $accent-main;
     border: 1px solid $accent-main;
     background: rgba($accent-main, 0.1);
-    font-weight: 700;
+    font-weight: $fw-bold;
     transform: translateY(2px);
     filter: drop-shadow(0 2px 0 $accent-dark) drop-shadow(0 0 8px rgba(0, 240, 255, 0.3));
   }

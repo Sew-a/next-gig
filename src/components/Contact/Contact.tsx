@@ -58,14 +58,12 @@ const SOCIALS = [
   },
 ];
 
-const PORTRAIT =
-  "https://res.cloudinary.com/dlggumsot/image/upload/v1779294439/portfoliopic_ubmfda.jpg";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
+const bannerFade = {
+  hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
+    filter: "blur(0px)",
     transition: { duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] as const },
   }),
 };
@@ -114,26 +112,30 @@ export default function ContactPage() {
 
   return (
     <section className="contact-page">
-      <motion.div
-        className="contact-page__intro"
-        variants={fadeUp}
-        initial="hidden"
-        animate="visible"
-        custom={0}
-      >
-        <span className="contact-page__label">{`// CONTACT`}</span>
-        <h1 className="contact-page__title">
-          contact<span className="contact-page__dot">.</span>
-        </h1>
-        <p className="contact-page__lead">
-          Get in touch with me via social media or send me an email.
-        </p>
-      </motion.div>
+      <div className="contact-page__banner">
+        <div className="contact-page__banner-wrap">
+          <motion.div
+            className="contact-page__intro"
+            variants={bannerFade}
+            initial="hidden"
+            animate="visible"
+            custom={0}
+          >
+            <span className="contact-page__label">{`// CONTACT`}</span>
+            <h1 className="contact-page__title">
+              Contact<span className="contact-page__dot">.</span>
+            </h1>
+            <p className="contact-page__lead">
+              Get in touch with me via social media or send me an email.
+            </p>
+          </motion.div>
+        </div>
+      </div>
 
       <div className="contact-page__grid">
         <motion.div
           className="contact-page__socials"
-          variants={fadeUp}
+          variants={bannerFade}
           initial="hidden"
           animate="visible"
           custom={0.15}
@@ -159,97 +161,16 @@ export default function ContactPage() {
             );
           })}
         </motion.div>
-
-        {/* Contact form and its functionality commented out for now
-        <motion.div
-          className="contact-page__form-card"
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          custom={0.3}
-        >
-          <h2 className="contact-page__form-title">Send me an email</h2>
-
-          <form className="contact-form" onSubmit={handleSubmit} noValidate>
-            <div className="contact-form__field">
-              <label htmlFor="contact-name">Name</label>
-              <input
-                id="contact-name"
-                name="name"
-                type="text"
-                placeholder="Your name"
-                value={form.name}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="contact-form__field">
-              <label htmlFor="contact-email">Email</label>
-              <input
-                id="contact-email"
-                name="email"
-                type="email"
-                placeholder="you@example.com"
-                value={form.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="contact-form__field">
-              <label htmlFor="contact-message">Message</label>
-              <textarea
-                id="contact-message"
-                name="message"
-                rows={6}
-                placeholder="Tell me about your project or question..."
-                value={form.message}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="contact-form__submit"
-              disabled={status === "loading"}
-            >
-              {status === "loading" ? (
-                <>
-                  <Loader2 size={18} className="spin" /> Sending…
-                </>
-              ) : (
-                <>Send Message <ArrowUpRight size={18} /></>
-              )}
-            </button>
-
-            {status === "success" && (
-              <p className="contact-form__feedback contact-form__feedback--success">
-                <CheckCircle2 size={18} />
-                Message sent! I&apos;ll get back to you soon.
-              </p>
-            )}
-            {status === "error" && (
-              <p className="contact-form__feedback contact-form__feedback--error">
-                <AlertCircle size={18} />
-                {errorMessage}
-              </p>
-            )}
-          </form>
-        </motion.div>
-        */}
       </div>
 
       <motion.div
-        className="contact-page__portrait"
-        variants={fadeUp}
+        className="contact-page__location"
+        variants={bannerFade}
         initial="hidden"
         animate="visible"
-        custom={0.45}
+        custom={0.3}
       >
-        <div className="contact-page__portrait-frame">
-          <img src={PORTRAIT} alt="Sevak Avetisyan" />
-        </div>
-        <p className="contact-page__portrait-caption">
+        <p className="contact-page__location-text">
           Based in Yerevan, Armenia · Working worldwide, remote-friendly
         </p>
       </motion.div>

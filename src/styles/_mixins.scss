@@ -8,10 +8,10 @@
 }
 
 @mixin section-padding {
-  padding: 5rem 4rem;
+  padding: 4rem 4rem;
 
   @media (max-width: $tablet) {
-    padding: 3rem 1.5rem;
+    padding: 2.5rem 1.5rem;
   }
 }
 
@@ -26,56 +26,49 @@
 @mixin section-label-style {
   display: inline-block;
   color: $accent-main;
-  font-size: 0.75rem;
+  font-size: $fs-micro;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
+  font-weight: $fw-medium;
 }
 
 @mixin section-title-style {
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-weight: 700;
+  font-size: $fs-h2;
+  font-weight: $fw-bold;
   color: $text-primary;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 @mixin btn-base {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 10px 22px;
-  border-radius: 0;
-  font-size: 16px;
-  font-weight: 700;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: $border-radius-md;
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
   text-decoration: none;
-  transition: all 0.12s ease;
+  transition: all 0.15s ease;
   cursor: pointer;
-  border: none;
+  border: 1px solid transparent;
   position: relative;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-family: 'Rajdhani', sans-serif;
-  // Cyberpunk top-left diagonal cut corner
-  clip-path: polygon(14px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 14px);
+  letter-spacing: 0.1em;
+  font-family: $font-family-sans;
 }
 
 @mixin btn-primary {
   @include btn-base;
   background: $accent-main;
   color: #000;
-  border: 2px solid $accent-main;
+  border: 1px solid $accent-main;
 
   &:hover {
     background: $accent-hover;
     border-color: $accent-hover;
-    transform: translateY(2px);
-    filter: drop-shadow(0 3px 0 $accent-dark) drop-shadow(0 0 18px rgba(0, 240, 255, 0.6));
-  }
-
-  &:active {
-    transform: translateY(5px);
-    filter: none;
+    opacity: 0.9;
   }
 }
 
@@ -83,19 +76,12 @@
   @include btn-base;
   background: transparent;
   color: $accent-main;
-  border: 2px solid $accent-main;
+  border: 1px solid $border-color;
 
   &:hover {
-    background: rgba(0, 240, 255, 0.08);
-    border-color: $accent-hover;
+    background: rgba(0, 240, 255, 0.06);
+    border-color: rgba(0, 240, 255, 0.3);
     color: $accent-hover;
-    transform: translateY(2px);
-    filter: drop-shadow(0 3px 0 $accent-dark) drop-shadow(0 0 14px rgba(0, 240, 255, 0.45));
-  }
-
-  &:active {
-    transform: translateY(5px);
-    filter: none;
   }
 }
 
@@ -114,6 +100,12 @@
 
   &:hover {
     border-color: $border-accent;
-    box-shadow: 0 0 30px $accent-subtle;
+    box-shadow: 0 0 24px $accent-subtle;
   }
+}
+
+// ─── Dot grid pattern (Appwrite-style) ──────────
+@mixin dot-pattern($spacing: 20px, $color: rgba(255,255,255,0.04)) {
+  background-image: radial-gradient(circle, $color 1px, transparent 1px);
+  background-size: $spacing $spacing;
 }

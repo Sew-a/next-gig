@@ -62,7 +62,6 @@ const ImagePopup: React.FC<ImagePopupProps> = ({ src, alt, onClose }) => {
             width={800}
             height={600}
             className="popup-image"
-            fetchPriority="high"
             sizes="90vw"
           />
         </div>
