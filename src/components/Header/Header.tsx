@@ -29,11 +29,11 @@ export default function Header() {
   }
 
   return (
-    <header className={`header ${isScrolled ? "header--scrolled" : ""} ${isOpen ? "header--menu-open" : ""}`}>
+    <header
+      className={`header ${isScrolled ? "header--scrolled" : ""} ${isOpen ? "header--menu-open" : ""}`}
+    >
       <div className="header__inner">
-        <div className="header__logo">
-          Sev
-        </div>
+        <div className="header__logo">Sev</div>
         <nav className={`header__nav ${isOpen ? "header__nav--open" : ""}`}>
           {headerRoutes.map((route) => (
             <Link
@@ -49,14 +49,13 @@ export default function Header() {
         <div className="header__controls">
           <button
             className="header__theme-toggle"
-            onClick={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}
+            onClick={() =>
+              setTheme((prev) => (prev === "dark" ? "light" : "dark"))
+            }
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           >
             <span className="header__theme-icon">
-              {theme === "dark" ? <Moon size={14} /> : <Sun size={14} />}
-            </span>
-            <span className="header__theme-track">
-              <span className="header__theme-thumb" />
+              {theme === "dark" ? <Moon size={16} /> : <Sun size={16} />}
             </span>
           </button>
 
