@@ -6,7 +6,9 @@ import { federation } from "@module-federation/vite";
 const root = fileURLToPath(new URL(".", import.meta.url));
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, root);
+  // Cloudflare Pages injects env vars directly into process.env
+  // Also support loadEnv for local development
+  const remoteDemosUrl = process.env.VITE_REMOTE_DEMOS_URL || loadEnv(mode, root).VITE_REMOTE_DEMOS_URL || "http://localhost:3001/remoteEntry.js";
 
   return {
     plugins: [
@@ -18,7 +20,7 @@ export default defineConfig(({ mode }) => {
           demos: {
             name: "demos",
             type: "module",
-            entry: env.VITE_REMOTE_DEMOS_URL || "http://localhost:3001/remoteEntry.js",
+            entry: remoteDemosUrl,
           },
         },
         shared: {
