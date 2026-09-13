@@ -10,6 +10,7 @@ const AiAgents = lazy(() => import("@/src/pages/work/ai-agents/page"));
 const Contact = lazy(() => import("@/src/pages/contact/page"));
 const Resume = lazy(() => import("@/src/pages/resume/page"));
 const Playground = lazy(() => import("@/src/pages/playground/page"));
+const Demos = lazy(() => import("@/src/pages/demos/page"));
 const NotFound = lazy(() => import("@/src/pages/NotFound"));
 
 function OldProjectRedirect() {
@@ -29,6 +30,7 @@ export default function App() {
           <Route path={paths.contact} element={<Contact />} />
           <Route path={paths.resume} element={<Resume />} />
           <Route path={paths.playground} element={<Playground />} />
+          <Route path={paths.demos} element={<Demos />} />
           <Route path={paths.projects} element={<Navigate to={paths.work} replace />} />
           <Route path={`${paths.projects}/:slug`} element={<OldProjectRedirect />} />
           <Route path="*" element={<NotFound />} />

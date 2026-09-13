@@ -3,6 +3,7 @@ import { paths } from "@/src/routes/mainRoutes";
 export const FOOTER_NAV = [
   { label: "Home", href: paths.home },
   { label: "Work", href: paths.work },
+  { label: "Demos", href: paths.demos },
   { label: "Contact", href: paths.contact },
   { label: "Résumé", href: paths.resume },
 ];
