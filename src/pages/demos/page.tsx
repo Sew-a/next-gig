@@ -138,7 +138,7 @@ export default function DemosPage() {
           >
             <span className="demos-page__label">// Demo projects</span>
             <h1 className="demos-page__title">
-              My <span className="demos-page__dot">.</span>Demos
+              My Demos
             </h1>
             <p className="demos-page__lead">
               Interactive experiments and micro frontend showcases.
