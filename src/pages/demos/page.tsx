@@ -1,23 +1,36 @@
-import { useState, useCallback } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
+import type { ComponentType, CSSProperties } from "react";
+import { createRoot, type Root } from "react-dom/client";
+import { getInstance, init } from "@module-federation/runtime";
 import { motion } from "framer-motion";
 import Seo from "@/src/components/Seo";
 import "./styles.scss";
+
+const FEDERATION_NAME = "main_app";
+const REMOTE_NAME = "demos";
+const REMOTE_ENTRY =
+  import.meta.env.VITE_REMOTE_DEMOS_URL ?? "http://localhost:3001/remoteEntry.js";
+const REMOTE_MODULE = "demos/DemosApp";
+
+const FEDERATION_OPTIONS = {
+  name: FEDERATION_NAME,
+  remotes: [
+    {
+      name: REMOTE_NAME,
+      type: "module" as const,
+      entry: REMOTE_ENTRY,
+    },
+  ],
+};
+
+type LoadStatus = "idle" | "loading" | "loaded" | "error";
 
 interface DemoProject {
   id: string;
   title: string;
   description: string;
-  remoteEntry: string;
-  remoteModule: string;
   accent?: string;
 }
-
-// Resolve the remote entry at runtime. Vite statically replaces
-// import.meta.env.VITE_REMOTE_DEMOS_URL at build time, so this works
-// both in dev (localhost) and on Cloudflare (set the env var).
-const remoteDemosEntry =
-  import.meta.env.VITE_REMOTE_DEMOS_URL ??
-  "http://localhost:3001/remoteEntry.js";
 
 const DEMOS: DemoProject[] = [
   {
@@ -25,47 +38,73 @@ const DEMOS: DemoProject[] = [
     title: "Micro Frontend Demo",
     description:
       "A standalone micro frontend app loaded via Module Federation. Click to launch the remote app.",
-    remoteEntry: remoteDemosEntry,
-    remoteModule: "demos/DemosApp",
     accent: "#00f0ff",
   },
 ];
 
-function RemoteLoader({ project }: { project: DemoProject }) {
-  const [status, setStatus] = useState<"idle" | "loading" | "loaded" | "error">(
-    "idle",
+function getRuntime() {
+  return (
+    getInstance((instance) => instance.options.name === FEDERATION_NAME) ??
+    init(FEDERATION_OPTIONS)
   );
-  const [error, setError] = useState<string | null>(null);
+}
 
-  const loadRemote = useCallback(async () => {
+// Reuse getRuntime() so the instance is created with the expected
+// remote/shared options exactly once.
+let demosRuntime: ReturnType<typeof getRuntime> | null = null;
+function getDemosRuntime() {
+  if (!demosRuntime) {
+    demosRuntime = getRuntime();
+  }
+  return demosRuntime;
+}
+
+async function loadRemoteModule(id: string) {
+  const instance = getDemosRuntime();
+  const mod = await instance.loadRemote<{ default: ComponentType }>(id);
+  if (!mod?.default) {
+    throw new Error(`Remote module '${id}' has no default export.`);
+  }
+  return mod.default;
+}
+
+function RemoteLoader({ project }: { project: DemoProject }) {
+  const [status, setStatus] = useState<LoadStatus>("idle");
+  const [error, setError] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<Root | null>(null);
+  const unmountedRef = useRef(false);
+
+  useEffect(() => {
+    unmountedRef.current = false;
+    return () => {
+      unmountedRef.current = true;
+      rootRef.current?.unmount();
+      rootRef.current = null;
+    };
+  }, []);
+
+  const launch = useCallback(async () => {
     if (status === "loaded" || status === "loading") return;
     setStatus("loading");
     setError(null);
 
     try {
-      // Pre-warm the remote entry so the actual component load is instant
-      await import(
-        /* webpackIgnore: true */ /* @vite-ignore */ project.remoteEntry
-      );
-      const RemoteComponent = (
-        await import(
-          /* webpackIgnore: true */ /* @vite-ignore */ project.remoteModule
-        )
-      ).default;
-      // Render into the container
-      const container = document.getElementById(
-        `remote-container-${project.id}`,
-      );
-      if (!container) throw new Error("Remote container not found");
+      const RemoteComponent = await loadRemoteModule(REMOTE_MODULE);
+      if (unmountedRef.current) return;
+
+      const container = containerRef.current;
+      if (!container) throw new Error("Remote container not mounted.");
+
       container.innerHTML = "";
-      const root = document.createElement("div");
-      container.appendChild(root);
-      // We use a simple ReactDOM render here to avoid double Router context.
-      // For a real app, expose a React component and render it with createRoot.
-      const { createRoot } = await import("react-dom/client");
-      createRoot(root).render(<RemoteComponent />);
+
+      if (!rootRef.current) {
+        rootRef.current = createRoot(container);
+      }
+      rootRef.current.render(<RemoteComponent />);
       setStatus("loaded");
     } catch (err) {
+      if (unmountedRef.current) return;
       setStatus("error");
       setError(
         err instanceof Error
@@ -73,12 +112,16 @@ function RemoteLoader({ project }: { project: DemoProject }) {
           : "Something went wrong while loading the demo.",
       );
     }
-  }, [project, status]);
+  }, [status]);
 
   return (
     <div
       className="demo-card"
-      style={{ "--project-accent": project.accent } as React.CSSProperties}
+      style={
+        {
+          "--project-accent": project.accent,
+        } as CSSProperties
+      }
     >
       <div className="demo-card__header">
         <h3 className="demo-card__title">{project.title}</h3>
@@ -86,11 +129,7 @@ function RemoteLoader({ project }: { project: DemoProject }) {
       <p className="demo-card__desc">{project.description}</p>
 
       {status === "idle" && (
-        <button
-          className="demo-card__launch"
-          onClick={loadRemote}
-          type="button"
-        >
+        <button className="demo-card__launch" onClick={launch} type="button">
           Launch Demo
         </button>
       )}
@@ -98,7 +137,7 @@ function RemoteLoader({ project }: { project: DemoProject }) {
       {status === "loading" && (
         <div className="demo-card__status">
           <div className="demo-card__spinner" />
-          <span>Loading…</span>
+          <span>Loading...</span>
         </div>
       )}
 
@@ -120,13 +159,15 @@ function RemoteLoader({ project }: { project: DemoProject }) {
       )}
 
       <div
-        id={`remote-container-${project.id}`}
+        ref={containerRef}
         className="demo-card__remote"
         style={{ display: status === "loaded" ? "block" : "none" }}
       />
     </div>
   );
 }
+
+const MemoizedRemoteLoader = memo(RemoteLoader);
 
 export default function DemosPage() {
   return (
@@ -144,9 +185,7 @@ export default function DemosPage() {
             transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
           >
             <span className="demos-page__label">// Demo projects</span>
-            <h1 className="demos-page__title">
-              My Demos
-            </h1>
+            <h1 className="demos-page__title">My Demos</h1>
             <p className="demos-page__lead">
               Interactive experiments and micro frontend showcases.
             </p>
@@ -157,7 +196,7 @@ export default function DemosPage() {
       <section className="demos-page__section">
         <div className="demos-page__grid">
           {DEMOS.map((project) => (
-            <RemoteLoader key={project.id} project={project} />
+            <MemoizedRemoteLoader key={project.id} project={project} />
           ))}
         </div>
       </section>
