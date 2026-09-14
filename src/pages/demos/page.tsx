@@ -12,13 +12,20 @@ interface DemoProject {
   accent?: string;
 }
 
+// Resolve the remote entry at runtime. Vite statically replaces
+// import.meta.env.VITE_REMOTE_DEMOS_URL at build time, so this works
+// both in dev (localhost) and on Cloudflare (set the env var).
+const remoteDemosEntry =
+  import.meta.env.VITE_REMOTE_DEMOS_URL ??
+  "http://localhost:3001/remoteEntry.js";
+
 const DEMOS: DemoProject[] = [
   {
     id: "micro-frontend",
     title: "Micro Frontend Demo",
     description:
       "A standalone micro frontend app loaded via Module Federation. Click to launch the remote app.",
-    remoteEntry: "http://localhost:3001/remoteEntry.js",
+    remoteEntry: remoteDemosEntry,
     remoteModule: "demos/DemosApp",
     accent: "#00f0ff",
   },
