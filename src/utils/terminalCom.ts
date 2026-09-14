@@ -1,5 +1,3 @@
-export const ideFiles = ['AboutMe.tsx', 'Experience.ts', 'Skills.json', 'Contact.md', 'Documentation.md'];
-
 export enum TerminalCommand {
   COMMANDS = 'commands',
   CLEAR = 'clear',

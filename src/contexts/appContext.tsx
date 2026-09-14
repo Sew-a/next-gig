@@ -26,7 +26,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [imageFiles, setImageFiles] = useState<ImageItemProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isIdeMode, setIsIdeMode] = useState<boolean>(false);
   const [currentFile, setCurrentFile] = useState<string>("AboutMe.tsx");
   const [isHacked, setIsHacked] = useState<boolean>(false);
   const [theme, setTheme] = useState<Theme>("dark");
@@ -55,8 +54,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       setImageFiles,
       isLoading,
       setIsLoading,
-      isIdeMode,
-      setIsIdeMode,
       currentFile,
       setCurrentFile,
       isHacked,
@@ -64,7 +61,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
       theme,
       setTheme,
     }),
-    [imageFiles, isLoading, isIdeMode, currentFile, isHacked, theme],
+    [imageFiles, isLoading, currentFile, isHacked, theme],
   );
 
   return (

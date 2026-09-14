@@ -1,13 +1,10 @@
-import { lazy, Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Header from "@/src/components/Header";
 import FollowSection from "@/src/components/FollowSection";
 import Footer from "@/src/components/Footer";
 import FixedCharacter from "@/src/components/FixedCharacter";
-import { useAppContext } from "@/src/contexts/appContext";
-
-const IdeLayout = lazy(() => import("@/src/components/IdeLayout/IdeLayout"));
 
 const pageTransition = {
   initial: { opacity: 0, y: 16, filter: "blur(6px)" },
@@ -21,7 +18,6 @@ export default function LayoutWrapper({
 }: {
   children: React.ReactNode;
 }) {
-  const { isIdeMode } = useAppContext();
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -33,30 +29,24 @@ export default function LayoutWrapper({
       <Header />
       <div className="main">
         <div className="main-content">
-          <div className={`page-content ${isIdeMode && "ide-mode"}`}>
-            {isIdeMode ? (
-              <Suspense fallback={null}>
-                <IdeLayout />
-              </Suspense>
-            ) : (
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={pathname}
-                  initial={pageTransition.initial}
-                  animate={pageTransition.animate}
-                  exit={pageTransition.exit}
-                  transition={pageTransition.transition}
-                >
-                  {children}
-                </motion.div>
-              </AnimatePresence>
-            )}
+          <div className="page-content">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={pathname}
+                initial={pageTransition.initial}
+                animate={pageTransition.animate}
+                exit={pageTransition.exit}
+                transition={pageTransition.transition}
+              >
+                {children}
+              </motion.div>
+            </AnimatePresence>
           </div>
           <FollowSection />
-          {!isIdeMode && <Footer />}
+          <Footer />
         </div>
       </div>
-      {!isIdeMode && <FixedCharacter />}
+      <FixedCharacter />
     </div>
   );
 }

@@ -1,12 +1,9 @@
 import { useAppContext } from "@/src/contexts/appContext";
-import { useWindowSize } from "@/src/hooks/useWindowSize";
 import { Sun, Moon } from "lucide-react";
 import "./ThemeSwitcher.scss";
 
 const VersionSwitcher = () => {
-  const { isIdeMode, setIsIdeMode, theme, setTheme } = useAppContext();
-  const size = useWindowSize();
-  const isMobile = size.width < 1099;
+  const { theme, setTheme } = useAppContext();
 
   return (
     <div className="version-switcher-container">
@@ -24,14 +21,6 @@ const VersionSwitcher = () => {
           </span>
         </button>
       </div>
-      {!isMobile && (
-        <button
-          onClick={() => setIsIdeMode((prev) => !prev)}
-          className="mode-switcher"
-        >
-          {isIdeMode ? "SITE MODE" : "IDE Mode"}
-        </button>
-      )}
     </div>
   );
 };

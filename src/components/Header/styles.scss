@@ -155,34 +155,6 @@
     transition: all 0.2s ease;
   }
 
-  &__ide-btn {
-    color: $text-secondary;
-    background-color: transparent;
-    border: 1px solid $border-color;
-    border-radius: $border-radius-md;
-    padding: 0.4rem 0.85rem;
-    font-size: $fs-sm;
-    font-weight: $fw-semibold;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    transition: all 0.15s ease;
-    cursor: pointer;
-    font-family: $font-family-sans;
-    position: relative;
-
-    &:hover {
-      color: $accent-main;
-      border-color: rgba($accent-main, 0.25);
-      background-color: rgba($accent-main, 0.04);
-    }
-
-    &.active {
-      color: $accent-main;
-      border-color: $accent-main;
-      background-color: rgba($accent-main, 0.08);
-    }
-  }
-
   // ── Mobile Menu Button ──
   &__menu-btn {
     display: none;

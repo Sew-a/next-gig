@@ -15,7 +15,7 @@ export function useCommandHandler({
   push,
   clear,
 }: UseCommandHandlerProps) {
-  const { setIsHacked, setIsIdeMode } = useAppContext();
+  const { setIsHacked } = useAppContext();
   const navigate = useNavigate();
 
   const execute = (raw: string) => {
@@ -51,7 +51,6 @@ export function useCommandHandler({
           );
         } else {
           push(`Redirecting to /${page === "home" ? "" : page}...`);
-          setIsIdeMode(false);
           navigate(page === "home" ? "/" : `/${page}`);
         }
         break;

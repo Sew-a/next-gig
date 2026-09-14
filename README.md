@@ -1,19 +1,15 @@
 # Portfolio Project Documentation
 
 ## Project Overview
-This project is a high-end personal portfolio website built with **Next.js**, **TypeScript**, and **SCSS**. It features a unique dual-mode experience, allowing users to switch between a sleek modern landing page ("Primary Mode") and a developer-centric interface mirroring an Integrated Development Environment ("IDE Mode").
+This project is a high-end personal portfolio website built with **Next.js**, **TypeScript**, and **SCSS**. It features a sleek modern responsive design with sections for Projects, Experience, and Skills.
 
 ---
 
 ## Core Features & Implementation
 
-### 1. Dual-Mode Interface Architecture
-- **Primary Mode**: A high-fidelity, visually stunning landing page with sections for Projects, Experience, and Skills.
-- **IDE Mode**: A fully functional VS Code-like interface featuring:
-  - **Sidebar Navigation**: A file explorer with active tab highlighting.
-  - **Code Editor**: A high-performance syntax-highlighted code viewer.
-  - **Integrated Terminal**: A terminal-style status/logging system with state management via custom hooks.
-  - **Seamless Transitions**: Powered by `framer-motion` for fluid OS-like animations.
+### 1. Core Interface
+- A high-fidelity, visually stunning landing page with sections for Projects, Experience, and Skills.
+- **Seamless Transitions**: Powered by `framer-motion` for fluid page animations.
 
 ### 2. Design System & Aesthetics
 - **Premium UI**: Uses a sophisticated dark-themed palette with vibrant purple (`#d494ff`) accents.
@@ -91,7 +87,6 @@ these tokens — no hardcoded font values in component SCSS.
 
 ## Recent Work & Refactoring
 - **Gallery Integration**: Successfully mapped the `public/gallery` folder to the portfolio grid, optimizing asset delivery.
-- **Layout Optimization**: Refactored the `IdeLayout` to ensure full-height sidebars and consistent state management across different views.
 - **SCSS Modernization**: Migrated inline styles to dedicated SCSS modules to adhere to best practices and improve maintainability.
 - **Content Centralization**: Moved all portfolio-related content into structured data files (`data/portfolioData.ts`) for easy updates.
 

@@ -11,7 +11,7 @@ export default function Header() {
   const { pathname } = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { isIdeMode, setIsIdeMode, theme, setTheme } = useAppContext();
+  const { theme, setTheme } = useAppContext();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,13 +57,6 @@ export default function Header() {
             <span className="header__theme-icon">
               {theme === "dark" ? <Moon size={16} /> : <Sun size={16} />}
             </span>
-          </button>
-
-          <button
-            onClick={() => setIsIdeMode((prev) => !prev)}
-            className={`header__ide-btn ${isIdeMode ? "active" : ""}`}
-          >
-            {isIdeMode ? "SITE MODE" : "IDE Mode"}
           </button>
         </div>
 

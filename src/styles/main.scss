@@ -80,12 +80,6 @@ a {
   position: relative;
   min-height: 60vh;
 
-  &.ide-mode {
-    padding: 0;
-    max-width: none;
-    margin: 0;
-  }
-
   @media (max-width: 768px) {
     padding: 0;
   }
@@ -105,11 +99,6 @@ a {
   --theme-card-border: #2c2c35;
 
   // ── Global Button Overrides ──
-  .mode-switcher {
-    border-color: var(--theme-secondary);
-    color: var(--theme-secondary);
-  }
-
   .action-button,
   .btn-action,
   .hack-close-btn {
@@ -202,12 +191,6 @@ a {
     }
   }
 
-  .ide-explorer .file-item.active {
-    background-color: rgba(0, 240, 255, 0.08);
-    color: var(--theme-accent);
-    border-left-color: var(--theme-accent);
-  }
-
   .experience__center-line,
   .experience__connector,
   .hero__heading::after {
@@ -261,19 +244,6 @@ a {
       background-color: rgba(0, 119, 182, 0.03);
     }
   }
-
-  .header__ide-btn {
-    color: var(--theme-secondary);
-    background-color: rgba(208, 0, 0, 0.04);
-    border-color: var(--theme-card-border);
-    filter: none;
-
-    &:hover {
-      background-color: rgba(208, 0, 0, 0.08);
-      filter: none;
-    }
-  }
-
 
   .header__theme-icon { color: var(--theme-accent); }
 
@@ -388,24 +358,6 @@ a {
 
     h3 { color: #18181b; }
     p { color: var(--theme-text-secondary); }
-  }
-
-  .header__ide-btn {
-    color: var(--theme-text-secondary);
-    border-color: var(--theme-card-border);
-    background-color: transparent;
-
-    &:hover {
-      color: var(--theme-accent);
-      border-color: rgba(0, 119, 182, 0.25);
-      background-color: rgba(0, 119, 182, 0.04);
-    }
-
-    &.active {
-      color: var(--theme-accent);
-      border-color: var(--theme-accent);
-      background-color: rgba(0, 119, 182, 0.08);
-    }
   }
 
   .experience__title { color: #18181b; }
@@ -648,72 +600,6 @@ a {
   }
 
   .resume__label { color: var(--theme-accent); }
-
-  .ide-layout {
-    background-color: #fafafa;
-  }
-
-  .code-editor .editor-header {
-    background-color: rgba(228, 228, 231, 0.5);
-    border-bottom-color: var(--theme-card-border);
-  }
-
-  .code-editor .editor-tab {
-    color: var(--theme-text-muted);
-    border-right-color: rgba(228, 228, 231, 0.5);
-
-    &:hover { color: var(--theme-text); background-color: rgba(0, 119, 182, 0.03); }
-    &--active { color: var(--theme-accent); background-color: rgba(0, 119, 182, 0.05); }
-  }
-
-  .ide-explorer {
-    background-color: var(--theme-card-bg);
-    border-right-color: var(--theme-card-border);
-
-    .file-item {
-      color: var(--theme-text-secondary);
-      border-bottom-color: var(--theme-card-border);
-
-      &.active {
-        background-color: rgba(0, 119, 182, 0.06);
-        color: var(--theme-accent);
-        border-left-color: var(--theme-accent);
-      }
-    }
-
-    .explorer-header {
-      background-color: rgba(228, 228, 231, 0.5);
-      border-bottom-color: var(--theme-card-border);
-      color: var(--theme-text);
-    }
-  }
-
-  .terminal {
-    background-color: var(--theme-card-bg);
-    border-top-color: var(--theme-card-border);
-
-    .terminal-header {
-      background-color: rgba(228, 228, 231, 0.5);
-      border-bottom-color: var(--theme-card-border);
-      color: var(--theme-text);
-    }
-
-    .terminal-container {
-      color: var(--theme-text);
-
-      .output-line { color: var(--theme-text); }
-      .command-input-area .command-input { color: var(--theme-text); }
-
-      &::-webkit-scrollbar-track { background: transparent; }
-      &::-webkit-scrollbar-thumb { background: rgba(0, 119, 182, 0.15); }
-    }
-  }
-
-  .code-editor .editor-container {
-    &::-webkit-scrollbar-track { background: rgba(228, 228, 231, 0.3); }
-    &::-webkit-scrollbar-thumb { background: rgba(0, 119, 182, 0.2); }
-    &::-webkit-scrollbar-thumb:hover { background: rgba(0, 119, 182, 0.4); }
-  }
 
   .search-bar {
     background-color: var(--theme-card-bg);
