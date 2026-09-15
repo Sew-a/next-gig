@@ -1,0 +1,194 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.approach {
+  @include section-padding;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+
+    @media (max-width: $desktop) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.approach-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: $bg-secondary;
+  border: 1px solid $border-color;
+  border-top: 3px solid $border-color;
+  border-radius: $border-radius-xl;
+  padding: 28px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba($accent-main, 0.08), transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ── Accent variants ── */
+  &--safety {
+    border-top-color: $accent-main;
+
+    .approach-card__icon {
+      color: $accent-main;
+      background: $accent-subtle;
+    }
+
+    &:hover {
+      box-shadow: 0 8px 28px rgba(0, 240, 255, 0.07);
+    }
+  }
+
+  &--state {
+    border-top-color: #a855f7;
+
+    .approach-card__icon {
+      color: #a855f7;
+      background: rgba(168, 85, 247, 0.08);
+    }
+
+    &::after {
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.08), transparent 70%);
+    }
+
+    &:hover {
+      box-shadow: 0 8px 28px rgba(168, 85, 247, 0.07);
+    }
+  }
+
+  &--architecture {
+    border-top-color: #f30086;
+
+    .approach-card__icon {
+      color: #f30086;
+      background: rgba(255, 17, 97, 0.08);
+    }
+
+    &::after {
+      background: radial-gradient(circle, rgba(255, 17, 97, 0.08), transparent 70%);
+    }
+
+    &:hover {
+      box-shadow: 0 8px 28px rgba(255, 17, 97, 0.07);
+    }
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: $border-radius-lg;
+  }
+
+  &__index {
+    font-family: $font-family-mono;
+    font-size: $fs-lead;
+    font-weight: $fw-bold;
+    color: $text-faint;
+    letter-spacing: 0.05em;
+  }
+
+  &__title {
+    font-size: $fs-h4;
+    font-weight: $fw-bold;
+    color: $text-primary;
+    letter-spacing: -0.3px;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    &--solution {
+      padding-top: 14px;
+      border-top: 1px dashed $border-color;
+    }
+  }
+
+  &__label {
+    font-size: $fs-micro;
+    font-weight: $fw-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: $text-muted;
+
+    &--solution {
+      color: $accent-main;
+    }
+  }
+
+  &--state .approach-card__label--solution {
+    color: #a855f7;
+  }
+
+  &--architecture .approach-card__label--solution {
+    color: #f30086;
+  }
+
+  &__text {
+    font-size: $fs-sm;
+    line-height: 1.7;
+    color: $text-secondary;
+  }
+
+  &__tags {
+    list-style: none;
+    margin: auto 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__tag {
+    padding: 5px 12px;
+    font-size: $fs-micro;
+    font-weight: $fw-medium;
+    color: $text-secondary;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-sm;
+    background: rgba($bg-primary, 0.4);
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+
+  &:hover &__tag {
+    border-color: rgba($accent-main, 0.3);
+  }
+
+  /* light-theme tweaks are layered via main.scss overrides */
+  @media (max-width: $tablet) {
+    padding: 22px;
+  }
+}

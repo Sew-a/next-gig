@@ -18,7 +18,7 @@ import { HERO_DATA } from "@/src/data/portfolioData";
 import { HeadingText, ActionButton, FadeIn } from "@/src/components/UI";
 import { ACTION_BUTTON_TYPE } from "@/src/components/types";
 import { paths } from "@/src/routes/mainRoutes";
-import ExperienceTabs from "@/src/components/ExperienceTabs";
+import ExperienceTimeline from "@/src/components/ExperienceTimeline";
 import FeaturedGrid from "@/src/components/FeaturedGrid";
 import Parallax from "@/src/components/Parallax";
 
@@ -100,16 +100,9 @@ export function ExperienceSection() {
               5+ years · React · TypeScript · Micro-frontends
             </p>
           </div>
-          <div className="experience__actions">
-            <ActionButton
-              title="Download Résumé"
-              link={paths.resume}
-              buttonType={ACTION_BUTTON_TYPE.PRIMARY}
-            />
-          </div>
           <div className="experience__line-top"></div>
         </div>
-        <ExperienceTabs />
+        <ExperienceTimeline />
       </section>
     </FadeIn>
   );

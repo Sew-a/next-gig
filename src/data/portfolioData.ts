@@ -1,13 +1,13 @@
 export const HERO_DATA = {
-  tag: "// FRONT-END ENGINEER",
+  tag: "// ENGINEER",
   name: "I'm Sevak",
-  title: "Frontend",
-  accent: "Engineer",
+  title: "Software Engineer /",
+  accent: "Frontend Engineer",
  summary:
-    "Frontend Engineer with 5+ years of experience building scalable web applications with React and TypeScript. Specializes in Frontend Architecture, Micro-frontends, Module Federation, reusable component systems, performance, and testing.",
+    "5+ years of experience building scalable web applications with React and TypeScript. Specializes in Frontend Architecture, Micro-frontends, Module Federation, reusable component systems, performance, and testing.",
   email: "sevavetisyan97@gmail.com",
   phone: "+37441080497",
-  linkedin: "https://www.linkedin.com/in/sevak-avetisyan-6122411b2/",
+  linkedin: "https://www.linkedin.com/in/sevak-avetisyan-arm/",
 };
 
 export type Project = {
@@ -136,8 +136,8 @@ export const PROJECTS: Project[] = [
       repo: "https://github.com/Sew-a/AI-Agents",
     },
     techStack: [
-      "Next.js 16",
-      "React 19",
+      "Next.js",
+      "React",
       "TypeScript",
       "React Compiler",
       "CSS Modules",
@@ -318,52 +318,51 @@ export const SKILL_CATEGORIES = [
 
 export const RESUME = {
   name: "Sevak Avetisyan",
-  title: "Senior Frontend Engineer | React · TypeScript · Micro-Frontend Architecture",
+  title: "Frontend Engineer | React · TypeScript · Micro-Frontend Architecture",
   headline:
-    "Senior Frontend Engineer | React · TypeScript · Micro-Frontend Architecture",
+    "Frontend Engineer | React · TypeScript · Micro-Frontend Architecture",
   email: "sevavetisyan97@gmail.com",
-  phone: "+374 41 08 04 97",
+  phone: "+374 41080497",
   location: "Yerevan, Armenia",
-  linkedin: "https://www.linkedin.com/in/sevak-avetisyan-6122411b2/",
+  linkedin: "https://www.linkedin.com/in/sevak-avetisyan-arm/",
   github: "https://github.com/Sew-a",
   portfolio: "/",
   summary:
-    "Senior Frontend Engineer with 5+ years building large-scale React and TypeScript applications, micro-frontends, and shared frontend platforms. Promoted twice at Picsart while engineering infrastructure adopted across products serving 150M+ users. Passionate about scalable architecture, frontend performance, and developer experience.",
+    "Frontend Engineer with 5+ years of experience building scalable web applications with React and TypeScript. Specializes in Frontend Architecture, Micro-frontends, Module Federation, reusable component systems, performance, and testing. Architected 5+ production Micro-frontends for a 150M+ user platform, including Google Picker and File System built from scratch, while enabling independent releases across product teams and reducing production bugs in the core editor by 9.3%.",
   skillGroups: [
     {
-      category: "Languages",
-      items: ["JavaScript", "TypeScript", "HTML", "GraphQL", "REST APIs"],
+      category: "Frontend Development",
+      items: ["React", "TypeScript", "JavaScript", "Next.js", "HTML5", "CSS3/Sass", "JSS"],
     },
     {
-      category: "Frameworks & State",
-      items: ["React", "Next.js", "Context API", "Redux", "Zustand"],
+      category: "State Management & Data",
+      items: ["Redux", "Zustand", "TanStack Query", "GraphQL"],
     },
     {
-      category: "Styling",
-      items: ["CSS", "SASS", "Tailwind", "JSS", "Responsive Design"],
+      category: "Architecture",
+      items: ["Micro-frontends", "Module Federation", "Frontend Architecture", "Component Architecture", "Reusable Components"],
     },
     {
-      category: "Testing & DevOps",
-      items: ["Jest", "Storybook", "Git", "Docker", "Webpack", "CI/CD"],
+      category: "Backend & Build",
+      items: ["Node.js", "Express", "Webpack", "Docker"],
+    },
+    {
+      category: "Testing & Design Systems",
+      items: ["Jest", "Storybook"],
     },
     {
       category: "AI-assisted Development",
-      items: ["Cursor", "Claude", "ChatGPT", "Codex"],
+      items: ["Cursor", "Claude"],
     },
-    {
-      category: "Additional Skills",
-      items: ["Node.js", "Express", "MongoDB", "WebSockets"],
-    },
-    { category: "Also Familiar With", items: ["C#", "Unity"] },
   ],
   education: {
-    degree: "B.S., Computer Science",
-    school: "National University of Architecture and Construction",
+    degree: "Bachelor's Degree in Information Technologies",
+    school: "National University of Architecture and Construction of Armenia",
     year: "2016 – 2020",
   },
   languages: [
-    { name: "English", level: "Professional Working" },
-    { name: "Russian", level: "Native" },
     { name: "Armenian", level: "Native" },
+    { name: "Russian", level: "C1" },
+    { name: "English", level: "B2" },
   ],
 };

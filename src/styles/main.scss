@@ -70,6 +70,7 @@ a {
   flex: 1;
   width: 100%;
   margin: 0 auto;
+  min-height: 100vh;
 }
 
 .page-content {
@@ -365,45 +366,67 @@ a {
   .experience__role { color: var(--theme-accent); }
   .experience__role::before { background-color: var(--theme-accent); }
 
-  .experience-tabs__company-btn {
+  .experience-timeline {
+    &::before { background: var(--theme-card-border); }
+  }
+
+  .experience-timeline__badge {
+    background: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+    color: var(--theme-accent);
+    box-shadow: 0 0 0 4px var(--theme-bg);
+  }
+
+  .experience-timeline__company:hover .experience-timeline__badge {
+    box-shadow: 0 0 0 4px var(--theme-bg), 0 4px 20px rgba(0, 119, 182, 0.15);
+  }
+
+  .experience-timeline__head h3 { color: #18181b; }
+  .experience-timeline__meta { color: var(--theme-text-muted); }
+  .experience-timeline__sep { color: var(--theme-card-border); }
+  .experience-timeline__summary { color: var(--theme-text-secondary); }
+  .experience-timeline__role-period { color: var(--theme-text-muted); }
+  .experience-timeline__role-head h4 { color: #18181b; }
+
+  .experience-timeline__role {
+    background: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+
+    &:hover {
+      border-color: var(--theme-accent);
+      box-shadow: 0 4px 20px rgba(0, 119, 182, 0.12);
+    }
+  }
+
+  .experience-timeline__achievements li { color: var(--theme-text-secondary); }
+  .experience-timeline__achievements li::before { background: var(--theme-accent); }
+
+  .approach-card {
+    background: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+
+    h3 { color: #18181b; }
+  }
+
+  .approach-card__text { color: var(--theme-text-secondary); }
+  .approach-card__label { color: var(--theme-text-muted); }
+  .approach-card__tag {
+    border-color: var(--theme-card-border);
     color: var(--theme-text-secondary);
-    border-color: var(--theme-card-border);
-    background-color: var(--theme-card-bg);
-
-    &.active {
-      color: #ffffff;
-      background-color: var(--theme-accent);
-      border-color: var(--theme-accent);
-    }
-
-    &:hover:not(.active) {
-      border-color: var(--theme-accent);
-    }
+    background: transparent;
   }
 
-  .experience-tabs__role-nav-btn {
-    color: var(--theme-text-muted);
-    border-color: var(--theme-card-border);
-
-    &.active {
-      color: var(--theme-accent);
-      border-color: var(--theme-accent);
-      background-color: rgba(0, 119, 182, 0.05);
-    }
+  .approach-card--safety .approach-card__icon {
+    background: rgba(0, 119, 182, 0.06);
   }
 
-  .experience-tabs__panel { background: transparent; }
-
-  .experience-tabs__content {
-    background-color: transparent;
-    border-color: var(--theme-card-border);
+  .approach-card--state .approach-card__icon {
+    background: rgba(168, 85, 247, 0.06);
   }
 
-  .experience-tabs__role-title { color: #18181b; }
-  .experience-tabs__company-name { color: var(--theme-text-secondary); }
-  .experience-tabs__location { color: var(--theme-text-muted); }
-  .experience-tabs__period { color: var(--theme-text-muted); }
-  .experience-tabs__achievement-text { color: var(--theme-text-secondary); }
+  .approach-card--architecture .approach-card__icon {
+    background: rgba(255, 17, 97, 0.06);
+  }
 
   .tech-icon-cell {
     background-color: var(--theme-card-bg);

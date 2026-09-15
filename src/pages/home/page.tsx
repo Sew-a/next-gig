@@ -4,6 +4,7 @@ import {
   ExperienceSection,
   SkillsSection,
 } from "@/src/components/HomeSections";
+import ApproachSection from "@/src/components/ApproachSection";
 import Seo from "@/src/components/Seo";
 import "../../styles.scss";
 
@@ -17,6 +18,7 @@ export default function Homepage() {
       <HeroSection />
       <FeaturedWorkSection />
       <ExperienceSection />
+      <ApproachSection />
       <SkillsSection />
     </main>
   );
