@@ -73,8 +73,8 @@ export function HeroSection() {
                 buttonType={ACTION_BUTTON_TYPE.GHOST}
               />
               <ActionButton
-                title="Résumé"
-                link={paths.resume}
+                title="Demos"
+                link={paths.demos}
                 buttonType={ACTION_BUTTON_TYPE.GHOST}
               />
             </motion.div>

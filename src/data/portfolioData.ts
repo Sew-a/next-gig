@@ -215,7 +215,7 @@ export const FEATURED_WORK: FeaturedItem[] = [
     tagline: "Real-time multiplayer drag & drop form builder",
     image: 'https://res.cloudinary.com/dlggumsot/image/upload/v1785505427/Screenshot_2026-07-31_173129_qoohga.webp',
     accent: "#00f0ff",
-    href: "/work/form-builder",
+    href: "/work",
   },
   {
     slug: "ai-agents",
@@ -223,7 +223,7 @@ export const FEATURED_WORK: FeaturedItem[] = [
     tagline: "Prompt engineering, agents & RAG made copyable",
     image: PROJECTS[1].image,
     accent: "#a855f7",
-    href: "/work/ai-agents",
+    href: "/work",
   },
   {
     slug: "Google Picker micro-frontend",
@@ -235,18 +235,10 @@ export const FEATURED_WORK: FeaturedItem[] = [
   },
   {
     slug: "file-system",
-    title: "File System & Tree View",
-    tagline: "WCAG-ready component library with design tokens",
+    title: "File System library",
+    tagline: "File system with tree view, drag & drop, and file operations",
     image: "https://res.cloudinary.com/dlggumsot/image/upload/v1779292518/MyProject3_yzfsbw.png",
     accent: "#a855f7",
-    comingSoon: true,
-  },
-  {
-    slug: "Game Project",
-    title: "Game",
-    tagline: "Multiplayer editing over WebSockets",
-    image: "https://res.cloudinary.com/dlggumsot/image/upload/v1782209157/IMG20260616175745_nlv53i.webp",
-    accent: "#4ade80",
     comingSoon: true,
   },
 ];

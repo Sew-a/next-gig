@@ -637,4 +637,80 @@ a {
   .popup-overlay {
     background-color: rgba(0, 0, 0, 0.6);
   }
+
+  .demos-page__banner {
+    background-color: var(--theme-bg-secondary);
+    border-bottom-color: var(--theme-card-border);
+
+    &::before {
+      background-image: radial-gradient(circle, rgba(24, 24, 27, 0.05) 1px, transparent 1px);
+    }
+  }
+
+  .demos-page__title { color: #18181b; }
+  .demos-page__lead { color: var(--theme-text-secondary); }
+  .demos-page__tech-label { color: var(--theme-text-muted); }
+
+  .demos-page__tech-tag {
+    background: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+    color: var(--theme-text-secondary);
+  }
+
+  .demos-page__open {
+    background-color: var(--theme-accent);
+    color: #ffffff;
+    border-color: var(--theme-accent);
+
+    &:hover {
+      background-color: #0096c7;
+      border-color: #0096c7;
+    }
+  }
+
+  .canvas-art__window,
+  .canvas-miniapp {
+    background: var(--theme-card-bg);
+    border-color: var(--theme-card-border);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+  }
+
+  .canvas-art__bar,
+  .canvas-art__toolbar,
+  .canvas-art__panel,
+  .canvas-miniapp__bar {
+    background: var(--theme-bg-secondary);
+    border-color: var(--theme-card-border);
+  }
+
+  .canvas-art__stage {
+    background:
+      radial-gradient(circle at 50% 40%, rgba(0, 119, 182, 0.05), transparent 60%),
+      var(--theme-card-bg);
+  }
+
+  .canvas-art__toolbar::before {
+    border-color: var(--theme-accent);
+    background: rgba(0, 119, 182, 0.05);
+  }
+
+  .canvas-art__toolbar::after,
+  .canvas-art__panel::before {
+    background: var(--theme-bg);
+    border-color: var(--theme-card-border);
+  }
+
+  .canvas-art__title,
+  .canvas-miniapp__title {
+    color: var(--theme-text-muted);
+  }
+
+  .canvas-miniapp__status { color: var(--theme-text-secondary); }
+
+  .canvas-miniapp__spinner {
+    border-color: var(--theme-card-border);
+    border-top-color: var(--theme-accent);
+  }
+
+  .canvas-miniapp__body { background: var(--theme-card-bg); }
 }

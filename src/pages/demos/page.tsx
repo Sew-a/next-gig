@@ -1,15 +1,16 @@
-import { memo, useCallback, useEffect, useRef, useState } from "react";
-import type { ComponentType, CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { ComponentType } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { getInstance, init } from "@module-federation/runtime";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Seo from "@/src/components/Seo";
 import "./styles.scss";
 
 const FEDERATION_NAME = "main_app";
 const REMOTE_NAME = "demos";
 const REMOTE_ENTRY =
-  import.meta.env.VITE_REMOTE_DEMOS_URL ?? "http://localhost:3001/remoteEntry.js";
+  import.meta.env.VITE_REMOTE_DEMOS_URL ??
+  "http://localhost:3001/remoteEntry.js";
 const REMOTE_MODULE = "demos/DemosApp";
 
 const FEDERATION_OPTIONS = {
@@ -23,23 +24,14 @@ const FEDERATION_OPTIONS = {
   ],
 };
 
-type LoadStatus = "idle" | "loading" | "loaded" | "error";
+type LoadStatus = "loading" | "loaded" | "error";
 
-interface DemoProject {
-  id: string;
-  title: string;
-  description: string;
-  accent?: string;
-}
-
-const DEMOS: DemoProject[] = [
-  {
-    id: "micro-frontend",
-    title: "Micro Frontend Demo",
-    description:
-      "A standalone micro frontend app loaded via Module Federation. Click to launch the remote app.",
-    accent: "#00f0ff",
-  },
+const CANVAS_TECHNOLOGIES = [
+  "React",
+  "TypeScript",
+  "Vite",
+  "Module Federation",
+  "Konva.js",
 ];
 
 function getRuntime() {
@@ -68,108 +60,79 @@ async function loadRemoteModule(id: string) {
   return mod.default;
 }
 
-function RemoteLoader({ project }: { project: DemoProject }) {
-  const [status, setStatus] = useState<LoadStatus>("idle");
+function CanvasMiniapp() {
+  const [status, setStatus] = useState<LoadStatus>("loading");
   const [error, setError] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<Root | null>(null);
-  const unmountedRef = useRef(false);
 
   useEffect(() => {
-    unmountedRef.current = false;
+    let cancelled = false;
+
+    (async () => {
+      try {
+        const RemoteComponent = await loadRemoteModule(REMOTE_MODULE);
+        if (cancelled) return;
+
+        const container = containerRef.current;
+        if (!container) throw new Error("Remote container not mounted.");
+
+        rootRef.current = createRoot(container);
+        rootRef.current.render(<RemoteComponent />);
+        setStatus("loaded");
+      } catch (err) {
+        if (cancelled) return;
+        setStatus("error");
+        setError(
+          err instanceof Error
+            ? err.message
+            : "Something went wrong while loading the miniapp.",
+        );
+      }
+    })();
+
     return () => {
-      unmountedRef.current = true;
+      cancelled = true;
       rootRef.current?.unmount();
       rootRef.current = null;
     };
   }, []);
 
-  const launch = useCallback(async () => {
-    if (status === "loaded" || status === "loading") return;
-    setStatus("loading");
-    setError(null);
-
-    try {
-      const RemoteComponent = await loadRemoteModule(REMOTE_MODULE);
-      if (unmountedRef.current) return;
-
-      const container = containerRef.current;
-      if (!container) throw new Error("Remote container not mounted.");
-
-      container.innerHTML = "";
-
-      if (!rootRef.current) {
-        rootRef.current = createRoot(container);
-      }
-      rootRef.current.render(<RemoteComponent />);
-      setStatus("loaded");
-    } catch (err) {
-      if (unmountedRef.current) return;
-      setStatus("error");
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Something went wrong while loading the demo.",
-      );
-    }
-  }, [status]);
-
   return (
-    <div
-      className="demo-card"
-      style={
-        {
-          "--project-accent": project.accent,
-        } as CSSProperties
-      }
-    >
-      <div className="demo-card__header">
-        <h3 className="demo-card__title">{project.title}</h3>
+    <div className="canvas-miniapp">
+      <div className="canvas-miniapp__bar">
+        <span className="canvas-miniapp__window-dot canvas-miniapp__window-dot--red" />
+        <span className="canvas-miniapp__window-dot canvas-miniapp__window-dot--yellow" />
+        <span className="canvas-miniapp__window-dot canvas-miniapp__window-dot--green" />
+        <span className="canvas-miniapp__title">// Canvas Miniapp</span>
       </div>
-      <p className="demo-card__desc">{project.description}</p>
-
-      {status === "idle" && (
-        <button className="demo-card__launch" onClick={launch} type="button">
-          Launch Demo
-        </button>
-      )}
 
       {status === "loading" && (
-        <div className="demo-card__status">
-          <div className="demo-card__spinner" />
-          <span>Loading...</span>
+        <div className="canvas-miniapp__status">
+          <div className="canvas-miniapp__spinner" />
+          <span>Loading miniapp...</span>
         </div>
       )}
 
       {status === "error" && (
-        <div className="demo-card__error">
-          <p className="demo-card__error-title">Failed to load demo</p>
-          <p className="demo-card__error-msg">{error}</p>
-          <button
-            className="demo-card__retry"
-            onClick={() => {
-              setStatus("idle");
-              setError(null);
-            }}
-            type="button"
-          >
-            Retry
-          </button>
+        <div className="canvas-miniapp__error">
+          <p className="canvas-miniapp__error-title">Failed to load miniapp</p>
+          <p className="canvas-miniapp__error-msg">{error}</p>
         </div>
       )}
 
       <div
         ref={containerRef}
-        className="demo-card__remote"
+        className="canvas-miniapp__body"
         style={{ display: status === "loaded" ? "block" : "none" }}
       />
     </div>
   );
 }
 
-const MemoizedRemoteLoader = memo(RemoteLoader);
-
 export default function DemosPage() {
+  const [miniappOpen, setMiniAppOpen] = useState(false);
+
   return (
     <main className="demos-page">
       <Seo
@@ -177,29 +140,86 @@ export default function DemosPage() {
         description="Interactive demos powered by micro frontends."
       />
 
-      <section className="demos-page__banner">
-        <div className="demos-page__banner-wrap">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+      <AnimatePresence>
+        {!miniappOpen && (
+          <motion.section
+            className="demos-page__banner"
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.3 }}
           >
-            <span className="demos-page__label">// Demo projects</span>
-            <h1 className="demos-page__title">My Demos</h1>
-            <p className="demos-page__lead">
-              Interactive experiments and micro frontend showcases.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+            <div className="demos-page__banner-wrap">
+              <motion.div
+                className="demos-page__banner-copy"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+              >
+                <span className="demos-page__label">// Demo projects</span>
+                <h1 className="demos-page__title">Canvas Miniapp</h1>
+                <p className="demos-page__lead">
+                  Draw shapes and text on an infinite canvas rendered with
+                  Konva.js — shipped as a separate micro frontend and pulled in
+                  at runtime via Webpack Module Federation, so it builds,
+                  deploys, and scales independently from the host app.
+                  <br />
+                  <br />
+                  It's still development in progress, but you can try it out.
+                </p>
 
-      <section className="demos-page__section">
-        <div className="demos-page__grid">
-          {DEMOS.map((project) => (
-            <MemoizedRemoteLoader key={project.id} project={project} />
-          ))}
-        </div>
-      </section>
+                <div className="demos-page__tech">
+                  <span className="demos-page__tech-label">Technologies</span>
+                  <div className="demos-page__tech-tags">
+                    {CANVAS_TECHNOLOGIES.map((tech) => (
+                      <span key={tech} className="demos-page__tech-tag">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <button
+                  className="demos-page__open"
+                  type="button"
+                  onClick={() => setMiniAppOpen(true)}
+                >
+                  Open Canvas Miniapp
+                </button>
+              </motion.div>
+
+              <div className="demos-page__canvas-art" aria-hidden="true">
+                <div className="canvas-art__window">
+                  <div className="canvas-art__bar">
+                    <span className="canvas-art__dot canvas-art__dot--red" />
+                    <span className="canvas-art__dot canvas-art__dot--yellow" />
+                    <span className="canvas-art__dot canvas-art__dot--green" />
+                    <span className="canvas-art__title">canvas.miniapp</span>
+                  </div>
+                  <div className="canvas-art__body">
+                    <div className="canvas-art__toolbar" />
+                    <div className="canvas-art__stage">
+                      <div className="canvas-art__shape canvas-art__shape--circle" />
+                      <div className="canvas-art__shape canvas-art__shape--square" />
+                      <div className="canvas-art__shape canvas-art__shape--line" />
+                    </div>
+                    <div className="canvas-art__panel" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+        )}
+      </AnimatePresence>
+
+      {miniappOpen && (
+        <motion.section
+          className="demos-page__miniapp"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+        >
+          <CanvasMiniapp />
+        </motion.section>
+      )}
     </main>
   );
 }

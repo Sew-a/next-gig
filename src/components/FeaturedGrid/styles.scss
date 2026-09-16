@@ -41,6 +41,12 @@
   }
 }
 
+.grid-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .grid-card {
   --project-accent: #00f0ff;
   display: flex;

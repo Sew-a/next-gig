@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Code2 } from "lucide-react";
 import Image from "@/src/components/Image";
 import type { FeaturedItem } from "@/src/data/portfolioData";
@@ -45,13 +46,15 @@ export default function GridCard({ item }: { item: FeaturedItem }) {
 
   if (item.href) {
     return (
-      <motion.div
-        className="grid-card"
-        style={style}
-        {...reveal}
-      >
-        {inner}
-      </motion.div>
+      <Link to={item.href} className="grid-card-link">
+        <motion.div
+          className="grid-card"
+          style={style}
+          {...reveal}
+        >
+          {inner}
+        </motion.div>
+      </Link>
     );
   }
 

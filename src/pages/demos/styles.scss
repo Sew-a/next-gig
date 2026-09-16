@@ -7,9 +7,8 @@
   &__banner {
     position: relative;
     overflow: hidden;
-    padding: 5rem 0 4rem;
+    padding: 8rem 0 8rem;
     background-color: $bg-primary;
-    border-bottom: 1px solid $border-color;
     margin-bottom: 3rem;
 
     &::before {
@@ -27,6 +26,21 @@
     @include content-wrapper;
     position: relative;
     z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+
+    @media (max-width: $desktop) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2.5rem;
+    }
+  }
+
+  &__banner-copy {
+    flex: 1;
+    min-width: 0;
   }
 
   &__label {
@@ -54,89 +68,258 @@
     line-height: 1.7;
   }
 
-  &__section {
-    @include section-padding;
+  &__tech {
+    margin-top: 1.75rem;
   }
 
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+  &__tech-label {
+    display: inline-block;
+    color: $text-muted;
+    font-size: $fs-micro;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    font-weight: $fw-medium;
+  }
+
+  &__tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__tech-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-md;
+    background: $bg-tag;
+    color: $text-dim;
+    font-family: $font-family-mono;
+    font-size: $fs-micro;
+    letter-spacing: 0.04em;
+  }
+
+  &__open {
+    @include btn-primary;
+    margin-top: 1.75rem;
+    padding: 12px 22px;
+    letter-spacing: 0.1em;
+  }
+
+  &__canvas-art {
+    flex-shrink: 0;
+    width: 420px;
+    max-width: 100%;
 
     @media (max-width: $desktop) {
-      grid-template-columns: repeat(2, 1fr);
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
     }
+  }
 
-    @media (max-width: $tablet) {
-      grid-template-columns: 1fr;
-    }
-
-    // Center single card
-    &:only-child {
-      justify-items: center;
-    }
+  &__miniapp {
+    @include section-padding;
+    padding-top: 2rem;
   }
 }
 
-// Single child centering when only one demo exists
-.demos-page__grid > *:only-child {
-  grid-column: 1 / -1;
-  justify-self: center;
-  max-width: 420px;
-  width: 100%;
-}
-
-.demo-card {
-  --project-accent: #00f0ff;
-  display: flex;
-  flex-direction: column;
-  aspect-ratio: 1 / 1;
-  border: 1px solid $border-color;
-  background: $bg-secondary;
-  border-radius: $border-radius-lg;
-  padding: 1.25rem;
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease,
-    box-shadow 0.2s ease;
-  position: relative;
-  overflow: hidden;
-
-  &:hover {
-    transform: translateY(-3px);
-    border-color: rgba(var(--project-accent), 0.4);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+// ─── CSS-drawn canvas mock ────────────────────────
+.canvas-art {
+  &__window {
+    border: 1px solid $border-color;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    background: $bg-dark;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
   }
 
-  &__header {
+  &__bar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.75rem;
+    gap: 6px;
+    padding: 8px 12px;
+    background: rgba($bg-dark, 0.9);
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+
+    &--red {
+      background: #ff5f57;
+    }
+
+    &--yellow {
+      background: #febc2e;
+    }
+
+    &--green {
+      background: #28c840;
+    }
   }
 
   &__title {
-    font-size: $fs-h3;
-    font-weight: $fw-bold;
-    color: $text-primary;
-    margin: 0;
+    margin-left: 6px;
+    color: $text-muted;
+    font-family: $font-family-mono;
+    font-size: $fs-micro;
+    letter-spacing: 0.03em;
   }
 
-  &__desc {
-    color: $text-secondary;
-    font-size: $fs-sm;
-    line-height: 1.6;
-    margin: 0 0 1.25rem;
+  &__body {
+    position: relative;
+    display: flex;
+    height: 300px;
+
+    @media (max-width: $desktop) {
+      height: 260px;
+    }
+  }
+
+  &__toolbar {
+    width: 52px;
+    border-right: 1px solid $border-color;
+    background: $bg-secondary;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: $border-radius-sm;
+      background: $border-color;
+    }
+
+    &::before {
+      top: 14px;
+      width: 20px;
+      height: 20px;
+      border: 1px solid $accent-dark;
+      background: $accent-subtle;
+    }
+
+    &::after {
+      bottom: 14px;
+      width: 18px;
+      height: 4px;
+    }
+  }
+
+  &__stage {
     flex: 1;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 40%, rgba(0, 240, 255, 0.06), transparent 60%),
+      $bg-dark;
   }
 
-  &__launch {
-    @include btn-primary;
-    width: 100%;
-    justify-content: center;
-    padding: 10px;
+  &__shape {
+    position: absolute;
+
+    &--circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 240, 255, 0.6);
+      top: 26%;
+      left: 22%;
+      box-shadow: 0 0 24px rgba(0, 240, 255, 0.25);
+    }
+
+    &--square {
+      width: 44px;
+      height: 44px;
+      border-radius: $border-radius-sm;
+      border: 2px solid rgba(168, 85, 247, 0.65);
+      top: 30%;
+      right: 24%;
+      box-shadow: 0 0 24px rgba(168, 85, 247, 0.25);
+    }
+
+    &--line {
+      height: 2px;
+      width: 120px;
+      background: linear-gradient(90deg, $accent-main, #a855f7);
+      bottom: 22%;
+      left: 18%;
+      transform: rotate(-12deg);
+      border-radius: 2px;
+      opacity: 0.8;
+    }
+  }
+
+  &__panel {
+    width: 84px;
+    border-left: 1px solid $border-color;
+    background: $bg-secondary;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 8px;
+      border-radius: $border-radius-sm;
+      background: $bg-tag;
+      border: 1px solid $border-color;
+    }
+  }
+}
+
+// ─── Full-width miniapp ───────────────────────────
+.canvas-miniapp {
+  max-width: $max-width;
+  margin: 0 auto;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  background: $bg-dark;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: $bg-secondary;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__window-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+
+    &--red {
+      background: #ff5f57;
+    }
+
+    &--yellow {
+      background: #febc2e;
+    }
+
+    &--green {
+      background: #28c840;
+    }
+  }
+
+  &__title {
+    margin-left: 8px;
+    color: $text-muted;
+    font-family: $font-family-mono;
     font-size: $fs-sm;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.03em;
   }
 
   &__status {
@@ -144,7 +327,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-    padding: 0.6rem;
+    min-height: 240px;
     color: $text-secondary;
     font-size: $fs-sm;
   }
@@ -159,7 +342,9 @@
   }
 
   &__error {
-    padding: 0.6rem;
+    margin: 2rem auto;
+    max-width: 480px;
+    padding: 1rem;
     background: rgba(232, 0, 26, 0.06);
     border: 1px solid rgba(232, 0, 26, 0.25);
     border-radius: $border-radius-md;
@@ -175,26 +360,18 @@
   &__error-msg {
     color: $text-muted;
     font-size: $fs-micro;
-    margin: 0 0 0.5rem;
+    margin: 0;
     word-break: break-word;
   }
 
-  &__retry {
-    @include btn-ghost;
-    padding: 4px 10px;
-    font-size: $fs-micro;
-  }
-
-  &__remote {
-    position: absolute;
-    inset: 0;
+  &__body {
+    width: 100%;
+    min-height: 60vh;
     background: $bg-dark;
-    border-radius: $border-radius-lg;
-    overflow: hidden;
 
     > div {
       width: 100%;
-      height: 100%;
+      height: 60vh;
       overflow: auto;
     }
   }
@@ -203,5 +380,14 @@
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes contact-dot-drift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 500px 500px;
   }
 }
