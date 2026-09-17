@@ -279,13 +279,11 @@
 
 // ─── Full-width miniapp ───────────────────────────
 .canvas-miniapp {
-  max-width: $max-width;
+  max-width: 100%;
   margin: 0 auto;
   border: 1px solid $border-color;
   border-radius: $border-radius-lg;
   overflow: hidden;
-  background: $bg-dark;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
 
   &__bar {
     display: flex;
@@ -294,24 +292,6 @@
     padding: 10px 14px;
     background: $bg-secondary;
     border-bottom: 1px solid $border-color;
-  }
-
-  &__window-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-
-    &--red {
-      background: #ff5f57;
-    }
-
-    &--yellow {
-      background: #febc2e;
-    }
-
-    &--green {
-      background: #28c840;
-    }
   }
 
   &__title {
@@ -366,12 +346,11 @@
 
   &__body {
     width: 100%;
-    min-height: 60vh;
-    background: $bg-dark;
+    min-height: 700px;
 
     > div {
       width: 100%;
-      height: 60vh;
+      height: 700px;
       overflow: auto;
     }
   }

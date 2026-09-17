@@ -189,9 +189,6 @@ export default function DemosPage() {
               <div className="demos-page__canvas-art" aria-hidden="true">
                 <div className="canvas-art__window">
                   <div className="canvas-art__bar">
-                    <span className="canvas-art__dot canvas-art__dot--red" />
-                    <span className="canvas-art__dot canvas-art__dot--yellow" />
-                    <span className="canvas-art__dot canvas-art__dot--green" />
                     <span className="canvas-art__title">canvas.miniapp</span>
                   </div>
                   <div className="canvas-art__body">
