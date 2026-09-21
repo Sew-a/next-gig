@@ -1,8 +1,15 @@
 import { Monitor, Gamepad2, Bot } from 'lucide-react';
+import type { ExpertiseItem } from './types';
 
-export const EXPERTISE_DATA = [
+export const EXPERTISE_HEADING = {
+  title: "My Expertise",
+  label: "// SERVICES",
+};
+
+export const EXPERTISE_DATA: ExpertiseItem[] = [
   {
     icon: Monitor,
+    variant: "frontend",
     title: "Frontend Dev",
     desc: "Specialized in crafting pixel-perfect landing pages and responsive styling. Experienced in writing modern, clean code and seamlessly integrating dynamic animation libraries to build immersive, interactive user experiences.",
     emphasis: [
@@ -14,6 +21,7 @@ export const EXPERTISE_DATA = [
   },
   {
     icon: Gamepad2,
+    variant: "gamedev",
     title: "Game Dev",
     desc: "Practical experience in 2D game development using Unity and C#. Skilled in working with pixel art, creating smooth sprite animations, and implementing realistic game physics systems and mechanics.",
     emphasis: [
@@ -24,6 +32,7 @@ export const EXPERTISE_DATA = [
   },
   {
     icon: Bot,
+    variant: "ai",
     title: "AI & Agentic AI",
     desc: "Built a comprehensive educational platform covering prompt engineering, AI agents, and practical LLM workflows. Experienced in designing agent architectures, prompt patterns, and self-hosted open-source AI tooling.",
     emphasis: [
@@ -34,4 +43,3 @@ export const EXPERTISE_DATA = [
     skills: ["Prompt Engineering", "AI Agents", "LLM Workflows", "Open Source AI"]
   }
 ];
-

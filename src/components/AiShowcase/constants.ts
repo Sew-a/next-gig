@@ -40,3 +40,34 @@ export const AI_SHOWCASE_DATA = [
     desc: "A structured 6-step path from LLM basics to context engineering, with common pitfalls and success metrics."
   }
 ];
+
+export const AI_SHOWCASE_HEADING = {
+  title: "AI Agents Prompts — Practical LLM Guide",
+  label: "// AI & AGENTS",
+};
+
+export const AI_SHOWCASE_INTRO = {
+  desc: "A curated knowledge hub and practical guide for prompt engineering, AI agents, reusable agent workflow patterns, and everyday prompt examples. Built for anyone who uses ChatGPT, Claude, Gemini, or any LLM-powered assistant and wants to go beyond basic chat interactions.",
+  links: [
+    {
+      title: "Visit Website →",
+      href: "https://ai-agents.sevavetisyan97.workers.dev",
+      buttonType: "PRIMARY",
+    },
+    {
+      title: "View Source →",
+      href: "https://github.com/Sew-a/AI-Agents",
+      buttonType: "GHOST",
+    },
+  ],
+};
+
+export const AI_SHOWCASE_SCREENSHOT = {
+  src: "https://res.cloudinary.com/dlggumsot/image/upload/v1783354442/Screenshot_2026-07-06_193857_ubcvpw.webp",
+  alt: "AI Agents website screenshot",
+};
+
+export const AI_SHOWCASE_SECTIONS = {
+  title: "What You'll Learn",
+  label: "// SECTIONS",
+};

@@ -1,39 +1,20 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { routeNames, paths } from "@/src/routes/mainRoutes";
+import { Link } from "react-router-dom";
 import { useAppContext } from "@/src/contexts/appContext";
 import { Menu, X, Sun, Moon } from "lucide-react";
+import { useHeaderState } from "./useHeaderState";
+import { headerRoutes, HEADER_BRAND } from "./constants";
 import "./styles.scss";
 
-const headerRoutes = routeNames.filter((r) => r.path !== paths.resume);
-
 export default function Header() {
-  const { pathname } = useLocation();
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const { pathname, isOpen, isScrolled, toggleMenu } = useHeaderState();
   const { theme, setTheme } = useAppContext();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const [prevPathname, setPrevPathname] = useState(pathname);
-  if (prevPathname !== pathname) {
-    setPrevPathname(pathname);
-    setIsOpen(false);
-  }
 
   return (
     <header
       className={`header ${isScrolled ? "header--scrolled" : ""} ${isOpen ? "header--menu-open" : ""}`}
     >
       <div className="header__inner">
-        <div className="header__logo">Sev</div>
+        <div className="header__logo">{HEADER_BRAND}</div>
         <nav className={`header__nav ${isOpen ? "header__nav--open" : ""}`}>
           {headerRoutes.map((route) => (
             <Link
@@ -62,7 +43,7 @@ export default function Header() {
 
         <button
           className="header__menu-btn"
-          onClick={() => setIsOpen((prev) => !prev)}
+          onClick={toggleMenu}
           aria-label="Toggle menu"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}

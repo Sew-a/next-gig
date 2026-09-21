@@ -1,17 +1,11 @@
-import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Header from "@/src/components/Header";
 import FollowSection from "@/src/components/FollowSection";
 import Footer from "@/src/components/Footer";
 import FixedCharacter from "@/src/components/FixedCharacter";
-
-const pageTransition = {
-  initial: { opacity: 0, y: 16, filter: "blur(6px)" },
-  animate: { opacity: 1, y: 0, filter: "blur(0px)" },
-  exit: { opacity: 0, y: -12, filter: "blur(4px)" },
-  transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const },
-};
+import { useScrollToTop } from "@/src/hooks/useScrollToTop";
+import { pageTransition } from "./constants";
 
 export default function LayoutWrapper({
   children,
@@ -20,9 +14,7 @@ export default function LayoutWrapper({
 }) {
   const { pathname } = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+  useScrollToTop();
 
   return (
     <div className="main-theme-wrapper">

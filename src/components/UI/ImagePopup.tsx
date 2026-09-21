@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import { motion } from 'framer-motion';
-import { X } from 'lucide-react';
+import { createPortal } from "react-dom";
+import { motion } from "framer-motion";
+import { X } from "lucide-react";
+import { useEscapeKey } from "@/src/hooks/useEscapeKey";
+import { useBodyScrollLock } from "@/src/hooks/useBodyScrollLock";
 import "./ImagePopup.scss";
 
 interface ImagePopupProps {
@@ -11,29 +12,9 @@ interface ImagePopupProps {
 }
 
 const ImagePopup: React.FC<ImagePopupProps> = ({ src, alt, onClose }) => {
+  useEscapeKey(onClose);
+  useBodyScrollLock(true);
 
-  // Close on Esc key and lock page scroll while the popup is open
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-
-    const prevBodyOverflow = document.body.style.overflow;
-    const prevDocOverflow = document.documentElement.style.overflow;
-
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
-    window.addEventListener('keydown', handleEsc);
-
-    return () => {
-      window.removeEventListener('keydown', handleEsc);
-      document.body.style.overflow = prevBodyOverflow;
-      document.documentElement.style.overflow = prevDocOverflow;
-    };
-  }, [onClose]);
-
-  // Render through a portal to document.body so position: fixed works against
-  // the viewport (ancestors with filter/transform break fixed positioning).
   return createPortal(
     <motion.div
       className="image-popup-overlay"

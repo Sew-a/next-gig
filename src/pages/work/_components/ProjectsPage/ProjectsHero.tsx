@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Parallax from "@/src/components/Parallax";
+import { PROJECTS_HERO, PROJECTS_HERO_ANIMATIONS } from "./constants";
 import "./styles.scss";
 
 export default function ProjectsHero() {
@@ -10,28 +11,22 @@ export default function ProjectsHero() {
       <div className="projects-hero__content">
         <motion.span
           className="projects-hero__label"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
+          {...PROJECTS_HERO_ANIMATIONS.label}
         >
-          {`// SELECTED WORK`}
+          {PROJECTS_HERO.label}
         </motion.span>
         <motion.h1
           className="projects-hero__title"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, delay: 0.25, ease: [0.21, 0.47, 0.32, 0.98] }}
+          {...PROJECTS_HERO_ANIMATIONS.title}
         >
-          Work<span className="projects-hero__dot">.</span>
+          {PROJECTS_HERO.title}
+          <span className="projects-hero__dot">{PROJECTS_HERO.dot}</span>
         </motion.h1>
         <motion.p
           className="projects-hero__lead"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
+          {...PROJECTS_HERO_ANIMATIONS.lead}
         >
-          Full-stack systems, micro-frontends, and AI platforms — designed,
-          architected, and shipped end-to-end.
+          {PROJECTS_HERO.lead}
         </motion.p>
       </div>
       <div className="projects-hero__fade" />

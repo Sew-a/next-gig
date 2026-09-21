@@ -1,22 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import {
-  ClipboardList,
-  Bot,
-  ArrowUpRight,
-  CheckCircle2,
-  FolderOpen,
-  Code2,
-} from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Code2 } from "lucide-react";
 import Image from "@/src/components/Image";
 import { paths } from "@/src/routes/mainRoutes";
+import { getProjectIcon } from "@/src/constants/projectIcons";
 import type { Project } from "@/src/data/portfolioData";
 import "./styles.scss";
-
-const ICONS: Record<string, typeof ClipboardList> = {
-  ClipboardList,
-  Bot,
-};
 
 interface ProjectCardProps {
   project: Project;
@@ -29,7 +18,7 @@ export default function ProjectCard({
   reverse = false,
   detailed = false,
 }: ProjectCardProps) {
-  const Icon = ICONS[project.icon] || FolderOpen;
+  const Icon = getProjectIcon(project.icon);
 
   return (
     <motion.article
